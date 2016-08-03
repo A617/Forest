@@ -5,9 +5,14 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="edu.nju"></context:component-scan>
+    <!--这一句指定了扫描注解生成Controller的根包名-->
+    <context:component-scan base-package="edu.nju.controller"></context:component-scan>
 
+    <!--这一句相当于开启注解扫描功能-->
     <mvc:annotation-driven/>
+
+    <!--这一句处理对静态资源的访问-->
+    <mvc:default-servlet-handler />
 
 
     <bean id="velocityConfigurer"

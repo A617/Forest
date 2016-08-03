@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nju.dao.mapper.RepositoryMapper" >
+    <resultMap id="BaseResultMap" type="edu.nju.model.Repository" >
+        <result column="full_name" property="full_name" jdbcType="CHAR" />
+        <result column="name" property="name" jdbcType="CHAR" />
+        <result column="owner_name" property="owner_name" jdbcType="CHAR" />
+        <result column="language" property="language" jdbcType="CHAR" />
+        <result column="open_issues_count" property="open_issues_count" jdbcType="INTEGER" />
+        <result column="watchers_count" property="watchers_count" jdbcType="INTEGER" />
+        <result column="clone_url" property="clone_url" jdbcType="CHAR" />
+        <result column="html_url" property="html_url" jdbcType="CHAR" />
+        <result column="homepage" property="homepage" jdbcType="CHAR" />
+        <result column="created_at" property="created_at" jdbcType="TIMESTAMP" />
+        <result column="pushed_at" property="pushed_at" jdbcType="TIMESTAMP" />
+        <result column="updated_at" property="updated_at" jdbcType="TIMESTAMP" />
+        <result column="size" property="size" jdbcType="INTEGER" />
+        <result column="stargazers_count" property="stargazers_count" jdbcType="INTEGER" />
+        <result column="forks_count" property="forks_count" jdbcType="INTEGER" />
+        <result column="subscribers_count" property="subscribers_count" jdbcType="INTEGER" />
+        <result column="languages" property="languages" jdbcType="VARCHAR" />
+        <result column="size_score" property="size_score" jdbcType="DOUBLE" />
+        <result column="scale_score" property="scale_score" jdbcType="DOUBLE" />
+        <result column="promising_score" property="promising_score" jdbcType="DOUBLE" />
+        <result column="participation_score" property="participation_score" jdbcType="DOUBLE" />
+        <result column="hot_score" property="hot_score" jdbcType="DOUBLE" />
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="edu.nju.model.Repository" extends="BaseResultMap" >
+        <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        full_name, name, owner_name, language, open_issues_count, watchers_count, clone_url,
+        html_url, homepage, created_at, pushed_at, updated_at, size, stargazers_count, forks_count,
+        subscribers_count, languages, size_score, scale_score, promising_score, participation_score,
+        hot_score
+    </sql>
+    <sql id="Blob_Column_List" >
+        description
+    </sql>
+
+
+</mapper>
