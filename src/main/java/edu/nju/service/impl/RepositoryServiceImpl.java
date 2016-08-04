@@ -6,17 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * Created by Dora on 2016/8/3.
  */
 @Service
 public class RepositoryServiceImpl implements RepositoryService {
 
-    @Autowired
-    RepositoryDao dao;
+    @Resource
+    private RepositoryDao repository;
 
     @Override
-    public edu.nju.model.Repository test() {
+    public Repository test() {
+
         return dao.selectByFullName("a");
     }
 }

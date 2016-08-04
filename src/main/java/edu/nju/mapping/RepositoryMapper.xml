@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.nju.dao.mapper.RepositoryMapper">
+  <resultMap id="BaseResultMap" type="edu.nju.model.Repository">
+    <id column="full_name" jdbcType="CHAR" property="full_name" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="owner_name" jdbcType="CHAR" property="owner_name" />
+    <result column="language" jdbcType="CHAR" property="language" />
+    <result column="open_issues_count" jdbcType="INTEGER" property="open_issues_count" />
+    <result column="watchers_count" jdbcType="INTEGER" property="watchers_count" />
+    <result column="clone_url" jdbcType="CHAR" property="clone_url" />
+    <result column="html_url" jdbcType="CHAR" property="html_url" />
+    <result column="homepage" jdbcType="CHAR" property="homepage" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="pushed_at" jdbcType="TIMESTAMP" property="pushed_at" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="stargazers_count" jdbcType="INTEGER" property="stargazers_count" />
+    <result column="forks_count" jdbcType="INTEGER" property="forks_count" />
+    <result column="subscribers_count" jdbcType="INTEGER" property="subscribers_count" />
+    <result column="languages" jdbcType="VARCHAR" property="languages" />
+    <result column="size_score" jdbcType="DOUBLE" property="size_score" />
+    <result column="scale_score" jdbcType="DOUBLE" property="scale_score" />
+    <result column="promising_score" jdbcType="DOUBLE" property="promising_score" />
+    <result column="participation_score" jdbcType="DOUBLE" property="participation_score" />
+    <result column="hot_score" jdbcType="DOUBLE" property="hot_score" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="edu.nju.model.Repository">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    full_name, name, owner_name, language, open_issues_count, watchers_count, clone_url, 
+    html_url, homepage, created_at, pushed_at, updated_at, size, stargazers_count, forks_count, 
+    subscribers_count, languages, size_score, scale_score, promising_score, participation_score, 
+    hot_score
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from repository
+    where full_name = #{full_name,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from repository
+    where full_name = #{full_name,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.model.Repository">
+    insert into repository (full_name, name, owner_name, 
+      language, open_issues_count, watchers_count, 
+      clone_url, html_url, homepage, 
+      created_at, pushed_at, updated_at, 
+      size, stargazers_count, forks_count, 
+      subscribers_count, languages, size_score, 
+      scale_score, promising_score, participation_score, 
+      hot_score, description)
+    values (#{full_name,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{owner_name,jdbcType=CHAR}, 
+      #{language,jdbcType=CHAR}, #{open_issues_count,jdbcType=INTEGER}, #{watchers_count,jdbcType=INTEGER}, 
+      #{clone_url,jdbcType=CHAR}, #{html_url,jdbcType=CHAR}, #{homepage,jdbcType=CHAR}, 
+      #{created_at,jdbcType=TIMESTAMP}, #{pushed_at,jdbcType=TIMESTAMP}, #{updated_at,jdbcType=TIMESTAMP}, 
+      #{size,jdbcType=INTEGER}, #{stargazers_count,jdbcType=INTEGER}, #{forks_count,jdbcType=INTEGER}, 
+      #{subscribers_count,jdbcType=INTEGER}, #{languages,jdbcType=VARCHAR}, #{size_score,jdbcType=DOUBLE}, 
+      #{scale_score,jdbcType=DOUBLE}, #{promising_score,jdbcType=DOUBLE}, #{participation_score,jdbcType=DOUBLE}, 
+      #{hot_score,jdbcType=DOUBLE}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.model.Repository">
+    insert into repository
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="full_name != null">
+        full_name,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="owner_name != null">
+        owner_name,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="open_issues_count != null">
+        open_issues_count,
+      </if>
+      <if test="watchers_count != null">
+        watchers_count,
+      </if>
+      <if test="clone_url != null">
+        clone_url,
+      </if>
+      <if test="html_url != null">
+        html_url,
+      </if>
+      <if test="homepage != null">
+        homepage,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="pushed_at != null">
+        pushed_at,
+      </if>
+      <if test="updated_at != null">
+        updated_at,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="stargazers_count != null">
+        stargazers_count,
+      </if>
+      <if test="forks_count != null">
+        forks_count,
+      </if>
+      <if test="subscribers_count != null">
+        subscribers_count,
+      </if>
+      <if test="languages != null">
+        languages,
+      </if>
+      <if test="size_score != null">
+        size_score,
+      </if>
+      <if test="scale_score != null">
+        scale_score,
+      </if>
+      <if test="promising_score != null">
+        promising_score,
+      </if>
+      <if test="participation_score != null">
+        participation_score,
+      </if>
+      <if test="hot_score != null">
+        hot_score,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="full_name != null">
+        #{full_name,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="owner_name != null">
+        #{owner_name,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="open_issues_count != null">
+        #{open_issues_count,jdbcType=INTEGER},
+      </if>
+      <if test="watchers_count != null">
+        #{watchers_count,jdbcType=INTEGER},
+      </if>
+      <if test="clone_url != null">
+        #{clone_url,jdbcType=CHAR},
+      </if>
+      <if test="html_url != null">
+        #{html_url,jdbcType=CHAR},
+      </if>
+      <if test="homepage != null">
+        #{homepage,jdbcType=CHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushed_at != null">
+        #{pushed_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_at != null">
+        #{updated_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="stargazers_count != null">
+        #{stargazers_count,jdbcType=INTEGER},
+      </if>
+      <if test="forks_count != null">
+        #{forks_count,jdbcType=INTEGER},
+      </if>
+      <if test="subscribers_count != null">
+        #{subscribers_count,jdbcType=INTEGER},
+      </if>
+      <if test="languages != null">
+        #{languages,jdbcType=VARCHAR},
+      </if>
+      <if test="size_score != null">
+        #{size_score,jdbcType=DOUBLE},
+      </if>
+      <if test="scale_score != null">
+        #{scale_score,jdbcType=DOUBLE},
+      </if>
+      <if test="promising_score != null">
+        #{promising_score,jdbcType=DOUBLE},
+      </if>
+      <if test="participation_score != null">
+        #{participation_score,jdbcType=DOUBLE},
+      </if>
+      <if test="hot_score != null">
+        #{hot_score,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.model.Repository">
+    update repository
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="owner_name != null">
+        owner_name = #{owner_name,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=CHAR},
+      </if>
+      <if test="open_issues_count != null">
+        open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      </if>
+      <if test="watchers_count != null">
+        watchers_count = #{watchers_count,jdbcType=INTEGER},
+      </if>
+      <if test="clone_url != null">
+        clone_url = #{clone_url,jdbcType=CHAR},
+      </if>
+      <if test="html_url != null">
+        html_url = #{html_url,jdbcType=CHAR},
+      </if>
+      <if test="homepage != null">
+        homepage = #{homepage,jdbcType=CHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushed_at != null">
+        pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_at != null">
+        updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="stargazers_count != null">
+        stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      </if>
+      <if test="forks_count != null">
+        forks_count = #{forks_count,jdbcType=INTEGER},
+      </if>
+      <if test="subscribers_count != null">
+        subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      </if>
+      <if test="languages != null">
+        languages = #{languages,jdbcType=VARCHAR},
+      </if>
+      <if test="size_score != null">
+        size_score = #{size_score,jdbcType=DOUBLE},
+      </if>
+      <if test="scale_score != null">
+        scale_score = #{scale_score,jdbcType=DOUBLE},
+      </if>
+      <if test="promising_score != null">
+        promising_score = #{promising_score,jdbcType=DOUBLE},
+      </if>
+      <if test="participation_score != null">
+        participation_score = #{participation_score,jdbcType=DOUBLE},
+      </if>
+      <if test="hot_score != null">
+        hot_score = #{hot_score,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="edu.nju.model.Repository">
+    update repository
+    set name = #{name,jdbcType=CHAR},
+      owner_name = #{owner_name,jdbcType=CHAR},
+      language = #{language,jdbcType=CHAR},
+      open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      watchers_count = #{watchers_count,jdbcType=INTEGER},
+      clone_url = #{clone_url,jdbcType=CHAR},
+      html_url = #{html_url,jdbcType=CHAR},
+      homepage = #{homepage,jdbcType=CHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      size = #{size,jdbcType=INTEGER},
+      stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      forks_count = #{forks_count,jdbcType=INTEGER},
+      subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      languages = #{languages,jdbcType=VARCHAR},
+      size_score = #{size_score,jdbcType=DOUBLE},
+      scale_score = #{scale_score,jdbcType=DOUBLE},
+      promising_score = #{promising_score,jdbcType=DOUBLE},
+      participation_score = #{participation_score,jdbcType=DOUBLE},
+      hot_score = #{hot_score,jdbcType=DOUBLE},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.model.Repository">
+    update repository
+    set name = #{name,jdbcType=CHAR},
+      owner_name = #{owner_name,jdbcType=CHAR},
+      language = #{language,jdbcType=CHAR},
+      open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      watchers_count = #{watchers_count,jdbcType=INTEGER},
+      clone_url = #{clone_url,jdbcType=CHAR},
+      html_url = #{html_url,jdbcType=CHAR},
+      homepage = #{homepage,jdbcType=CHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      size = #{size,jdbcType=INTEGER},
+      stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      forks_count = #{forks_count,jdbcType=INTEGER},
+      subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      languages = #{languages,jdbcType=VARCHAR},
+      size_score = #{size_score,jdbcType=DOUBLE},
+      scale_score = #{scale_score,jdbcType=DOUBLE},
+      promising_score = #{promising_score,jdbcType=DOUBLE},
+      participation_score = #{participation_score,jdbcType=DOUBLE},
+      hot_score = #{hot_score,jdbcType=DOUBLE}
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="edu.nju.model.Repository">
+    <id column="full_name" jdbcType="CHAR" property="full_name" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="owner_name" jdbcType="CHAR" property="owner_name" />
+    <result column="language" jdbcType="CHAR" property="language" />
+    <result column="open_issues_count" jdbcType="INTEGER" property="open_issues_count" />
+    <result column="watchers_count" jdbcType="INTEGER" property="watchers_count" />
+    <result column="clone_url" jdbcType="CHAR" property="clone_url" />
+    <result column="html_url" jdbcType="CHAR" property="html_url" />
+    <result column="homepage" jdbcType="CHAR" property="homepage" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
+    <result column="pushed_at" jdbcType="TIMESTAMP" property="pushed_at" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="stargazers_count" jdbcType="INTEGER" property="stargazers_count" />
+    <result column="forks_count" jdbcType="INTEGER" property="forks_count" />
+    <result column="subscribers_count" jdbcType="INTEGER" property="subscribers_count" />
+    <result column="languages" jdbcType="VARCHAR" property="languages" />
+    <result column="size_score" jdbcType="DOUBLE" property="size_score" />
+    <result column="scale_score" jdbcType="DOUBLE" property="scale_score" />
+    <result column="promising_score" jdbcType="DOUBLE" property="promising_score" />
+    <result column="participation_score" jdbcType="DOUBLE" property="participation_score" />
+    <result column="hot_score" jdbcType="DOUBLE" property="hot_score" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="edu.nju.model.Repository">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    full_name, name, owner_name, language, open_issues_count, watchers_count, clone_url, 
+    html_url, homepage, created_at, pushed_at, updated_at, size, stargazers_count, forks_count, 
+    subscribers_count, languages, size_score, scale_score, promising_score, participation_score, 
+    hot_score
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from repository
+    where full_name = #{full_name,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from repository
+    where full_name = #{full_name,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.model.Repository">
+    insert into repository (full_name, name, owner_name, 
+      language, open_issues_count, watchers_count, 
+      clone_url, html_url, homepage, 
+      created_at, pushed_at, updated_at, 
+      size, stargazers_count, forks_count, 
+      subscribers_count, languages, size_score, 
+      scale_score, promising_score, participation_score, 
+      hot_score, description)
+    values (#{full_name,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{owner_name,jdbcType=CHAR}, 
+      #{language,jdbcType=CHAR}, #{open_issues_count,jdbcType=INTEGER}, #{watchers_count,jdbcType=INTEGER}, 
+      #{clone_url,jdbcType=CHAR}, #{html_url,jdbcType=CHAR}, #{homepage,jdbcType=CHAR}, 
+      #{created_at,jdbcType=TIMESTAMP}, #{pushed_at,jdbcType=TIMESTAMP}, #{updated_at,jdbcType=TIMESTAMP}, 
+      #{size,jdbcType=INTEGER}, #{stargazers_count,jdbcType=INTEGER}, #{forks_count,jdbcType=INTEGER}, 
+      #{subscribers_count,jdbcType=INTEGER}, #{languages,jdbcType=VARCHAR}, #{size_score,jdbcType=DOUBLE}, 
+      #{scale_score,jdbcType=DOUBLE}, #{promising_score,jdbcType=DOUBLE}, #{participation_score,jdbcType=DOUBLE}, 
+      #{hot_score,jdbcType=DOUBLE}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.model.Repository">
+    insert into repository
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="full_name != null">
+        full_name,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="owner_name != null">
+        owner_name,
+      </if>
+      <if test="language != null">
+        language,
+      </if>
+      <if test="open_issues_count != null">
+        open_issues_count,
+      </if>
+      <if test="watchers_count != null">
+        watchers_count,
+      </if>
+      <if test="clone_url != null">
+        clone_url,
+      </if>
+      <if test="html_url != null">
+        html_url,
+      </if>
+      <if test="homepage != null">
+        homepage,
+      </if>
+      <if test="created_at != null">
+        created_at,
+      </if>
+      <if test="pushed_at != null">
+        pushed_at,
+      </if>
+      <if test="updated_at != null">
+        updated_at,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="stargazers_count != null">
+        stargazers_count,
+      </if>
+      <if test="forks_count != null">
+        forks_count,
+      </if>
+      <if test="subscribers_count != null">
+        subscribers_count,
+      </if>
+      <if test="languages != null">
+        languages,
+      </if>
+      <if test="size_score != null">
+        size_score,
+      </if>
+      <if test="scale_score != null">
+        scale_score,
+      </if>
+      <if test="promising_score != null">
+        promising_score,
+      </if>
+      <if test="participation_score != null">
+        participation_score,
+      </if>
+      <if test="hot_score != null">
+        hot_score,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="full_name != null">
+        #{full_name,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="owner_name != null">
+        #{owner_name,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        #{language,jdbcType=CHAR},
+      </if>
+      <if test="open_issues_count != null">
+        #{open_issues_count,jdbcType=INTEGER},
+      </if>
+      <if test="watchers_count != null">
+        #{watchers_count,jdbcType=INTEGER},
+      </if>
+      <if test="clone_url != null">
+        #{clone_url,jdbcType=CHAR},
+      </if>
+      <if test="html_url != null">
+        #{html_url,jdbcType=CHAR},
+      </if>
+      <if test="homepage != null">
+        #{homepage,jdbcType=CHAR},
+      </if>
+      <if test="created_at != null">
+        #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushed_at != null">
+        #{pushed_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_at != null">
+        #{updated_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=INTEGER},
+      </if>
+      <if test="stargazers_count != null">
+        #{stargazers_count,jdbcType=INTEGER},
+      </if>
+      <if test="forks_count != null">
+        #{forks_count,jdbcType=INTEGER},
+      </if>
+      <if test="subscribers_count != null">
+        #{subscribers_count,jdbcType=INTEGER},
+      </if>
+      <if test="languages != null">
+        #{languages,jdbcType=VARCHAR},
+      </if>
+      <if test="size_score != null">
+        #{size_score,jdbcType=DOUBLE},
+      </if>
+      <if test="scale_score != null">
+        #{scale_score,jdbcType=DOUBLE},
+      </if>
+      <if test="promising_score != null">
+        #{promising_score,jdbcType=DOUBLE},
+      </if>
+      <if test="participation_score != null">
+        #{participation_score,jdbcType=DOUBLE},
+      </if>
+      <if test="hot_score != null">
+        #{hot_score,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.model.Repository">
+    update repository
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="owner_name != null">
+        owner_name = #{owner_name,jdbcType=CHAR},
+      </if>
+      <if test="language != null">
+        language = #{language,jdbcType=CHAR},
+      </if>
+      <if test="open_issues_count != null">
+        open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      </if>
+      <if test="watchers_count != null">
+        watchers_count = #{watchers_count,jdbcType=INTEGER},
+      </if>
+      <if test="clone_url != null">
+        clone_url = #{clone_url,jdbcType=CHAR},
+      </if>
+      <if test="html_url != null">
+        html_url = #{html_url,jdbcType=CHAR},
+      </if>
+      <if test="homepage != null">
+        homepage = #{homepage,jdbcType=CHAR},
+      </if>
+      <if test="created_at != null">
+        created_at = #{created_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushed_at != null">
+        pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated_at != null">
+        updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=INTEGER},
+      </if>
+      <if test="stargazers_count != null">
+        stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      </if>
+      <if test="forks_count != null">
+        forks_count = #{forks_count,jdbcType=INTEGER},
+      </if>
+      <if test="subscribers_count != null">
+        subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      </if>
+      <if test="languages != null">
+        languages = #{languages,jdbcType=VARCHAR},
+      </if>
+      <if test="size_score != null">
+        size_score = #{size_score,jdbcType=DOUBLE},
+      </if>
+      <if test="scale_score != null">
+        scale_score = #{scale_score,jdbcType=DOUBLE},
+      </if>
+      <if test="promising_score != null">
+        promising_score = #{promising_score,jdbcType=DOUBLE},
+      </if>
+      <if test="participation_score != null">
+        participation_score = #{participation_score,jdbcType=DOUBLE},
+      </if>
+      <if test="hot_score != null">
+        hot_score = #{hot_score,jdbcType=DOUBLE},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="edu.nju.model.Repository">
+    update repository
+    set name = #{name,jdbcType=CHAR},
+      owner_name = #{owner_name,jdbcType=CHAR},
+      language = #{language,jdbcType=CHAR},
+      open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      watchers_count = #{watchers_count,jdbcType=INTEGER},
+      clone_url = #{clone_url,jdbcType=CHAR},
+      html_url = #{html_url,jdbcType=CHAR},
+      homepage = #{homepage,jdbcType=CHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      size = #{size,jdbcType=INTEGER},
+      stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      forks_count = #{forks_count,jdbcType=INTEGER},
+      subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      languages = #{languages,jdbcType=VARCHAR},
+      size_score = #{size_score,jdbcType=DOUBLE},
+      scale_score = #{scale_score,jdbcType=DOUBLE},
+      promising_score = #{promising_score,jdbcType=DOUBLE},
+      participation_score = #{participation_score,jdbcType=DOUBLE},
+      hot_score = #{hot_score,jdbcType=DOUBLE},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.model.Repository">
+    update repository
+    set name = #{name,jdbcType=CHAR},
+      owner_name = #{owner_name,jdbcType=CHAR},
+      language = #{language,jdbcType=CHAR},
+      open_issues_count = #{open_issues_count,jdbcType=INTEGER},
+      watchers_count = #{watchers_count,jdbcType=INTEGER},
+      clone_url = #{clone_url,jdbcType=CHAR},
+      html_url = #{html_url,jdbcType=CHAR},
+      homepage = #{homepage,jdbcType=CHAR},
+      created_at = #{created_at,jdbcType=TIMESTAMP},
+      pushed_at = #{pushed_at,jdbcType=TIMESTAMP},
+      updated_at = #{updated_at,jdbcType=TIMESTAMP},
+      size = #{size,jdbcType=INTEGER},
+      stargazers_count = #{stargazers_count,jdbcType=INTEGER},
+      forks_count = #{forks_count,jdbcType=INTEGER},
+      subscribers_count = #{subscribers_count,jdbcType=INTEGER},
+      languages = #{languages,jdbcType=VARCHAR},
+      size_score = #{size_score,jdbcType=DOUBLE},
+      scale_score = #{scale_score,jdbcType=DOUBLE},
+      promising_score = #{promising_score,jdbcType=DOUBLE},
+      participation_score = #{participation_score,jdbcType=DOUBLE},
+      hot_score = #{hot_score,jdbcType=DOUBLE}
+    where full_name = #{full_name,jdbcType=CHAR}
+  </update>
+</mapper>

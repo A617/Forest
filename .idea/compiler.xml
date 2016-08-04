@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="a617" />
         <module name="Forest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="a617" target="1.7" />
       <module name="Forest" target="1.7" />
       <module name="java" target="1.5" />
     </bytecodeTargetLevel>

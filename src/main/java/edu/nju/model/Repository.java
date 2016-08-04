@@ -1,19 +1,12 @@
 package edu.nju.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import java.util.Date;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class Repository {
-
     private String full_name;
 
     private String name;
 
-    @JsonProperty("login")
     private String owner_name;
 
     private String language;
@@ -28,13 +21,10 @@ public class Repository {
 
     private String homepage;
 
-    @JsonDeserialize(using = MyDateDeserializer.class)
     private Date created_at;
 
-    @JsonDeserialize(using = MyDateDeserializer.class)
     private Date pushed_at;
 
-    @JsonDeserialize(using = MyDateDeserializer.class)
     private Date updated_at;
 
     private Integer size;
@@ -241,34 +231,5 @@ public class Repository {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Repository{" +
-                "full_name='" + full_name + '\'' +
-                ", name='" + name + '\'' +
-                ", owner_name='" + owner_name + '\'' +
-                ", language='" + language + '\'' +
-                ", open_issues_count=" + open_issues_count +
-                ", watchers_count=" + watchers_count +
-                ", clone_url='" + clone_url + '\'' +
-                ", html_url='" + html_url + '\'' +
-                ", homepage='" + homepage + '\'' +
-                ", created_at=" + created_at +
-                ", pushed_at=" + pushed_at +
-                ", updated_at=" + updated_at +
-                ", size=" + size +
-                ", stargazers_count=" + stargazers_count +
-                ", forks_count=" + forks_count +
-                ", subscribers_count=" + subscribers_count +
-                ", languages='" + languages + '\'' +
-                ", size_score=" + size_score +
-                ", scale_score=" + scale_score +
-                ", promising_score=" + promising_score +
-                ", participation_score=" + participation_score +
-                ", hot_score=" + hot_score +
-                ", description='" + description + '\'' +
-                '}';
     }
 }
