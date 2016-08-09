@@ -7,7 +7,25 @@ public class Member {
 
     private String password;
 
-    private String memberEmail;
+    private String member_email;
+
+    public Member(String username){
+        this.username=username;
+    }
+
+    public Member(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    public Member(String username, String password,String member_email) {
+        this.username = username;
+        this.password = password;
+        this.member_email = member_email;
+    }
+
+    public Member() {
+
+    }
 
     public Integer getUserid() {
         return userid;
@@ -34,10 +52,10 @@ public class Member {
     }
 
     public String getMemberEmail() {
-        return memberEmail;
+        return member_email;
     }
 
     public void setMemberEmail(String memberEmail) {
-        this.memberEmail = memberEmail;
+        this.member_email = memberEmail;
     }
 }

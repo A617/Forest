@@ -9,13 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Created by Dora on 2016/8/3.
  */
 @org.springframework.stereotype.Repository
-public class RepositoryDaoImpl implements RepositoryDao {
+public class RepositoryDaoImpl {
 
-    @Autowired
-    RepositoryMapper mapper;
-
-    @Override
-    public Repository selectByFullName(String full_name) {
-        return mapper.selectByFullName(full_name);
-    }
 }
