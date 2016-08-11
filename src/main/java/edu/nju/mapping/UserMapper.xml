@@ -29,530 +29,297 @@
     public_gists, followers, following, created_at, updated_at, popular_score, teamwork_score, 
     liveness_score, experience_score, quantity_score, languages
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+  <insert id="insert" parameterType="edu.nju.model.User" >
+    insert into user (login, html_url,
+    type, avatar_url, name, location,
+    email, blog, company, public_repos,
+    public_gists, followers, following,
+    created_at, updated_at, popular_score,
+    teamwork_score, liveness_score, experience_score,
+    quantity_score, languages)
+    values ( #{login,jdbcType=CHAR}, #{html_url,jdbcType=CHAR},
+    #{type,jdbcType=CHAR}, #{avatar_url,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{location,jdbcType=CHAR},
+    #{email,jdbcType=CHAR}, #{blog,jdbcType=CHAR}, #{company,jdbcType=CHAR}, #{public_repos,jdbcType=INTEGER},
+    #{public_gists,jdbcType=INTEGER}, #{followers,jdbcType=INTEGER}, #{following,jdbcType=INTEGER},
+    #{created_at,jdbcType=TIMESTAMP}, #{updated_at,jdbcType=TIMESTAMP}, #{popular_score,jdbcType=DOUBLE},
+    #{teamwork_score,jdbcType=DOUBLE}, #{liveness_score,jdbcType=DOUBLE}, #{experience_score,jdbcType=DOUBLE},
+    #{quantity_score,jdbcType=DOUBLE}, #{languages,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertOwn">
+    insert into own(login,full_name)
+    values (#{0},#{1})
+  </insert>
+
+  <!-- 以下为自定义方法-->
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
     <include refid="Base_Column_List" />
     from user
-    where login = #{login,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from user
-    where login = #{login,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" parameterType="edu.nju.model.User">
-    insert into user (login, html_url, type, 
-      avatar_url, name, location, 
-      email, blog, company, public_repos, 
-      public_gists, followers, following, 
-      created_at, updated_at, popular_score, 
-      teamwork_score, liveness_score, experience_score, 
-      quantity_score, languages)
-    values (#{login,jdbcType=CHAR}, #{html_url,jdbcType=CHAR}, #{type,jdbcType=CHAR}, 
-      #{avatar_url,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{location,jdbcType=VARCHAR}, 
-      #{email,jdbcType=CHAR}, #{blog,jdbcType=VARCHAR}, #{company,jdbcType=CHAR}, #{public_repos,jdbcType=INTEGER}, 
-      #{public_gists,jdbcType=INTEGER}, #{followers,jdbcType=INTEGER}, #{following,jdbcType=INTEGER}, 
-      #{created_at,jdbcType=TIMESTAMP}, #{updated_at,jdbcType=TIMESTAMP}, #{popular_score,jdbcType=DOUBLE}, 
-      #{teamwork_score,jdbcType=DOUBLE}, #{liveness_score,jdbcType=DOUBLE}, #{experience_score,jdbcType=DOUBLE}, 
-      #{quantity_score,jdbcType=DOUBLE}, #{languages,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="edu.nju.model.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="login != null">
-        login,
-      </if>
-      <if test="html_url != null">
-        html_url,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="avatar_url != null">
-        avatar_url,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="location != null">
-        location,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="blog != null">
-        blog,
-      </if>
-      <if test="company != null">
-        company,
-      </if>
-      <if test="public_repos != null">
-        public_repos,
-      </if>
-      <if test="public_gists != null">
-        public_gists,
-      </if>
-      <if test="followers != null">
-        followers,
-      </if>
-      <if test="following != null">
-        following,
-      </if>
-      <if test="created_at != null">
-        created_at,
-      </if>
-      <if test="updated_at != null">
-        updated_at,
-      </if>
-      <if test="popular_score != null">
-        popular_score,
-      </if>
-      <if test="teamwork_score != null">
-        teamwork_score,
-      </if>
-      <if test="liveness_score != null">
-        liveness_score,
-      </if>
-      <if test="experience_score != null">
-        experience_score,
-      </if>
-      <if test="quantity_score != null">
-        quantity_score,
-      </if>
-      <if test="languages != null">
-        languages,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="login != null">
-        #{login,jdbcType=CHAR},
-      </if>
-      <if test="html_url != null">
-        #{html_url,jdbcType=CHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=CHAR},
-      </if>
-      <if test="avatar_url != null">
-        #{avatar_url,jdbcType=CHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=CHAR},
-      </if>
-      <if test="location != null">
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=CHAR},
-      </if>
-      <if test="blog != null">
-        #{blog,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null">
-        #{company,jdbcType=CHAR},
-      </if>
-      <if test="public_repos != null">
-        #{public_repos,jdbcType=INTEGER},
-      </if>
-      <if test="public_gists != null">
-        #{public_gists,jdbcType=INTEGER},
-      </if>
-      <if test="followers != null">
-        #{followers,jdbcType=INTEGER},
-      </if>
-      <if test="following != null">
-        #{following,jdbcType=INTEGER},
-      </if>
-      <if test="created_at != null">
-        #{created_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated_at != null">
-        #{updated_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="popular_score != null">
-        #{popular_score,jdbcType=DOUBLE},
-      </if>
-      <if test="teamwork_score != null">
-        #{teamwork_score,jdbcType=DOUBLE},
-      </if>
-      <if test="liveness_score != null">
-        #{liveness_score,jdbcType=DOUBLE},
-      </if>
-      <if test="experience_score != null">
-        #{experience_score,jdbcType=DOUBLE},
-      </if>
-      <if test="quantity_score != null">
-        #{quantity_score,jdbcType=DOUBLE},
-      </if>
-      <if test="languages != null">
-        #{languages,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.model.User">
-    update user
-    <set>
-      <if test="html_url != null">
-        html_url = #{html_url,jdbcType=CHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=CHAR},
-      </if>
-      <if test="avatar_url != null">
-        avatar_url = #{avatar_url,jdbcType=CHAR},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=CHAR},
-      </if>
-      <if test="location != null">
-        location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=CHAR},
-      </if>
-      <if test="blog != null">
-        blog = #{blog,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null">
-        company = #{company,jdbcType=CHAR},
-      </if>
-      <if test="public_repos != null">
-        public_repos = #{public_repos,jdbcType=INTEGER},
-      </if>
-      <if test="public_gists != null">
-        public_gists = #{public_gists,jdbcType=INTEGER},
-      </if>
-      <if test="followers != null">
-        followers = #{followers,jdbcType=INTEGER},
-      </if>
-      <if test="following != null">
-        following = #{following,jdbcType=INTEGER},
-      </if>
-      <if test="created_at != null">
-        created_at = #{created_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated_at != null">
-        updated_at = #{updated_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="popular_score != null">
-        popular_score = #{popular_score,jdbcType=DOUBLE},
-      </if>
-      <if test="teamwork_score != null">
-        teamwork_score = #{teamwork_score,jdbcType=DOUBLE},
-      </if>
-      <if test="liveness_score != null">
-        liveness_score = #{liveness_score,jdbcType=DOUBLE},
-      </if>
-      <if test="experience_score != null">
-        experience_score = #{experience_score,jdbcType=DOUBLE},
-      </if>
-      <if test="quantity_score != null">
-        quantity_score = #{quantity_score,jdbcType=DOUBLE},
-      </if>
-      <if test="languages != null">
-        languages = #{languages,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where login = #{login,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="edu.nju.model.User">
-    update user
-    set html_url = #{html_url,jdbcType=CHAR},
-      type = #{type,jdbcType=CHAR},
-      avatar_url = #{avatar_url,jdbcType=CHAR},
-      name = #{name,jdbcType=CHAR},
-      location = #{location,jdbcType=VARCHAR},
-      email = #{email,jdbcType=CHAR},
-      blog = #{blog,jdbcType=VARCHAR},
-      company = #{company,jdbcType=CHAR},
-      public_repos = #{public_repos,jdbcType=INTEGER},
-      public_gists = #{public_gists,jdbcType=INTEGER},
-      followers = #{followers,jdbcType=INTEGER},
-      following = #{following,jdbcType=INTEGER},
-      created_at = #{created_at,jdbcType=TIMESTAMP},
-      updated_at = #{updated_at,jdbcType=TIMESTAMP},
-      popular_score = #{popular_score,jdbcType=DOUBLE},
-      teamwork_score = #{teamwork_score,jdbcType=DOUBLE},
-      liveness_score = #{liveness_score,jdbcType=DOUBLE},
-      experience_score = #{experience_score,jdbcType=DOUBLE},
-      quantity_score = #{quantity_score,jdbcType=DOUBLE},
-      languages = #{languages,jdbcType=VARCHAR}
-    where login = #{login,jdbcType=CHAR}
-  </update>
-  <resultMap id="BaseResultMap" type="edu.nju.model.User">
-    <id column="login" jdbcType="CHAR" property="login" />
-    <result column="html_url" jdbcType="CHAR" property="html_url" />
-    <result column="type" jdbcType="CHAR" property="type" />
-    <result column="avatar_url" jdbcType="CHAR" property="avatar_url" />
-    <result column="name" jdbcType="CHAR" property="name" />
-    <result column="location" jdbcType="VARCHAR" property="location" />
-    <result column="email" jdbcType="CHAR" property="email" />
-    <result column="blog" jdbcType="VARCHAR" property="blog" />
-    <result column="company" jdbcType="CHAR" property="company" />
-    <result column="public_repos" jdbcType="INTEGER" property="public_repos" />
-    <result column="public_gists" jdbcType="INTEGER" property="public_gists" />
-    <result column="followers" jdbcType="INTEGER" property="followers" />
-    <result column="following" jdbcType="INTEGER" property="following" />
-    <result column="created_at" jdbcType="TIMESTAMP" property="created_at" />
-    <result column="updated_at" jdbcType="TIMESTAMP" property="updated_at" />
-    <result column="popular_score" jdbcType="DOUBLE" property="popular_score" />
-    <result column="teamwork_score" jdbcType="DOUBLE" property="teamwork_score" />
-    <result column="liveness_score" jdbcType="DOUBLE" property="liveness_score" />
-    <result column="experience_score" jdbcType="DOUBLE" property="experience_score" />
-    <result column="quantity_score" jdbcType="DOUBLE" property="quantity_score" />
-    <result column="languages" jdbcType="VARCHAR" property="languages" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    login, html_url, type, avatar_url, name, location, email, blog, company, public_repos, 
-    public_gists, followers, following, created_at, updated_at, popular_score, teamwork_score, 
-    liveness_score, experience_score, quantity_score, languages
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
+  <select id="selectByLogin" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
     <include refid="Base_Column_List" />
     from user
-    where login = #{login,jdbcType=CHAR}
+    where login = #{login,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from user
-    where login = #{login,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" parameterType="edu.nju.model.User">
-    insert into user (login, html_url, type, 
-      avatar_url, name, location, 
-      email, blog, company, public_repos, 
-      public_gists, followers, following, 
-      created_at, updated_at, popular_score, 
-      teamwork_score, liveness_score, experience_score, 
-      quantity_score, languages)
-    values (#{login,jdbcType=CHAR}, #{html_url,jdbcType=CHAR}, #{type,jdbcType=CHAR}, 
-      #{avatar_url,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{location,jdbcType=VARCHAR}, 
-      #{email,jdbcType=CHAR}, #{blog,jdbcType=VARCHAR}, #{company,jdbcType=CHAR}, #{public_repos,jdbcType=INTEGER}, 
-      #{public_gists,jdbcType=INTEGER}, #{followers,jdbcType=INTEGER}, #{following,jdbcType=INTEGER}, 
-      #{created_at,jdbcType=TIMESTAMP}, #{updated_at,jdbcType=TIMESTAMP}, #{popular_score,jdbcType=DOUBLE}, 
-      #{teamwork_score,jdbcType=DOUBLE}, #{liveness_score,jdbcType=DOUBLE}, #{experience_score,jdbcType=DOUBLE}, 
-      #{quantity_score,jdbcType=DOUBLE}, #{languages,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="edu.nju.model.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="login != null">
-        login,
-      </if>
-      <if test="html_url != null">
-        html_url,
-      </if>
-      <if test="type != null">
-        type,
-      </if>
-      <if test="avatar_url != null">
-        avatar_url,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="location != null">
-        location,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="blog != null">
-        blog,
-      </if>
-      <if test="company != null">
-        company,
-      </if>
-      <if test="public_repos != null">
-        public_repos,
-      </if>
-      <if test="public_gists != null">
-        public_gists,
-      </if>
-      <if test="followers != null">
-        followers,
-      </if>
-      <if test="following != null">
-        following,
-      </if>
-      <if test="created_at != null">
-        created_at,
-      </if>
-      <if test="updated_at != null">
-        updated_at,
-      </if>
-      <if test="popular_score != null">
-        popular_score,
-      </if>
-      <if test="teamwork_score != null">
-        teamwork_score,
-      </if>
-      <if test="liveness_score != null">
-        liveness_score,
-      </if>
-      <if test="experience_score != null">
-        experience_score,
-      </if>
-      <if test="quantity_score != null">
-        quantity_score,
-      </if>
-      <if test="languages != null">
-        languages,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="login != null">
-        #{login,jdbcType=CHAR},
-      </if>
-      <if test="html_url != null">
-        #{html_url,jdbcType=CHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=CHAR},
-      </if>
-      <if test="avatar_url != null">
-        #{avatar_url,jdbcType=CHAR},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=CHAR},
-      </if>
-      <if test="location != null">
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=CHAR},
-      </if>
-      <if test="blog != null">
-        #{blog,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null">
-        #{company,jdbcType=CHAR},
-      </if>
-      <if test="public_repos != null">
-        #{public_repos,jdbcType=INTEGER},
-      </if>
-      <if test="public_gists != null">
-        #{public_gists,jdbcType=INTEGER},
-      </if>
-      <if test="followers != null">
-        #{followers,jdbcType=INTEGER},
-      </if>
-      <if test="following != null">
-        #{following,jdbcType=INTEGER},
-      </if>
-      <if test="created_at != null">
-        #{created_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated_at != null">
-        #{updated_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="popular_score != null">
-        #{popular_score,jdbcType=DOUBLE},
-      </if>
-      <if test="teamwork_score != null">
-        #{teamwork_score,jdbcType=DOUBLE},
-      </if>
-      <if test="liveness_score != null">
-        #{liveness_score,jdbcType=DOUBLE},
-      </if>
-      <if test="experience_score != null">
-        #{experience_score,jdbcType=DOUBLE},
-      </if>
-      <if test="quantity_score != null">
-        #{quantity_score,jdbcType=DOUBLE},
-      </if>
-      <if test="languages != null">
-        #{languages,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.model.User">
-    update user
-    <set>
-      <if test="html_url != null">
-        html_url = #{html_url,jdbcType=CHAR},
-      </if>
-      <if test="type != null">
-        type = #{type,jdbcType=CHAR},
-      </if>
-      <if test="avatar_url != null">
-        avatar_url = #{avatar_url,jdbcType=CHAR},
-      </if>
-      <if test="name != null">
-        name = #{name,jdbcType=CHAR},
-      </if>
-      <if test="location != null">
-        location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=CHAR},
-      </if>
-      <if test="blog != null">
-        blog = #{blog,jdbcType=VARCHAR},
-      </if>
-      <if test="company != null">
-        company = #{company,jdbcType=CHAR},
-      </if>
-      <if test="public_repos != null">
-        public_repos = #{public_repos,jdbcType=INTEGER},
-      </if>
-      <if test="public_gists != null">
-        public_gists = #{public_gists,jdbcType=INTEGER},
-      </if>
-      <if test="followers != null">
-        followers = #{followers,jdbcType=INTEGER},
-      </if>
-      <if test="following != null">
-        following = #{following,jdbcType=INTEGER},
-      </if>
-      <if test="created_at != null">
-        created_at = #{created_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updated_at != null">
-        updated_at = #{updated_at,jdbcType=TIMESTAMP},
-      </if>
-      <if test="popular_score != null">
-        popular_score = #{popular_score,jdbcType=DOUBLE},
-      </if>
-      <if test="teamwork_score != null">
-        teamwork_score = #{teamwork_score,jdbcType=DOUBLE},
-      </if>
-      <if test="liveness_score != null">
-        liveness_score = #{liveness_score,jdbcType=DOUBLE},
-      </if>
-      <if test="experience_score != null">
-        experience_score = #{experience_score,jdbcType=DOUBLE},
-      </if>
-      <if test="quantity_score != null">
-        quantity_score = #{quantity_score,jdbcType=DOUBLE},
-      </if>
-      <if test="languages != null">
-        languages = #{languages,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where login = #{login,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="edu.nju.model.User">
-    update user
-    set html_url = #{html_url,jdbcType=CHAR},
-      type = #{type,jdbcType=CHAR},
-      avatar_url = #{avatar_url,jdbcType=CHAR},
-      name = #{name,jdbcType=CHAR},
-      location = #{location,jdbcType=VARCHAR},
-      email = #{email,jdbcType=CHAR},
-      blog = #{blog,jdbcType=VARCHAR},
-      company = #{company,jdbcType=CHAR},
-      public_repos = #{public_repos,jdbcType=INTEGER},
-      public_gists = #{public_gists,jdbcType=INTEGER},
-      followers = #{followers,jdbcType=INTEGER},
-      following = #{following,jdbcType=INTEGER},
-      created_at = #{created_at,jdbcType=TIMESTAMP},
-      updated_at = #{updated_at,jdbcType=TIMESTAMP},
-      popular_score = #{popular_score,jdbcType=DOUBLE},
-      teamwork_score = #{teamwork_score,jdbcType=DOUBLE},
-      liveness_score = #{liveness_score,jdbcType=DOUBLE},
-      experience_score = #{experience_score,jdbcType=DOUBLE},
-      quantity_score = #{quantity_score,jdbcType=DOUBLE},
-      languages = #{languages,jdbcType=VARCHAR}
-    where login = #{login,jdbcType=CHAR}
-  </update>
+  <select id="selectAllWithPager" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    ORDER BY followers DESC
+    limit #{pageOffset},#{pageSize}
+  </select>
+  <select id="searchUser" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where login LIKE "%"#{name}"%"
+    limit #{pageOffset},#{pageSize}
+  </select>
+  <select id="countFirst30Companys" resultType="java.util.LinkedHashMap">
+    select company,count(*) as c
+    from user
+    group by company
+    order by c desc
+    limit 30;
+  </select>
+  <select id="countTypes" resultType="java.util.LinkedHashMap">
+    select type,count(*) as c
+    from user
+    group by type
+    order by c desc
+  </select>
+  <select id="countCreate_Year" resultType="java.util.LinkedHashMap">
+    select YEAR(created_at),count(*) as c
+    from user
+    group by YEAR(created_at)
+    order by YEAR(created_at) asc
+  </select>
+  <select id="selectUserByLanguage" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where languages REGEXP #{language}"[^S]"
+    limit #{pageOffset},#{pageSize}
+  </select>
+  <select id="selectUserByCompany" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where company = #{company}
+    limit #{pageOffset},#{pageSize}
+  </select>
+
+  <select id="countSearch" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(*)
+    from user
+    where login LIKE "%"#{name}"%"
+  </select>
+  <select id="countLanguage" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(*)
+    from user
+    where languages REGEXP #{language}"[^S]"
+  </select>
+  <select id="countCompany" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select
+    count(*)
+    from user
+    where company = #{company}
+  </select>
+  <select id="countLan_Com" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select  count(*)
+    from user
+    where languages REGEXP #{0}"[^S]" and company like "%"#{1}"%"
+  </select>
+  <select id="selectLan_Com" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where languages REGEXP #{0}"[^S]" and company like "%"#{1}"%"
+    limit #{3},#{2}
+  </select>
+  <select id="countContribute" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(*)
+    from contribute
+    where login = #{login}
+    group by login
+  </select>
+  <select id="selectContriRepo" resultType="java.lang.String" parameterType="java.lang.String">
+    select full_name
+    from contribute
+    where login = #{login}
+  </select>
+  <select id="selectCollaRepo" resultType="java.lang.String" parameterType="java.lang.String">
+    select full_name
+    from collaborate
+    where login = #{login}
+  </select>
+  <select id="selectOwn" resultType="java.lang.String" parameterType="java.lang.String">
+    select full_name
+    from own
+    where login = #{login}
+  </select>
+  <select id="selectEmail" resultType="java.lang.String">
+    select email
+    from user
+  </select>
+  <select id="countEmail" resultType="java.util.LinkedHashMap" >
+    SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(email, '@', -1),'.',1)AS domain, COUNT( DISTINCT email ) AS count
+    FROM user
+    WHERE email LIKE '%@%'
+    GROUP BY 1
+    ORDER BY 2 DESC
+    LIMIT 10
+  </select>
+  <select id="countBlog" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(blog) as c
+    from user
+    where blog like "%"#{blog}"%"
+  </select>
+  <select id="countFollowers" resultType="java.lang.Integer">
+    select followers
+    from user
+  </select>
+  <select id="countFollowings" resultType="java.lang.Integer">
+    select following
+    from user
+  </select>
+  <select id="countFans" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*)
+    from user
+    where #{1}>followers and followers>=#{0}
+  </select>
+  <select id="countFollow" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+    select count(*)
+    from user
+    where #{1}>following and following>=#{0}
+  </select>
+  <select id="getUserLocation" resultType="java.lang.String">
+    select location
+    from user
+  </select>
+  <select id="selectLanguages" resultType="java.lang.String">
+    SELECT languages
+    from user
+  </select>
+  <select id="selectLanguageByUser" resultType="java.util.LinkedHashMap">
+    SELECT language as name,count(full_name) as value from repository
+    WHERE EXISTS (
+    SELECT * FROM contribute
+    WHERE login = #{login}
+    ) and repository.language!=""
+    GROUP BY LANGUAGE
+  </select>
+  <select id="selectNameLocation" resultType="java.util.LinkedHashMap">
+    select login,location,html_url
+    from user where location like "%china%" or location like "%China%"
+  </select>
+  <select id="countFirst3Followers" resultType="java.util.LinkedHashMap">
+    select login,count(followers) as c
+    from user
+    group by followers
+    order by c desc
+    limit 3;
+  </select>
+  <select id="countFirst3Contributors" resultType="java.util.LinkedHashMap">
+    select login,count(full_name) as c
+    from contribute
+    group by login
+    order by c desc
+    limit 3;
+  </select>
+  <select id="selectRankOfExperience" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select login, @rank:=@rank+1 As rank
+    From user
+    Order By (public_gists + #{1}*5)
+    ) tb
+    where login = #{0};
+  </select>
+  <select id="selectRankOfPopular" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select login, @rank:=@rank+1 As rank
+    From user
+    Order By followers
+    ) tb
+    where login = #{login};
+  </select>
+  <select id="selectRankOfTeamwork" resultType="java.lang.Integer">
+
+    Set @rank:=0;
+    Select rank
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From contribute
+    Group By full_name
+    Order By count(login)
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="countAll" resultType="java.lang.Integer">
+    select count(login) as c
+    from user
+  </select>
+  <select id="countGist" resultType="java.lang.Integer">
+    select public_gists
+    from user
+    where login=#{login}
+  </select>
+  <select id="countUserCreateMonth" resultType="java.util.LinkedHashMap">
+    select YEAR(created_at),MONTH(created_at) as time,count(*)as c
+    from user
+    where type="User" and YEAR(created_at)!="2007"
+    group by YEAR(created_at),time
+    order by YEAR(created_at) asc
+  </select>
+  <select id="countOrgCreateMonth" resultType="java.util.LinkedHashMap">
+    select YEAR(created_at),MONTH(created_at) as time,count(*)as c
+    from user
+    where type="Organization" and YEAR(created_at)!="2007"
+    group by YEAR(created_at),time
+    order by YEAR(created_at) asc
+  </select>
+  <select id="selectLogin" resultType="java.lang.String">
+    select login
+    from user
+  </select>
+  <select id="countContributors" resultType="java.lang.Integer">
+    select count(DISTINCT login)
+    from contribute
+  </select>
+  <select id="selectContributors" resultType="java.lang.String">
+    select DISTINCT login
+    from contribute
+  </select>
+  <select id="getExperienceScore_Extern" resultType="java.lang.Double">
+    SELECT COUNT(*)/(SELECT count(DISTINCT login) FROM contribute)
+    from(
+    Select user.login, (public_gists + 5*count(*)) as score
+    From user, contribute
+    WHERE user.login = contribute.login
+    GROUP BY user.login
+    ORDER BY score
+    ) tb
+    where (#{0}+#{1}*5)>score
+  </select>
+  <select id="getPopularScore_Extern" resultType="java.lang.Double">
+    SELECT COUNT(*)/(SELECT count(DISTINCT login) FROM user)
+    from(
+    Select *
+    From user
+    ORDER BY followers
+    ) tb
+    where #{0}>followers
+  </select>
+  <select id="getCreateTime" resultType="java.sql.Date">
+    select created_at
+    from user
+    where login=#{login}
+  </select>
 </mapper>
