@@ -24,6 +24,7 @@ import java.util.*;
 /**
  * Created by Dora on 2016/8/3.
  */
+@org.springframework.stereotype.Repository
 public class RepositoryDaoImpl implements RepositoryDao{
 
     @Resource

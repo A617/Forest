@@ -11,9 +11,11 @@
     <!--这一句相当于开启注解扫描功能-->
     <mvc:annotation-driven/>
 
-    <!--这一句处理对静态资源的访问-->
-    <mvc:default-servlet-handler />
-
+    <mvc:resources mapping="/css/**" location="classpath:css/" />
+    <mvc:resources mapping="/vendors/**" location="classpath:vendors/" />
+    <mvc:resources mapping="/js/**" location="classpath:js/" />
+    <mvc:resources mapping="/images/**" location="classpath:images/" />
+    <mvc:resources mapping="/build/**" location="classpath:build/" />
 
     <bean id="velocityConfigurer"
           class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
@@ -25,11 +27,15 @@
             </props>
         </property>
     </bean>
+
     <bean id="velocityViewResolver"
           class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="prefix" value="templates/" />
         <property name="suffix" value=".vm" />
         <property name="contentType" value="text/html;charset=utf-8" />
     </bean>
+
+
+
 
 </beans>

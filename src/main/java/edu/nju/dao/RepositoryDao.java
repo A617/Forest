@@ -10,7 +10,6 @@ import java.util.Map;
 /**
  * Created by Dora on 2016/8/3.
  */
-@org.springframework.stereotype.Repository
 public interface RepositoryDao {
 
     int insert(Repository record);

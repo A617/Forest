@@ -18,7 +18,6 @@ public class RepositoryController {
 
     @RequestMapping("/hello")
     String sayHello(){
-        System.out.println(service.test());
         return "index";
     }
 }

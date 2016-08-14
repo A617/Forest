@@ -22,6 +22,7 @@ import java.util.*;
 /**
  * Created by phoebegl on 16/8/9.
  */
+@org.springframework.stereotype.Repository
 public class UserDaoImpl implements UserDao{
 
     @Resource
