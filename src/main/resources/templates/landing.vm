@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Forest!</title>
+    #parse("/templates/common/header.vm")
+
+    <style>
+        #header {
+            box-shadow: none;
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+        }
+        .bc_gutters {
+            padding: 6%;
+        }
+        #header .bc_gutters {
+            padding-top: 30px;
+            padding-bottom: 10px;
+        }
+        .bc_position {
+            width: auto;
+            padding: 0px;
+            /* text-align: left; */
+            margin: 0 auto;
+            max-width: 1300px;
+        }
+        #header_left {
+            display: table-cell;
+            float: none;
+            padding-right: 20px;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+        #header_right {
+            display: table-cell;
+            vertical-align: middle;
+            width: 1000px;
+            float: none;
+        }
+        #header_left #logo {
+            padding-right: 5px;
+            position: relative;
+            top: 2px;
+        }
+        #header_left #logo-text {
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+        }
+        #header_right #main-menu-links {
+            margin: 0px;
+            padding: 0px;
+            width: auto;
+            list-style: none;
+            text-align: right;
+            position: relative;
+        }
+        #header_right #main-menu-links li {
+            display: inline-block;
+            zoom: 1;
+            margin: 0px 5px;
+            padding: 0px;
+        }
+        #header_right #main-menu-links li > a.active, #header_right #main-menu-links li.active-trail > a {
+            border-bottom: 3px solid white;
+        }
+        #header_right #main-menu-links li > a:hover {
+            border-bottom: 3px solid white;
+        }
+        #header_right #main-menu-links li > a {
+            display: inline-block;
+            zoom: 1;
+            font-size: 16px;
+            line-height: 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 4px;
+        }
+        a, a:visited {
+            text-decoration: none;
+            outline: none;
+        }
+
+        .hero {
+            min-height: 900px;
+            position: relative;
+        }
+        .bg {
+            min-height: 900px;
+            width: 100%;
+            position: absolute;
+            background: url("/images/bg.jpg") center center;
+            background-size: cover;
+            z-index: -1;
+        }
+        .hero-content {
+            padding-top: 20%;
+        }
+        .hero-content p {
+            /*font-family: "Courier New", Courier, monospace;*/
+            color:#ffffff;
+            font-size:18px;
+        }
+
+    </style>
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!-- page content -->
+        <div  role="main">
+            <div class="">
+                <div class="bg"></div>
+                #parse("/templates/landing_header.vm")
+                <div class="hero">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center hero-content">
+                                <div align="center"><img src="/images/logo_big.png" style="width: 36%"/></div>
+                                <p>Choose a role as your goal & learn specific skills you need</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <br>
+                            <div class="x_title">
+                                <h2>Get Started </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <p>Forest help you develop your skills by following your learning plan and recommending Github repositories you need.</p>
+                                <div id="wizard" class="form_wizard wizard_horizontal">
+                                    <ul class="wizard_steps">
+                                        <li>
+                                            <a href="#step-1">
+                                                <span class="step_no">1</span>
+                            <span class="step_descr">
+                                              Decide a goal<br />
+
+                                          </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#step-2">
+                                                <span class="step_no">2</span>
+                            <span class="step_descr">
+                                              Choose your skill level<br />
+                                          </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#step-3">
+                                                <span class="step_no">3</span>
+                              <span class="step_descr">
+                                              Sign in with <i class="fa fa-github"></i><br />
+                                          </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div id="step-1">
+                                        <h2 class="StepTitle">Decide your goal</h2>
+                                        <form class="form-horizontal form-label-left">
+                                            <div class="form-group">
+                                                <br>
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Role</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select class="form-control">
+                                                        <option>Web Developer</option>
+                                                        <option>Java Engineer</option>
+                                                    </select>
+                                                </div>
+                                                <br>
+                                            </div>
+                                        </form>
+                                        <br>
+                                    </div>
+                                    <div id="step-2">
+                                        <h2 class="StepTitle">Step 2 Content</h2>
+                                        <p>
+                                            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                    </div>
+                                    <div id="step-3">
+                                        <h2 class="StepTitle">Step 3 Content</h2>
+                                        <p>
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- End SmartWizard Content -->
+                            </div>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Not sure your role?</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+
+                                <div class="bs-example" data-example-id="simple-jumbotron">
+                                    <div class="jumbotron">
+                                        <h1>Hello, world!</h1>
+                                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Daily active users</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <ul class="list-unstyled msg_list">
+                                <li>
+                                    <a>
+                        <span class="image">
+                          <img src="images/img.jpg" alt="img" />
+                        </span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                        <span class="image">
+                          <img src="images/img.jpg" alt="img" />
+                        </span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                        <span class="image">
+                          <img src="images/img.jpg" alt="img" />
+                        </span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                        <span class="image">
+                          <img src="images/img.jpg" alt="img" />
+                        </span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- /page content -->
+        </div>
+    </div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- jQuery Smart Wizard -->
+<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<!-- jQuery Smart Wizard -->
+<script>
+    $(document).ready(function() {
+        $('#wizard').smartWizard();
+
+        $('#wizard_verticle').smartWizard({
+            transitionEffect: 'slide'
+        });
+
+        $('.buttonNext').addClass('btn btn-success');
+        $('.buttonPrevious').addClass('btn btn-primary');
+        $('.buttonFinish').addClass('btn btn-default');
+    });
+</script>
+<!-- /jQuery Smart Wizard -->
+</body>
+</html>

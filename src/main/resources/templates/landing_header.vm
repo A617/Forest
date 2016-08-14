@@ -1,0 +1,24 @@
+<div id="header">
+    <div class="background">
+        <div class="bc_position">
+            <div class="bc_gutters">
+                <div id="header_left">
+                    <a href="/" title="Home">
+                        <span id="logo"><i class="fa fa-tree fa-2x"></i></span>
+                        <span id="logo-text">Forest</span>
+                    </a>
+                </div>
+
+                <div id="header_right">
+                    <ul id="main-menu-links"><li class="first active"><a href="#" class="active">Welcome</a></li>
+                        <li><a href="#" title="">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li class="last"><a href="#">Sign in</a></li>
+                    </ul>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

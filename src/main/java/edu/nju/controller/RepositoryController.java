@@ -16,8 +16,4 @@ public class RepositoryController {
     @Autowired
     RepositoryService service;
 
-    @RequestMapping("/hello")
-    String sayHello(){
-        return "index";
-    }
 }
