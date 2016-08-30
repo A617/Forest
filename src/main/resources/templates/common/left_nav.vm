@@ -29,7 +29,7 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-home"></i> Home </a>
                     </li>
-                    <li><a><i class="fa fa-compass"></i> Goal </a>
+                    <li><a href="/goal"><i class="fa fa-compass"></i> Goal </a>
                     </li>
                     <li><a><i class="fa fa-trophy"></i> Achievements </a>
                     </li>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    #parse("/templates/common/header.vm")
+    <title>Roles | Forest</title>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        #parse("/templates/common/left_nav.vm")
+        #parse("/templates/common/top_nav.vm")
+
+
+        #parse("/templates/common/footer.vm")
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- jQuery custom content scroller -->
+<script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+</body>
+</html>
