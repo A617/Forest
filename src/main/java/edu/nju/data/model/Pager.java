@@ -1,4 +1,4 @@
-package edu.nju.model;
+package edu.nju.data.model;
 
 /**
  * Created by phoebegl on 16/8/9.

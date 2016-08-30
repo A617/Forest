@@ -1,12 +1,8 @@
-package edu.nju.dao.mapper;
+package edu.nju.data.dao.mapper;
 
-import edu.nju.model.Day;
-import edu.nju.model.Pager;
-import edu.nju.model.Repository;
-import edu.nju.model.User;
+import edu.nju.data.model.Repository;
 import org.apache.ibatis.annotations.Param;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;

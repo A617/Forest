@@ -21,16 +21,16 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="edu.nju.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="edu.nju.data.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <!--<property name="trimStrings" value="true"/>-->
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="edu.nju.mapping" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="edu.nju.data.mapping" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--&lt;!&ndash; 生成DAO的包名和位置&ndash;&gt;-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="edu.nju.dao.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="edu.nju.data.dao.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <table tableName="repository" domainObjectName="Repository" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">

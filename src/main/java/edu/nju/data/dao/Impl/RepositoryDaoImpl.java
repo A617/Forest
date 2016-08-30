@@ -1,18 +1,17 @@
-package edu.nju.dao.Impl;
+package edu.nju.data.dao.Impl;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.nju.dao.RepositoryDao;
-import edu.nju.dao.mapper.RepositoryMapper;
-import edu.nju.model.Pager;
-import edu.nju.model.Repository;
-import edu.nju.model.Statistics;
-import edu.nju.model.SystemContext;
-import edu.nju.task.HttpRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.nju.data.dao.RepositoryDao;
+import edu.nju.data.dao.mapper.RepositoryMapper;
+import edu.nju.data.model.Pager;
+import edu.nju.data.model.Repository;
+import edu.nju.data.model.Statistics;
+import edu.nju.data.model.SystemContext;
+import edu.nju.data.task.HttpRequest;
 
 import javax.annotation.Resource;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package edu.nju.service.impl;
 
-import edu.nju.dao.RepositoryDao;
+import edu.nju.data.dao.RepositoryDao;
 import edu.nju.service.RepositoryService;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class RepositoryServiceImpl implements RepositoryService {
     private RepositoryDao dao;
 
     @Override
-    public edu.nju.model.Repository test() {
+    public edu.nju.data.model.Repository test() {
 
         return dao.getReposByFullName("a");
     }

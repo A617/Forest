@@ -1,4 +1,4 @@
-package edu.nju.model;
+package edu.nju.data.model;
 
 
 import java.sql.Date;

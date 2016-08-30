@@ -1,12 +1,8 @@
-package edu.nju.dao.Impl;
+package edu.nju.data.dao.Impl;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.nju.dao.MemberDao;
-import edu.nju.dao.mapper.MemberMapper;
-import edu.nju.model.*;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import edu.nju.data.dao.MemberDao;
+import edu.nju.data.dao.mapper.MemberMapper;
+import edu.nju.data.model.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;

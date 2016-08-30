@@ -1,8 +1,6 @@
-package edu.nju.model;
+package edu.nju.data.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**

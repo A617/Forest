@@ -1,6 +1,6 @@
-package edu.nju.dao.mapper;
+package edu.nju.data.dao.mapper;
 
-import edu.nju.model.User;
+import edu.nju.data.model.User;
 
 import java.sql.Date;
 import java.util.LinkedHashMap;

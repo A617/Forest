@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.nju.dao.mapper.MemberMapper" >
-  <resultMap id="BaseResultMap" type="edu.nju.model.Member" >
+<mapper namespace="edu.nju.data.dao.mapper.MemberMapper" >
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.Member" >
     <id column="userid" property="userid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -13,10 +13,10 @@
   <sql id="Base_Column_List" >
     userid, username, password, member_email
   </sql>
-  <select id="searchMember" parameterType="java.lang.String" resultType="edu.nju.model.Member">
+  <select id="searchMember" parameterType="java.lang.String" resultType="edu.nju.data.model.Member">
     select * from member where username=#{username}
   </select>
-  <insert id="addMember" parameterType="edu.nju.model.Member" flushCache="true">
+  <insert id="addMember" parameterType="edu.nju.data.model.Member" flushCache="true">
     insert into member(username,password,member_email) values(#{username},#{password},#{member_email})
   </insert>
   <select id="getWord" parameterType="java.lang.String" resultType="java.lang.String">
@@ -24,7 +24,7 @@
     from watch_word
     where username = #{username}
   </select>
-  <insert id="addWord" parameterType="edu.nju.model.Word" flushCache="true">
+  <insert id="addWord" parameterType="edu.nju.data.model.Word" flushCache="true">
     insert into watch_word(username,word,watch_word_time) values(#{username},#{word},#{watch_word_time})
   </insert>
   <select id="findWord" resultType="java.lang.String" parameterType="java.lang.String">
@@ -39,7 +39,7 @@
     from watch_repo
     where username = #{username}
   </select>
-  <insert id="addStarRepo" parameterType="edu.nju.model.StarRepo" flushCache="true">
+  <insert id="addStarRepo" parameterType="edu.nju.data.model.StarRepo" flushCache="true">
     insert into watch_repo(username,repo_fullname,watch_repo_time) values(#{username},#{repo_fullname},#{watch_repo_time})
   </insert>
   <select id="findMemberByRepo" resultType="java.lang.String" parameterType="java.lang.String">

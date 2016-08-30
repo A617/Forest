@@ -1,8 +1,8 @@
-package edu.nju.dao.mapper;
+package edu.nju.data.dao.mapper;
 
-import edu.nju.model.Member;
-import edu.nju.model.StarRepo;
-import edu.nju.model.Word;
+import edu.nju.data.model.Member;
+import edu.nju.data.model.StarRepo;
+import edu.nju.data.model.Word;
 
 import java.util.LinkedHashMap;
 import java.util.List;

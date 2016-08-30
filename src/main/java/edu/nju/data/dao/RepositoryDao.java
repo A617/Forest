@@ -1,7 +1,7 @@
-package edu.nju.dao;
+package edu.nju.data.dao;
 
-import edu.nju.model.Pager;
-import edu.nju.model.Repository;
+import edu.nju.data.model.Pager;
+import edu.nju.data.model.Repository;
 
 import java.io.IOException;
 import java.util.List;

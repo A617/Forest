@@ -1,6 +1,6 @@
-package edu.nju.dao;
+package edu.nju.data.dao;
 
-import edu.nju.model.*;
+import edu.nju.data.model.*;
 
 import java.io.IOException;
 import java.util.List;

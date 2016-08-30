@@ -1,4 +1,4 @@
-package edu.nju.model;
+package edu.nju.data.model;
 
 public class Member {
     private Integer userid;

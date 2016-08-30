@@ -1,8 +1,8 @@
-package edu.nju.dao;
+package edu.nju.data.dao;
 
-import edu.nju.model.Day;
-import edu.nju.model.Pager;
-import edu.nju.model.User;
+import edu.nju.data.model.Day;
+import edu.nju.data.model.Pager;
+import edu.nju.data.model.User;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;

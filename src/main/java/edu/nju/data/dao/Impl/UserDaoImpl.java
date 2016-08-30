@@ -1,15 +1,15 @@
-package edu.nju.dao.Impl;
+package edu.nju.data.dao.Impl;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.nju.dao.UserDao;
-import edu.nju.dao.mapper.RepositoryMapper;
-import edu.nju.dao.mapper.UserMapper;
-import edu.nju.model.*;
-import edu.nju.task.HttpRequest;
+import edu.nju.data.dao.UserDao;
+import edu.nju.data.dao.mapper.RepositoryMapper;
+import edu.nju.data.dao.mapper.UserMapper;
+import edu.nju.data.model.*;
+import edu.nju.data.task.HttpRequest;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
