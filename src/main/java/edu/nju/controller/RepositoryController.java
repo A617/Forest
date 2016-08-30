@@ -16,4 +16,9 @@ public class RepositoryController {
     @Autowired
     RepositoryService service;
 
+    @RequestMapping("/repository")
+    String showRepositories(){
+        return "repository";
+    }
+
 }

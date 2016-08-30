@@ -18,4 +18,9 @@ public class GoalController {
     String showGoal(){
         return "goal";
     }
+
+    @RequestMapping("/select")
+    String selectRole(){
+        return "selectRole";
+    }
 }
