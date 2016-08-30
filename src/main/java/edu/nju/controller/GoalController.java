@@ -21,6 +21,6 @@ public class GoalController {
 
     @RequestMapping("/select")
     String selectRole(){
-        return "selectRole";
+        return "roles";
     }
 }
