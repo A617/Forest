@@ -1,6 +1,6 @@
 package edu.nju.data.model;
 
-public class SubscribeKey {
+public class Subscribe {
     private String fullName;
 
     private String login;

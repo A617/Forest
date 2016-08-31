@@ -1,11 +1,12 @@
 package edu.nju.data.dao.mapper;
 
-import edu.nju.data.model.SubscribeKey;
+import edu.nju.data.model.Subscribe;
+import org.apache.ibatis.annotations.Param;
 
 public interface SubscribeMapper {
-    int deleteByPrimaryKey(SubscribeKey key);
+    int deleteByPrimaryKey(@Param("fullName") String fullName, @Param("login") String login);
 
-    int insert(SubscribeKey record);
+    int insert(Subscribe record);
 
-    int insertSelective(SubscribeKey record);
+    int insertSelective(Subscribe record);
 }

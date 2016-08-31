@@ -1,16 +1,16 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Contribute;
-import edu.nju.data.model.ContributeKey;
+import org.apache.ibatis.annotations.Param;
 
 public interface ContributeMapper {
-    int deleteByPrimaryKey(ContributeKey key);
+    int deleteByPrimaryKey(@Param("fullName") String fullName, @Param("login") String login);
 
     int insert(Contribute record);
 
     int insertSelective(Contribute record);
 
-    Contribute selectByPrimaryKey(ContributeKey key);
+    Contribute selectByPrimaryKey(@Param("fullName") String fullName, @Param("login") String login);
 
     int updateByPrimaryKeySelective(Contribute record);
 

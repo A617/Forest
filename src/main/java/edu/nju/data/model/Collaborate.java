@@ -1,6 +1,6 @@
 package edu.nju.data.model;
 
-public class ContributeKey {
+public class Collaborate {
     private String fullName;
 
     private String login;
