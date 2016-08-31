@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nju.data.dao.mapper.CollaborateMapper" >
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.CollaborateKey" >
+    <id column="full_name" property="fullName" jdbcType="CHAR" />
+    <id column="login" property="login" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="edu.nju.data.model.CollaborateKey" >
+    delete from collaborate
+    where full_name = #{fullName,jdbcType=CHAR}
+      and login = #{login,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.data.model.CollaborateKey" >
+    insert into collaborate (full_name, login)
+    values (#{fullName,jdbcType=CHAR}, #{login,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.CollaborateKey" >
+    insert into collaborate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fullName != null" >
+        full_name,
+      </if>
+      <if test="login != null" >
+        login,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fullName != null" >
+        #{fullName,jdbcType=CHAR},
+      </if>
+      <if test="login != null" >
+        #{login,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
