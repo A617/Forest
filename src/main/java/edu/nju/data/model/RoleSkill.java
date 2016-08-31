@@ -1,6 +1,6 @@
 package edu.nju.data.model;
 
-public class RoleSkillKey {
+public class RoleSkill {
     private String role;
 
     private String skillName;

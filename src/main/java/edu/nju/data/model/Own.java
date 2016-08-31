@@ -1,6 +1,6 @@
 package edu.nju.data.model;
 
-public class CollaborateKey {
+public class Own {
     private String fullName;
 
     private String login;

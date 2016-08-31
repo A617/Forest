@@ -1,11 +1,12 @@
 package edu.nju.data.dao.mapper;
 
-import edu.nju.data.model.OwnKey;
+import edu.nju.data.model.Own;
+import org.apache.ibatis.annotations.Param;
 
 public interface OwnMapper {
-    int deleteByPrimaryKey(OwnKey key);
+    int deleteByPrimaryKey(@Param("fullName") String fullName, @Param("login") String login);
 
-    int insert(OwnKey record);
+    int insert(Own record);
 
-    int insertSelective(OwnKey record);
+    int insertSelective(Own record);
 }

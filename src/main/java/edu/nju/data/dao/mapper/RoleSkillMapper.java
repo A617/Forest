@@ -1,11 +1,12 @@
 package edu.nju.data.dao.mapper;
 
-import edu.nju.data.model.RoleSkillKey;
+import edu.nju.data.model.RoleSkill;
+import org.apache.ibatis.annotations.Param;
 
 public interface RoleSkillMapper {
-    int deleteByPrimaryKey(RoleSkillKey key);
+    int deleteByPrimaryKey(@Param("role") String role, @Param("skillName") String skillName, @Param("level") Integer level);
 
-    int insert(RoleSkillKey record);
+    int insert(RoleSkill record);
 
-    int insertSelective(RoleSkillKey record);
+    int insertSelective(RoleSkill record);
 }

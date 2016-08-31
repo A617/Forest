@@ -9,14 +9,14 @@
   <sql id="Base_Column_List" >
     full_name, login, line
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="edu.nju.data.model.ContributeKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
     from contribute
     where full_name = #{fullName,jdbcType=CHAR}
       and login = #{login,jdbcType=CHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="edu.nju.data.model.ContributeKey" >
+  <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from contribute
     where full_name = #{fullName,jdbcType=CHAR}
       and login = #{login,jdbcType=CHAR}

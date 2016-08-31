@@ -1,11 +1,12 @@
 package edu.nju.data.dao.mapper;
 
-import edu.nju.data.model.CollaborateKey;
+import edu.nju.data.model.Collaborate;
+import org.apache.ibatis.annotations.Param;
 
 public interface CollaborateMapper {
-    int deleteByPrimaryKey(CollaborateKey key);
+    int deleteByPrimaryKey(@Param("fullName") String fullName, @Param("login") String login);
 
-    int insert(CollaborateKey record);
+    int insert(Collaborate record);
 
-    int insertSelective(CollaborateKey record);
+    int insertSelective(Collaborate record);
 }

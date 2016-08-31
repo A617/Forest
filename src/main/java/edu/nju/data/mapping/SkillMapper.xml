@@ -9,14 +9,14 @@
   <sql id="Base_Column_List" >
     name, level, catelog
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="edu.nju.data.model.SkillKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
     from skill
     where name = #{name,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="edu.nju.data.model.SkillKey" >
+  <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from skill
     where name = #{name,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}

@@ -1,16 +1,16 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Skill;
-import edu.nju.data.model.SkillKey;
+import org.apache.ibatis.annotations.Param;
 
 public interface SkillMapper {
-    int deleteByPrimaryKey(SkillKey key);
+    int deleteByPrimaryKey(@Param("name") String name, @Param("level") Integer level);
 
     int insert(Skill record);
 
     int insertSelective(Skill record);
 
-    Skill selectByPrimaryKey(SkillKey key);
+    Skill selectByPrimaryKey(@Param("name") String name, @Param("level") Integer level);
 
     int updateByPrimaryKeySelective(Skill record);
 
