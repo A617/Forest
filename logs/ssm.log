@@ -1720,3 +1720,130 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No b
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)
 	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:351)
 	... 52 more
+[INFO] [2016-08-31 08:35:36][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO] [2016-08-31 08:35:36][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Wed Aug 31 08:35:36 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 08:35:36][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-config.xml]
+[INFO] [2016-08-31 08:35:36][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN] [2016-08-31 08:35:36][org.mybatis.spring.mapper.ClassPathMapperScanner]No MyBatis mapper was found in '[edu.nju.data.dao.mapper]' package. Please check your configuration.
+[INFO] [2016-08-31 08:35:36][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/select],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.selectRole()
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/hello],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showLanding()
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/goal],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showGoal()
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/repository],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.RepositoryController.showRepositories()
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/skill],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.SkillController.showSkill()
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Wed Aug 31 08:35:36 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 08:35:37][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Wed Aug 31 08:35:36 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/vendors/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/build/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+[INFO] [2016-08-31 08:35:38][org.springframework.web.servlet.view.velocity.VelocityConfigurer]ClasspathResourceLoader with name 'springMacro' added to configured VelocityEngine
+[WARN] [2016-08-31 08:35:38][org.springframework.web.context.support.XmlWebApplicationContext]Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberDaoImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [edu.nju.dao.mapper.MemberMapper] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [edu.nju.dao.mapper.MemberMapper] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:457)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:435)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:559)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:169)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:305)
+	... 22 more
+[ERROR] [2016-08-31 08:35:38][org.springframework.web.context.ContextLoader]Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberDaoImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [edu.nju.dao.mapper.MemberMapper] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:308)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1210)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:476)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:303)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:299)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:755)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:480)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4939)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5434)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1559)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1549)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [edu.nju.dao.mapper.MemberMapper] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1301)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1047)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:942)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:457)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:435)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:559)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:169)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:305)
+	... 22 more
+[INFO] [2016-08-31 09:38:16][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO] [2016-08-31 09:38:16][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Wed Aug 31 09:38:16 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 09:38:16][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-config.xml]
+[INFO] [2016-08-31 09:38:16][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2016-08-31 09:38:17][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/hello],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showLanding()
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/goal],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showGoal()
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/select],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.selectRole()
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/repository],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.RepositoryController.showRepositories()
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/skill],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.SkillController.showSkill()
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Wed Aug 31 09:38:16 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Wed Aug 31 09:38:16 CST 2016]; root of context hierarchy
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/vendors/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/build/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+[INFO] [2016-08-31 09:38:18][org.springframework.web.servlet.view.velocity.VelocityConfigurer]ClasspathResourceLoader with name 'springMacro' added to configured VelocityEngine
+[INFO] [2016-08-31 09:38:19][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 2536 ms
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization started
+[INFO] [2016-08-31 09:38:19][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing WebApplicationContext for namespace 'springMVC-servlet': startup date [Wed Aug 31 09:38:19 CST 2016]; parent: Root WebApplicationContext
+[INFO] [2016-08-31 09:38:19][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from URL [file:/Users/phoebegl/Forest/target/classes/spring-config.xml]
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/hello],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showLanding()
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/goal],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.showGoal()
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/select],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.GoalController.selectRole()
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/repository],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.RepositoryController.showRepositories()
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]Mapped "{[/skill],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto java.lang.String edu.nju.controller.SkillController.showSkill()
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Wed Aug 31 09:38:19 CST 2016]; parent: Root WebApplicationContext
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]Looking for @ControllerAdvice: WebApplicationContext for namespace 'springMVC-servlet': startup date [Wed Aug 31 09:38:19 CST 2016]; parent: Root WebApplicationContext
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/vendors/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#3'
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]Mapped URL path [/build/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#4'
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.view.velocity.VelocityConfigurer]ClasspathResourceLoader with name 'springMacro' added to configured VelocityEngine
+[INFO] [2016-08-31 09:38:19][org.springframework.web.servlet.DispatcherServlet]FrameworkServlet 'springMVC': initialization completed in 241 ms

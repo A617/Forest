@@ -46,10 +46,6 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
     </bean>
 
-    <!--<context:component-scan base-package="edu.nju.data.dao"></context:component-scan>-->
-    <!--<mvc:annotation-driven></mvc:annotation-driven>-->
-
-    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
