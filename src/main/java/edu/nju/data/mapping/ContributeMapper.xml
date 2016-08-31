@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nju.data.dao.mapper.ContributeMapper" >
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.Contribute" >
+    <id column="full_name" property="fullName" jdbcType="CHAR" />
+    <id column="login" property="login" jdbcType="CHAR" />
+    <result column="line" property="line" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    full_name, login, line
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="edu.nju.data.model.ContributeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from contribute
+    where full_name = #{fullName,jdbcType=CHAR}
+      and login = #{login,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="edu.nju.data.model.ContributeKey" >
+    delete from contribute
+    where full_name = #{fullName,jdbcType=CHAR}
+      and login = #{login,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.data.model.Contribute" >
+    insert into contribute (full_name, login, line
+      )
+    values (#{fullName,jdbcType=CHAR}, #{login,jdbcType=CHAR}, #{line,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.Contribute" >
+    insert into contribute
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fullName != null" >
+        full_name,
+      </if>
+      <if test="login != null" >
+        login,
+      </if>
+      <if test="line != null" >
+        line,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fullName != null" >
+        #{fullName,jdbcType=CHAR},
+      </if>
+      <if test="login != null" >
+        #{login,jdbcType=CHAR},
+      </if>
+      <if test="line != null" >
+        #{line,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.Contribute" >
+    update contribute
+    <set >
+      <if test="line != null" >
+        line = #{line,jdbcType=INTEGER},
+      </if>
+    </set>
+    where full_name = #{fullName,jdbcType=CHAR}
+      and login = #{login,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.Contribute" >
+    update contribute
+    set line = #{line,jdbcType=INTEGER}
+    where full_name = #{fullName,jdbcType=CHAR}
+      and login = #{login,jdbcType=CHAR}
+  </update>
+</mapper>

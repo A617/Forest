@@ -2,72 +2,81 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.nju.data.dao.mapper.MemberMapper" >
   <resultMap id="BaseResultMap" type="edu.nju.data.model.Member" >
-    <id column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
+    <id column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="member_email" property="member_email" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List_Word" >
-    watch_word_id, username,word, watch_word_time
-  </sql>
   <sql id="Base_Column_List" >
-    userid, username, password, member_email
+    username, password, member_email, role
   </sql>
-  <select id="searchMember" parameterType="java.lang.String" resultType="edu.nju.data.model.Member">
-    select * from member where username=#{username}
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from member
+    where username = #{username,jdbcType=VARCHAR}
   </select>
-  <insert id="addMember" parameterType="edu.nju.data.model.Member" flushCache="true">
-    insert into member(username,password,member_email) values(#{username},#{password},#{member_email})
-  </insert>
-  <select id="getWord" parameterType="java.lang.String" resultType="java.lang.String">
-    select word
-    from watch_word
-    where username = #{username}
-  </select>
-  <insert id="addWord" parameterType="edu.nju.data.model.Word" flushCache="true">
-    insert into watch_word(username,word,watch_word_time) values(#{username},#{word},#{watch_word_time})
-  </insert>
-  <select id="findWord" resultType="java.lang.String" parameterType="java.lang.String">
-    select full_name
-    from repository
-    where description like "%"#{keyword}"%"
-    ORDER BY forks_count
-    limit 2;
-  </select>
-  <select id="findStarRepo" resultType="java.lang.String" parameterType="java.lang.String">
-    select repo_fullname
-    from watch_repo
-    where username = #{username}
-  </select>
-  <insert id="addStarRepo" parameterType="edu.nju.data.model.StarRepo" flushCache="true">
-    insert into watch_repo(username,repo_fullname,watch_repo_time) values(#{username},#{repo_fullname},#{watch_repo_time})
-  </insert>
-  <select id="findMemberByRepo" resultType="java.lang.String" parameterType="java.lang.String">
-    select username
-    from watch_repo
-    where repo_fullname = #{repo_fullname}
-  </select>
-  <delete id="unStarRepo" parameterType="java.util.Map">
-    DELETE
-    FROM watch_repo
-    WHERE username = #{userName} AND repo_fullname=#{repository}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from member
+    where username = #{username,jdbcType=VARCHAR}
   </delete>
-  <select id="countFirst20Keywords" resultType="java.util.LinkedHashMap">
-    select word,count(username) as weight
-    from watch_word
-    group by word
-    order by weight desc
-    limit 20;
-  </select>
-  <select id="RecommendViaOther" resultType="java.lang.String">
-    SELECT repo_fullname FROM watch_repo
-    WHERE username EXISTS (
-    SELECT *
-    FROM watch_repo
-    WHERE repo_fullname = #{0} and username != #{1}
-    )
-    GROUP BY repo_fullname
-    ORDER BY count(repo_fullname) DESC
-    limit 2;
-  </select>
+  <insert id="insert" parameterType="edu.nju.data.model.Member" >
+    insert into member (username, password, member_email, 
+      role)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{member_email,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.Member" >
+    insert into member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="member_email != null" >
+        member_email,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="member_email != null" >
+        #{member_email,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.Member" >
+    update member
+    <set >
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="member_email != null" >
+        member_email = #{member_email,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.Member" >
+    update member
+    set password = #{password,jdbcType=VARCHAR},
+      member_email = #{member_email,jdbcType=VARCHAR},
+      role = #{role,jdbcType=VARCHAR}
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
 </mapper>

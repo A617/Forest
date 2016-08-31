@@ -1,39 +1,13 @@
 package edu.nju.data.model;
 
 public class Member {
-    private Integer userid;
-
     private String username;
 
     private String password;
 
     private String member_email;
 
-    public Member(String username){
-        this.username=username;
-    }
-
-    public Member(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-    public Member(String username, String password,String member_email) {
-        this.username = username;
-        this.password = password;
-        this.member_email = member_email;
-    }
-
-    public Member() {
-
-    }
-
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+    private String role;
 
     public String getUsername() {
         return username;
@@ -51,11 +25,19 @@ public class Member {
         this.password = password;
     }
 
-    public String getMemberEmail() {
+    public String getMember_email() {
         return member_email;
     }
 
-    public void setMemberEmail(String memberEmail) {
-        this.member_email = memberEmail;
+    public void setMember_email(String member_email) {
+        this.member_email = member_email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
