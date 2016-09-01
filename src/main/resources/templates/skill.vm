@@ -57,54 +57,20 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+                            alert(1);
                             <div class="x_content">
 
-
-                                <div class=" accordion" id="accordion" role="tablist" aria-multiselectable="true">
-##                                    #set($test=['One','Two','Three'])
-##                                    #foreach($one in $test)
-##                                        <li>
-##                                            <p>
-##                                                #parse("/templates/component/repo_brief.vm")
-##                                            </p>
-##                                        </li>
-##                                    #end
-                                    <div class="panel">
-                                        <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                                            <h4 class="panel-title">Collapsible Group Item #1</h4>
-                                        </a>
-                                        <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <p>test</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel">
-                                        <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-                                            <h4 class="panel-title">Collapsible Group Item #2</h4>
-                                        </a>
-                                        <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body">
-                                                <p><strong>Collapsible Item 2 data</strong>
-                                                </p>
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="panel">
-                                        <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
-                                            <h4 class="panel-title">Collapsible Group Item #3</h4>
-                                        </a>
-                                        <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="panel-body">
-                                                <p><strong>Collapsible Item 3 data</strong>
-                                                </p>
-                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="to_do accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                                    #set($numbers=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'])
+                                    #foreach($repo in $repos)
+                                        #set($index=$numbers[$velocityCount])
+                                        #if($repo.isLearned==false)
+                                            #parse("/templates/skill/repo_brief.vm")
+                                        #else
+                                            #parse("/templates/skill/repo_brief_collapsed.vm")
+                                        #end
+                                    #end
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -115,8 +81,6 @@
         #parse("/templates/common/footer.vm")
     </div>
 </div>
-
-
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -125,10 +89,17 @@
 <script src="../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../vendors/nprogress/nprogress.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
 <!-- bootstrap-progressbar -->
 <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
 
+<script>
+    function submitLearn() {
+        alert(1);
+    }
+</script>
 </body>
 </html>

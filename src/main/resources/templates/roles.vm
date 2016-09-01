@@ -51,11 +51,11 @@
 
                                 <div class="row">
                                     #set($test=[1,2,3])
-                                    #foreach($one in $test)
+                                    #foreach($role in $test)
                                         <div class="col-md-55">
                                             <div class="thumbnail">
                                                 <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="/images/logo_big.png" alt="image" />
+                                                    <img style="width: 100%; display: block;" src="/images/role${role}.png" alt="image" />
                                                     <div class="mask">
     ##                                                    <p>Web Developer</p>
     ##                                                    <div class="tools tools-bottom">
