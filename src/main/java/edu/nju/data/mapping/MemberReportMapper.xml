@@ -1,88 +1,177 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.nju.data.dao.mapper.MemberReportMapper" >
-  <resultMap id="BaseResultMap" type="edu.nju.data.model.MemberReport" >
-    <id column="username" property="username" jdbcType="VARCHAR" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
-    <result column="evaluate" property="evaluate" jdbcType="INTEGER" />
-    <result column="reason" property="reason" jdbcType="VARCHAR" />
-    <result column="time" property="time" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.nju.data.dao.mapper.MemberReportMapper">
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.MemberReport">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="evaluate" jdbcType="INTEGER" property="evaluate" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     username, full_name, evaluate, reason, time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from member_report
     where username = #{username,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from member_report
     where username = #{username,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="edu.nju.data.model.MemberReport" >
+  <insert id="insert" parameterType="edu.nju.data.model.MemberReport">
     insert into member_report (username, full_name, evaluate, 
       reason, time)
     values (#{username,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{evaluate,jdbcType=INTEGER}, 
       #{reason,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="edu.nju.data.model.MemberReport" >
+  <insert id="insertSelective" parameterType="edu.nju.data.model.MemberReport">
     insert into member_report
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
         username,
       </if>
-      <if test="fullName != null" >
+      <if test="fullName != null">
         full_name,
       </if>
-      <if test="evaluate != null" >
+      <if test="evaluate != null">
         evaluate,
       </if>
-      <if test="reason != null" >
+      <if test="reason != null">
         reason,
       </if>
-      <if test="time != null" >
+      <if test="time != null">
         time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="fullName != null" >
+      <if test="fullName != null">
         #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="evaluate != null" >
+      <if test="evaluate != null">
         #{evaluate,jdbcType=INTEGER},
       </if>
-      <if test="reason != null" >
+      <if test="reason != null">
         #{reason,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
+      <if test="time != null">
         #{time,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.MemberReport" >
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.MemberReport">
     update member_report
-    <set >
-      <if test="fullName != null" >
+    <set>
+      <if test="fullName != null">
         full_name = #{fullName,jdbcType=VARCHAR},
       </if>
-      <if test="evaluate != null" >
+      <if test="evaluate != null">
         evaluate = #{evaluate,jdbcType=INTEGER},
       </if>
-      <if test="reason != null" >
+      <if test="reason != null">
         reason = #{reason,jdbcType=VARCHAR},
       </if>
-      <if test="time != null" >
+      <if test="time != null">
         time = #{time,jdbcType=TIMESTAMP},
       </if>
     </set>
     where username = #{username,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.MemberReport" >
+  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.MemberReport">
+    update member_report
+    set full_name = #{fullName,jdbcType=VARCHAR},
+      evaluate = #{evaluate,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.MemberReport">
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="evaluate" jdbcType="INTEGER" property="evaluate" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    username, full_name, evaluate, reason, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from member_report
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from member_report
+    where username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.data.model.MemberReport">
+    insert into member_report (username, full_name, evaluate, 
+      reason, time)
+    values (#{username,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{evaluate,jdbcType=INTEGER}, 
+      #{reason,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.MemberReport">
+    insert into member_report
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="evaluate != null">
+        evaluate,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null">
+        #{evaluate,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.MemberReport">
+    update member_report
+    <set>
+      <if test="fullName != null">
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluate != null">
+        evaluate = #{evaluate,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.MemberReport">
     update member_report
     set full_name = #{fullName,jdbcType=VARCHAR},
       evaluate = #{evaluate,jdbcType=INTEGER},
