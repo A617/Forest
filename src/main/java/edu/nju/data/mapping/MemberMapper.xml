@@ -79,4 +79,9 @@
       role = #{role,jdbcType=VARCHAR}
     where username = #{username,jdbcType=VARCHAR}
   </update>
+  <update id="updateRole" parameterType="java.lang.String" >
+    update member
+    set role = #{1}
+    where username = #{0}
+  </update>
 </mapper>
