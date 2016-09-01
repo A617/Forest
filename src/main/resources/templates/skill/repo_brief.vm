@@ -1,0 +1,13 @@
+<div class="panel">
+    <a class="panel-heading" role="tab" id="heading${index}1" data-toggle="collapse" data-parent="#accordion1" href="#collapse${index}1" aria-expanded="true" aria-controls="collapse${index}">
+        <h4 class="panel-title">Repository ${index}</h4>
+    </a>
+    <div id="collapse${index}1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading${index}">
+        <div class="panel-body">
+            <p><strong>${repo.full_name}</strong>
+            </p>
+            $repo.description
+            #parse("/templates/skill/repo_feedbackBar.vm")
+        </div>
+    </div>
+</div>

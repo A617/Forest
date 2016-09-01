@@ -1,44 +1,86 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.nju.data.dao.mapper.RoleSkillMapper" >
-  <resultMap id="BaseResultMap" type="edu.nju.data.model.RoleSkill" >
-    <id column="role" property="role" jdbcType="VARCHAR" />
-    <id column="skill_name" property="skillName" jdbcType="VARCHAR" />
-    <id column="level" property="level" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.nju.data.dao.mapper.RoleSkillMapper">
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.RoleSkill">
+    <id column="role" jdbcType="VARCHAR" property="role" />
+    <id column="skill_name" jdbcType="VARCHAR" property="skillName" />
+    <id column="level" jdbcType="INTEGER" property="level" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="map" >
+  <delete id="deleteByPrimaryKey" parameterType="map">
     delete from role_skill
     where role = #{role,jdbcType=VARCHAR}
       and skill_name = #{skillName,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="edu.nju.data.model.RoleSkill" >
+  <insert id="insert" parameterType="edu.nju.data.model.RoleSkill">
     insert into role_skill (role, skill_name, level
       )
     values (#{role,jdbcType=VARCHAR}, #{skillName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="edu.nju.data.model.RoleSkill" >
+  <insert id="insertSelective" parameterType="edu.nju.data.model.RoleSkill">
     insert into role_skill
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="role != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="role != null">
         role,
       </if>
-      <if test="skillName != null" >
+      <if test="skillName != null">
         skill_name,
       </if>
-      <if test="level != null" >
+      <if test="level != null">
         level,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="role != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="role != null">
         #{role,jdbcType=VARCHAR},
       </if>
-      <if test="skillName != null" >
+      <if test="skillName != null">
         #{skillName,jdbcType=VARCHAR},
       </if>
-      <if test="level != null" >
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.RoleSkill">
+    <id column="role" jdbcType="VARCHAR" property="role" />
+    <id column="skill_name" jdbcType="VARCHAR" property="skillName" />
+    <id column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from role_skill
+    where role = #{role,jdbcType=VARCHAR}
+      and skill_name = #{skillName,jdbcType=VARCHAR}
+      and level = #{level,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.data.model.RoleSkill">
+    insert into role_skill (role, skill_name, level
+      )
+    values (#{role,jdbcType=VARCHAR}, #{skillName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.RoleSkill">
+    insert into role_skill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="role != null">
+        role,
+      </if>
+      <if test="skillName != null">
+        skill_name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="skillName != null">
+        #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
         #{level,jdbcType=INTEGER},
       </if>
     </trim>
