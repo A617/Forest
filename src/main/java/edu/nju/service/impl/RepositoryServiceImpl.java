@@ -1,5 +1,6 @@
 package edu.nju.service.impl;
 
+import edu.nju.data.model.MemberReport;
 import edu.nju.service.RepositoryService;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,12 @@ import org.springframework.stereotype.Service;
 public class RepositoryServiceImpl implements RepositoryService {
 
     @Override
-    public edu.nju.data.model.Repository test() {
-        return null;
+    public void learnRepository(String userName, String reposName) {
+
+    }
+
+    @Override
+    public void reportRepository(MemberReport report) {
+
     }
 }
