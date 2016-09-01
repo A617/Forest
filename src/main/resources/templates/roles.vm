@@ -50,61 +50,27 @@
                             <div class="x_content">
 
                                 <div class="row">
-                                    <div class="col-md-55">
-                                        <div class="thumbnail">
-                                            <div class="image view view-first">
-                                                <img style="width: 100%; display: block;" src="/images/logo_big.png" alt="image" />
-                                                <div class="mask">
-##                                                    <p>Web Developer</p>
-##                                                    <div class="tools tools-bottom">
-##                                                        <a href="#"><i class="fa fa-link"></i></a>
-##                                                        <a href="#"><i class="fa fa-pencil"></i></a>
-##                                                        <a href="#"><i class="fa fa-times"></i></a>
-##                                                    </div>
+                                    #set($test=[1,2,3])
+                                    #foreach($one in $test)
+                                        <div class="col-md-55">
+                                            <div class="thumbnail">
+                                                <div class="image view view-first">
+                                                    <img style="width: 100%; display: block;" src="/images/logo_big.png" alt="image" />
+                                                    <div class="mask">
+    ##                                                    <p>Web Developer</p>
+    ##                                                    <div class="tools tools-bottom">
+    ##                                                        <a href="#"><i class="fa fa-link"></i></a>
+    ##                                                        <a href="#"><i class="fa fa-pencil"></i></a>
+    ##                                                        <a href="#"><i class="fa fa-times"></i></a>
+    ##                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="caption">
+                                                  <a href="/goal" class="btn btn-success btn-block" role="button">Learn it</a>
                                                 </div>
                                             </div>
-                                            <div class="caption">
-##                                                <p>Web Developer</p>
-                                                #parse("/templates/modal.vm")
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-55">
-                                        <div class="thumbnail">
-                                            <div class="image view view-first">
-                                                <img style="width: 100%; display: block;" src="/images/logo_big.png" alt="image" />
-                                                <div class="mask">
-##                                                    <p>Java Engineer</p>
-##                                                    <div class="tools tools-bottom">
-##                                                        <a href="#"><i class="fa fa-link"></i></a>
-##                                                        <a href="#"><i class="fa fa-pencil"></i></a>
-##                                                        <a href="#"><i class="fa fa-times"></i></a>
-##                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="caption">
-                                                #parse("/templates/modal.vm")
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-55">
-                                        <div class="thumbnail">
-                                            <div class="image view view-first">
-                                                <img style="width: 100%; display: block;" src="/images/logo_big.png" alt="image" />
-                                                <div class="mask">
-##                                                    <p>Front End Engineer</p>
-##                                                    <div class="tools tools-bottom">
-##                                                        <a href="#"><i class="fa fa-link"></i></a>
-##                                                        <a href="#"><i class="fa fa-pencil"></i></a>
-##                                                        <a href="#"><i class="fa fa-times"></i></a>
-##                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="caption">
-                                                #parse("/templates/modal.vm")
-                                            </div>
-                                        </div>
-                                    </div>
+                                    #end
                                 </div>
                             </div>
                         </div>
@@ -128,8 +94,8 @@
 <script src="../vendors/nprogress/nprogress.js"></script>
 <!-- jQuery custom content scroller -->
 <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
+
 </body>
 </html>
