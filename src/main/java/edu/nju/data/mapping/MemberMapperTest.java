@@ -20,6 +20,6 @@ public class MemberMapperTest {
     public void updateRoleTest() throws Exception {
         String name="dy";
         String role="doge";
-        //dao.updateRole(name,role);
+        dao.updateRole(name,role);
     }
 }

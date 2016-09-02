@@ -1,5 +1,7 @@
 package edu.nju.service;
 
+import edu.nju.data.model.Skill;
+
 import java.util.List;
 
 /**

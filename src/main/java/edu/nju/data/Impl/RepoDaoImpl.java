@@ -1,6 +1,7 @@
 package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRepoDao;
+import edu.nju.data.model.Repository;
 
 import java.io.IOException;
 import java.util.List;

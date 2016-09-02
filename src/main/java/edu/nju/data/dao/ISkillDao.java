@@ -1,5 +1,8 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.Repository;
+import edu.nju.data.model.Skill;
+
 import java.util.List;
 
 /**

@@ -1,5 +1,7 @@
 package edu.nju.service.vo;
 
+import edu.nju.data.model.Repository;
+
 /**
  * Created by st0001 on 2016/9/1.
  */

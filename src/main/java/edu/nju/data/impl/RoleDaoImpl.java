@@ -1,6 +1,8 @@
 package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRoleDao;
+import edu.nju.data.dao.mapper.MemberMapper;
+import edu.nju.data.model.Skill;
 
 import javax.annotation.Resource;
 import java.util.Calendar;
@@ -13,8 +15,7 @@ import java.util.List;
 public class RoleDaoImpl implements IRoleDao{
     @Resource
     private MemberMapper mapper;
-    @Resource
-    private MemberSkillMapper mapper2;
+
 
     @Override
     public void selectRole(String userName, String roleName) {
@@ -32,7 +33,7 @@ public class RoleDaoImpl implements IRoleDao{
 
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         java.util.Date d=new java.util.Date (date.getTime());
-        mapper2.levelUp(roleName,skill.getName(),userName,date);
+       // mapper2.levelUp(roleName,skill.getName(),userName,date);
 
     }
 }
