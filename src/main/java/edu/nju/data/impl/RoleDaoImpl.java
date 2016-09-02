@@ -1,9 +1,6 @@
 package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRoleDao;
-import edu.nju.data.dao.mapper.MemberMapper;
-import edu.nju.data.dao.mapper.MemberSkillMapper;
-import edu.nju.data.model.Skill;
 
 import javax.annotation.Resource;
 import java.util.Calendar;

@@ -1,6 +1,5 @@
 package edu.nju.controller;
 
-import edu.nju.data.model.Repository;
 import edu.nju.service.vo.RepositoryVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

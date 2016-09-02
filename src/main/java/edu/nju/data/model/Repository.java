@@ -3,51 +3,51 @@ package edu.nju.data.model;
 import java.util.Date;
 
 public class Repository {
-    protected String full_name;
+    private String full_name;
 
-    protected String name;
+    private String name;
 
-    protected String owner_name;
+    private String owner_name;
 
-    protected String language;
+    private String language;
 
-    protected Integer open_issues_count;
+    private Integer open_issues_count;
 
-    protected Integer watchers_count;
+    private Integer watchers_count;
 
-    protected String clone_url;
+    private String clone_url;
 
-    protected String html_url;
+    private String html_url;
 
-    protected String homepage;
+    private String homepage;
 
-    protected Date created_at;
+    private Date created_at;
 
-    protected Date pushed_at;
+    private Date pushed_at;
 
-    protected Date updated_at;
+    private Date updated_at;
 
-    protected Integer size;
+    private Integer size;
 
-    protected Integer stargazers_count;
+    private Integer stargazers_count;
 
-    protected Integer forks_count;
+    private Integer forks_count;
 
-    protected Integer subscribers_count;
+    private Integer subscribers_count;
 
-    protected String languages;
+    private String languages;
 
-    protected Double size_score;
+    private Double size_score;
 
-    protected Double scale_score;
+    private Double scale_score;
 
-    protected Double promising_score;
+    private Double promising_score;
 
-    protected Double participation_score;
+    private Double participation_score;
 
-    protected Double hot_score;
+    private Double hot_score;
 
-    protected String description;
+    private String description;
 
     public String getFull_name() {
         return full_name;

@@ -1,8 +1,5 @@
 package edu.nju.service;
 
-import edu.nju.data.model.Repository;
-import edu.nju.data.model.MemberReport;
-
 /**
  * Created by Dora on 2016/8/3.
  */
