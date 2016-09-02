@@ -33,7 +33,7 @@ public class RoleDaoImpl implements IRoleDao{
 
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         java.util.Date d=new java.util.Date (date.getTime());
-       // mapper2.levelUp(roleName,skill.getName(),userName,date);
+        mapper.updateLevel(skill.getName(),userName,date);
 
     }
 }

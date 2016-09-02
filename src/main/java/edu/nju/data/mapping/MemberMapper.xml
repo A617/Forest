@@ -84,4 +84,16 @@
     set role = #{1}
     where username = #{0}
   </update>
+  <update id="updateLevel" >
+    update member_skill
+    set level = level +1,
+         time = #{2}
+    where username = #{1} and skill_name= #{0}
+  </update>
+  <insert id="insertMemberSkill">
+    insert into member_skill (username, skill_name, level,
+    time)
+    values (#{0}, #{1}, #{2},
+    #{3})
+  </insert>
 </mapper>
