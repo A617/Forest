@@ -1,6 +1,5 @@
 package edu.nju.service.impl;
 
-import edu.nju.data.model.MemberReport;
 import edu.nju.service.RepositoryService;
 import org.springframework.stereotype.Service;
 

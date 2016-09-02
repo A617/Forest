@@ -14,6 +14,4 @@ public interface MemberMapper {
     int updateByPrimaryKeySelective(Member record);
 
     int updateByPrimaryKey(Member record);
-
-    void updateRole(String userName, String roleName);
 }
