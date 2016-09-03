@@ -68,4 +68,14 @@
     where name = #{name,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}
   </update>
+  <select id="selectLevel" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select level
+    from skill
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="selectCatelog" resultType="java.lang.String" parameterType="java.lang.String" >
+    select catelog
+    from skill
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
 </mapper>

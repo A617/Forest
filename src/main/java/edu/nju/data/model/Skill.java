@@ -7,6 +7,12 @@ public class Skill {
 
     private String catelog;
 
+    public Skill(String name, Integer level, String catelog) {
+        this.name = name;
+        this.level = level;
+        this.catelog = catelog;
+    }
+
     public String getName() {
         return name;
     }

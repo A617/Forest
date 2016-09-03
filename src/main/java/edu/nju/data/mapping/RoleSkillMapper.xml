@@ -43,4 +43,9 @@
       </if>
     </trim>
   </insert>
+  <select id="selectSkillName" resultType="java.lang.String" parameterType="java.lang.String" >
+    select skill_name
+    from role_skill
+    where role = #{role,jdbcType=VARCHAR}
+  </select>
 </mapper>

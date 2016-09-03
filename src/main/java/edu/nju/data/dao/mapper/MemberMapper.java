@@ -22,4 +22,6 @@ public interface MemberMapper {
     void updateLevel(String skill_name,String username,Date date);
 
     void insertMemberSkill(String username,String skill_name,int level,Date time);
+
+
 }

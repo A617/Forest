@@ -3,6 +3,8 @@ package edu.nju.data.dao.mapper;
 import edu.nju.data.model.Skill;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface SkillMapper {
     int deleteByPrimaryKey(@Param("name") String name, @Param("level") Integer level);
 
@@ -15,4 +17,8 @@ public interface SkillMapper {
     int updateByPrimaryKeySelective(Skill record);
 
     int updateByPrimaryKey(Skill record);
+
+    List<String> selectCatelog(String name);
+
+    List<Integer> selectLevel(String name);
 }

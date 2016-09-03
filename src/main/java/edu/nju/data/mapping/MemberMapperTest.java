@@ -42,4 +42,5 @@ public class MemberMapperTest {
         String skill_name="OW";
         dao.updateLevel(skill_name,username,date);
     }
+
 }
