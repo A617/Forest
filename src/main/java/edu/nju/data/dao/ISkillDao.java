@@ -1,6 +1,7 @@
 package edu.nju.data.dao;
 
 import edu.nju.data.model.Repository;
+import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface ISkillDao {
      * @param skill
      * @return
      */
-    List<Repository> showRecommendRepos(Skill skill);
+    List<SimpleRepo> showRecommendRepos(Skill skill);
 }

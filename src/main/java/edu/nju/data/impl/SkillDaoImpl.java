@@ -3,6 +3,7 @@ package edu.nju.data.impl;
 
 import edu.nju.data.dao.ISkillDao;
 import edu.nju.data.model.Repository;
+import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class SkillDaoImpl implements ISkillDao {
     @Override
-    public List<Repository> showRecommendRepos(Skill skill) {
+    public List<SimpleRepo> showRecommendRepos(Skill skill) {
         return null;
     }
 }

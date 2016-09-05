@@ -1,5 +1,6 @@
 package edu.nju.service;
 
+import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
 import java.util.List;
@@ -36,5 +37,10 @@ public interface RoleService {
      * @param userName
      */
     void levelUp(String roleName, Skill skill, String userName);
+    /**
+     * 展示所有的角色
+     * @return
+     */
+    List<Role> showAllRoles();
 
 }

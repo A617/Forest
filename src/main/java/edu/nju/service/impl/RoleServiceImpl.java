@@ -1,6 +1,7 @@
 package edu.nju.service.impl;
 
 import edu.nju.data.dao.IRoleDao;
+import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import edu.nju.service.RoleService;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void levelUp(String roleName, Skill skill, String userName) {
         roleDao.levelUp(roleName, skill, userName);
+    }
+
+    @Override
+    public List<Role> showAllRoles() {
+        return roleDao.showAllRoles();
     }
 }

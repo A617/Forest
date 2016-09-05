@@ -1,5 +1,6 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
 import java.util.List;
@@ -32,4 +33,10 @@ public interface IRoleDao {
      * @param userName
      */
     void levelUp(String roleName, Skill skill, String userName);
+
+    /**
+     * 展示所有的角色
+     * @return
+     */
+    List<Role> showAllRoles();
 }
