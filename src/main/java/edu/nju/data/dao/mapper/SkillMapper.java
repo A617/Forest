@@ -21,4 +21,6 @@ public interface SkillMapper {
     List<String> selectCatelog(String name);
 
     List<Integer> selectLevel(String name);
+
+    List<String> getRepoName(String skill_name,int level);
 }

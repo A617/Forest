@@ -78,4 +78,9 @@
     from skill
     where name = #{name,jdbcType=VARCHAR}
   </select>
+  <select id="getRepoName" resultType="java.lang.String" >
+    select repo_name
+    from skill_repo
+    where skill_name = #{0} and level = #{1}
+  </select>
 </mapper>

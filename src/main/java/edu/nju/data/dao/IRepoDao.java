@@ -18,9 +18,7 @@ public interface IRepoDao {
 
     int insertSubscribe(String full_name, String login);
 
-
     List<String> getAllFullname();
-
     /**
      * 获取所有项目
      *
