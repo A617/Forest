@@ -458,7 +458,7 @@
     order BY ${sort} DESC
     limit #{5},#{4}
   </select>
-  <select id="selectReposByLan_Key_YearSortByContri" resultType="edu.nju.model.Repository" >
+  <select id="selectReposByLan_Key_YearSortByContri" resultType="edu.nju.data.model.Repository" >
     select repository.*
     from repository,contribute
     where repository.full_name=contribute.full_name and ((#{0}="" or language =#{0}) and YEAR(created_at) like "%"#{2}"%" and description like "%"#{1}"%")
