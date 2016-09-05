@@ -2,6 +2,8 @@ package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Role;
 
+import java.util.List;
+
 public interface RoleMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,5 +17,5 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
 
-
+    List<Role> showAll();
 }

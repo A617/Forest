@@ -2,8 +2,10 @@ package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.dao.mapper.MemberMapper;
+import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
 import edu.nju.data.dao.mapper.SkillMapper;
+import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,6 +28,8 @@ public class RoleDaoImpl implements IRoleDao{
     private RoleSkillMapper mapper2;
     @Resource
     private SkillMapper mapper3;
+    @Resource
+    private RoleMapper mapper4;
 
     @Override
     public void selectRole(String userName, String roleName) {
@@ -53,5 +57,10 @@ public class RoleDaoImpl implements IRoleDao{
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         mapper.updateLevel(skill.getName(),userName,date);
 
+    }
+
+    @Override
+    public List<Role> showAllRoles(){
+        return mapper4.showAll();
     }
 }

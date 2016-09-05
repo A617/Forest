@@ -1,5 +1,6 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.Role;
 import edu.nju.data.model.RoleSkill;
 import org.apache.ibatis.annotations.Param;
 

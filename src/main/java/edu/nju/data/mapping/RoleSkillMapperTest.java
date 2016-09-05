@@ -1,6 +1,8 @@
 package edu.nju.data.mapping;
 
+import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
+import edu.nju.data.model.Role;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
