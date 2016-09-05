@@ -18,6 +18,7 @@ import java.util.*;
 /**
  * Created by fwtgm on 2016/9/4.
  */
+@org.springframework.stereotype.Repository("repoDao")
 public class RepoDaoImpl implements IRepoDao{
     @Resource
     private RepositoryMapper mapper;

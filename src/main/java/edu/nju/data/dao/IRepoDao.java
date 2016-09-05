@@ -1,5 +1,6 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 
 import java.io.IOException;
@@ -151,4 +152,19 @@ public interface IRepoDao {
      * @return
      */
     String getReposDescription(String login);
+
+    /**
+     * 用户点击学习仓库
+     *
+     * @param userName
+     * @param reposName
+     */
+    void learnRepository(String userName, String reposName);
+
+    /**
+     * 用户反馈
+     *
+     * @param report
+     */
+    void reportRepository(MemberReport report);
 }

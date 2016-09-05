@@ -1,4 +1,4 @@
-package edu.nju.data.Impl;
+package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.model.Skill;
