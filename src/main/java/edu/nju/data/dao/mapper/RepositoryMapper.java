@@ -2,12 +2,14 @@ package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Repository;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public interface RepositoryMapper {
     int insert(Repository record);
 

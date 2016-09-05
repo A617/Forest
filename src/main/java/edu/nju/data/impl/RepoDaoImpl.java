@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.nju.data.dao.IRepoDao;
 import edu.nju.data.dao.mapper.RepositoryMapper;
+import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 import edu.nju.data.task.HttpRequest;
 
@@ -285,6 +286,16 @@ public class RepoDaoImpl implements IRepoDao{
     public List<String> enlargeViaSubscribers(String full_name, int limit) {
         List<String> list = mapper.enlargeViaSubscribers(full_name, limit);
         return list;
+    }
+
+    @Override
+    public void learnRepository(String userName, String reposName){
+
+    }
+
+    @Override
+    public void reportRepository(MemberReport report){
+
     }
 
 
