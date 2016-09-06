@@ -96,4 +96,10 @@
     values (#{0}, #{1}, #{2},
     #{3})
   </insert>
+  <select id="searchMember" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from member
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>

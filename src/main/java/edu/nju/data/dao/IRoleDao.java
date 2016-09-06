@@ -1,5 +1,6 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.Member;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
@@ -39,4 +40,10 @@ public interface IRoleDao {
      * @return
      */
     List<Role> showAllRoles();
+
+    /**
+     * 搜member信息
+     * @return
+     */
+    Member showMember(String username);
 }

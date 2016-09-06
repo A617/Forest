@@ -5,6 +5,7 @@ import edu.nju.data.dao.mapper.MemberMapper;
 import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
 import edu.nju.data.dao.mapper.SkillMapper;
+import edu.nju.data.model.Member;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import org.junit.runner.RunWith;
@@ -61,5 +62,10 @@ public class RoleDaoImpl implements IRoleDao {
     @Override
     public List<Role> showAllRoles() {
         return mapper4.showAll();
+    }
+
+    @Override
+    public Member showMember(String username) {
+        return mapper.searchMember(username);
     }
 }
