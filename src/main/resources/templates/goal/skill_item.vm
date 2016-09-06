@@ -15,11 +15,11 @@
 ##            </li>
 ##        </ul>
         <p class="ratings">
-            <a href="#"><span class="fa fa-star fa-2x"></span></a>
-            <a href="#"><span class="fa fa-star fa-2x"></span></a>
-            <a href="#"><span class="fa fa-star fa-2x"></span></a>
-            <a href="#"><span class="fa fa-star fa-2x"></span></a>
-            <a href="#"><span class="fa fa-star-o fa-2x"></span></a>
+            <a href="#"><span class="tree"></span></a>
+            <a href="#"><span class="tree"></span></a>
+            <a href="#"><span class="tree"></span></a>
+            <a href="#"><span class="tree"></span></a>
+            <a href="#"><span class="tree-o"></span></a>
         </p>
     </td>
     <td class="project_progress">

@@ -3,6 +3,16 @@
 <head>
     #parse("/templates/common/header.vm")
     <title>Web Developer | Forest</title>
+    <style>
+        .tree-o:before {
+            content: url("/images/tree-o.png");
+            width:5px;
+        }
+        .tree:before {
+            content: url("/images/tree.png");
+            width: 20px;
+        }
+    </style>
 </head>
 <body class="nav-md">
 <div class="container body">
