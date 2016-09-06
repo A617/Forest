@@ -6,9 +6,16 @@
     <id column="level" property="level" jdbcType="INTEGER" />
     <result column="catelog" property="catelog" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="extraResultMap" type="edu.nju.data.model.SimpleRepo">
+    <result property="name" column="repo_name"/>
+    <result property="html_url" column="repo_url"/>
+  </resultMap>
+
   <sql id="Base_Column_List" >
     name, level, catelog
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
@@ -80,6 +87,12 @@
   </select>
   <select id="getRepoName" resultType="java.lang.String" >
     select repo_name
+    from skill_repo
+    where skill_name = #{0} and level = #{1}
+  </select>
+
+  <select id="getSimpleRepo" resultMap="extraResultMap" >
+    select repo_name,repo_url
     from skill_repo
     where skill_name = #{0} and level = #{1}
   </select>

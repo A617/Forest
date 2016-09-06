@@ -58,5 +58,5 @@ public interface RepositoryMapper {
 
     String getReposDescription(String login);
 
-
+    String getRepoUrl(String name);
 }
