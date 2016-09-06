@@ -10,9 +10,9 @@
     <ul class="nav nav-pills" role="tablist">
         <li role="presentation">
             #if($repo.isLearned=='true')
-                <a href="javascript:submitLearn()"><input type="checkbox" class="flat" checked="" onclick="submitLearn()"> learned</a>
+                <a href="javascript:submitLearn('${repo.full_name}');">learned</a>
             #else
-                <a href="javascript:submitLearn()"><input type="checkbox" class="flat" onclick="submitLearn()"> learned</a>
+                <a href="javascript:submitLearn('${repo.full_name}');">learned</a>
             #end
         </li>
         <li role="presentation" class="dropdown">

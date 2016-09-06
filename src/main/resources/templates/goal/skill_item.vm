@@ -1,0 +1,39 @@
+<tr>
+    <td>#</td>
+    <td>
+        <a href="/skill/${skill.name}${skill.level}">Java</a>
+        <br />
+        <small>Programming Language</small>
+    </td>
+    <td>
+##        <ul class="list-inline">
+##            <li>
+##                <i class="fa fa-tree fa-2x avatar"></i>
+##            </li>
+##            <li>
+##                <i class="fa fa-tree-o fa-2x avatar"></i>
+##            </li>
+##        </ul>
+        <p class="ratings">
+            <a href="#"><span class="fa fa-star fa-2x"></span></a>
+            <a href="#"><span class="fa fa-star fa-2x"></span></a>
+            <a href="#"><span class="fa fa-star fa-2x"></span></a>
+            <a href="#"><span class="fa fa-star fa-2x"></span></a>
+            <a href="#"><span class="fa fa-star-o fa-2x"></span></a>
+        </p>
+    </td>
+    <td class="project_progress">
+        <div class="progress progress_sm">
+            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+        </div>
+        <small>77% Complete</small>
+    </td>
+    <td>
+        <button type="button" class="btn btn-success btn-xs">Success</button>
+    </td>
+    <td>
+        <a href="/skill/${skill.name}${skill.level}" class="btn btn-primary btn-xs"><i class="fa fa-chevron-right"></i> View </a>
+        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+    </td>
+</tr>
