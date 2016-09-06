@@ -4,9 +4,9 @@
     </a>
     <div id="collapse${index}1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading${index}">
         <div class="panel-body">
-            <p><strong>${repo.full_name}</strong>
-            </p>
-            $repo.description
+            <h4><a href="/repository/${repo.full_name}"><strong>${repo.full_name}</strong></a>
+            </h4>
+            ${repo.description}
             #parse("/templates/skill/repo_feedbackBar.vm")
         </div>
     </div>

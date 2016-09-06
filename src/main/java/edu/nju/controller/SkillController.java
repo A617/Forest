@@ -3,6 +3,7 @@ package edu.nju.controller;
 import edu.nju.service.vo.RepositoryVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ import java.util.List;
 @Controller
 public class SkillController {
 
-    @RequestMapping("/skill")
-    String showSkill(Model model){
+    @RequestMapping("/skill/{name}{level}")
+    String showSkill(@PathVariable("name")String name, @PathVariable("level")String level, Model model){
         List<RepositoryVO> list = new ArrayList<>();
         RepositoryVO repo1 = new RepositoryVO();
         repo1.setFull_name("repository1");
