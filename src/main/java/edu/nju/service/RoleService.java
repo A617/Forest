@@ -2,6 +2,7 @@ package edu.nju.service;
 
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
+import edu.nju.service.vo.SkillVO;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface RoleService {
      * @param userName
      * @param roleName
      */
-    void selectRole(String userName, String roleName);
+    int selectRole(String userName, String roleName);
 
     /**
      * 展示角色包含的技能
@@ -27,7 +28,7 @@ public interface RoleService {
      * @param roleName
      * @return
      */
-    List<Skill> showSkills(String roleName);
+    List<SkillVO> showSkills(String roleName, String userName);
 
     /**
      * 升级角色中的某项技能
@@ -36,7 +37,7 @@ public interface RoleService {
      * @param skill
      * @param userName
      */
-    void levelUp(String roleName, Skill skill, String userName);
+    int levelUp(String roleName, Skill skill, String userName);
     /**
      * 展示所有的角色
      * @return

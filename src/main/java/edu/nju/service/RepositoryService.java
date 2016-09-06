@@ -12,12 +12,12 @@ public interface RepositoryService {
      * @param userName
      * @param reposName
      */
-    void learnRepository(String userName, String reposName);
+    int learnRepository(String userName, String reposName);
 
     /**
      * 用户反馈
      *
      * @param report
      */
-    void reportRepository(MemberReport report);
+    int reportRepository(MemberReport report);
 }

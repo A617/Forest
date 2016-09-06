@@ -15,12 +15,13 @@ public class RepositoryServiceImpl implements RepositoryService {
     @Resource
     IRepoDao repoDao;
     @Override
-    public void learnRepository(String userName, String reposName) {
-
+    public int learnRepository(String userName, String reposName) {
+        repoDao.learnRepository(userName,reposName);
+        return 0;
     }
 
     @Override
-    public void reportRepository(MemberReport report) {
-
+    public int reportRepository(MemberReport report) {
+        return 0;
     }
 }

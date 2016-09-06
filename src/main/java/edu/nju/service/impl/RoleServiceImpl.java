@@ -4,6 +4,7 @@ import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import edu.nju.service.RoleService;
+import edu.nju.service.vo.SkillVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,18 +19,20 @@ public class RoleServiceImpl implements RoleService {
     IRoleDao roleDao;
 
     @Override
-    public void selectRole(String userName, String roleName) {
+    public int selectRole(String userName, String roleName) {
         roleDao.selectRole(userName, roleName);
+        return 1;
     }
 
     @Override
-    public List<Skill> showSkills(String roleName) {
-        return roleDao.showSkills(roleName);
+    public List<SkillVO> showSkills(String roleName, String userName) {
+        return null;
     }
 
     @Override
-    public void levelUp(String roleName, Skill skill, String userName) {
+    public int levelUp(String roleName, Skill skill, String userName) {
         roleDao.levelUp(roleName, skill, userName);
+        return 1;
     }
 
     @Override

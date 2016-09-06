@@ -15,5 +15,5 @@ public interface MemberReportMapper {
 
     int updateByPrimaryKey(MemberReport record);
 
-    void updateEvaluateAndReason(MemberReport record );
+    int updateEvaluateAndReason(MemberReport record );
 }

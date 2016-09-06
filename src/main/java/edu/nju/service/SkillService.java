@@ -1,8 +1,7 @@
 package edu.nju.service;
 
-import edu.nju.data.model.Repository;
-import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
+import edu.nju.service.vo.RepositoryVO;
 
 import java.util.List;
 
@@ -17,5 +16,5 @@ public interface SkillService {
      * @param skill
      * @return
      */
-    List<SimpleRepo> showRecommendRepos(Skill skill);
+    List<RepositoryVO> showRecommendRepos(Skill skill,String userName);
 }

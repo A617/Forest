@@ -21,7 +21,7 @@ import java.util.List;
  * Created by fwtgm on 2016/9/1.
  */
 
-public class RoleDaoImpl implements IRoleDao{
+public class RoleDaoImpl implements IRoleDao {
     @Resource
     private MemberMapper mapper;
     @Resource
@@ -32,19 +32,19 @@ public class RoleDaoImpl implements IRoleDao{
     private RoleMapper mapper4;
 
     @Override
-    public void selectRole(String userName, String roleName) {
-    mapper.updateRole(userName,roleName);
+    public int selectRole(String userName, String roleName) {
+        return mapper.updateRole(userName, roleName);
     }
 
     @Override
     public List<Skill> showSkills(String roleName) {
-        List<String>list=mapper2.selectSkillName(roleName);
-        List<Skill>result=new ArrayList<Skill>();
-        for(String str:list){
-            List<String> catelog=mapper3.selectCatelog(str);
-            List<Integer> level=mapper3.selectLevel(str);
-            for(int i=0;i<level.size();i++){
-                Skill skill=new Skill(str,level.get(i),catelog.get(i));
+        List<String> list = mapper2.selectSkillName(roleName);
+        List<Skill> result = new ArrayList<Skill>();
+        for (String str : list) {
+            List<String> catelog = mapper3.selectCatelog(str);
+            List<Integer> level = mapper3.selectLevel(str);
+            for (int i = 0; i < level.size(); i++) {
+                Skill skill = new Skill(str, level.get(i), catelog.get(i));
                 result.add(skill);
             }
         }
@@ -52,15 +52,14 @@ public class RoleDaoImpl implements IRoleDao{
     }
 
     @Override
-    public void levelUp(String roleName, Skill skill, String userName) {
+    public int levelUp(String roleName, Skill skill, String userName) {
         java.sql.Date date;
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        mapper.updateLevel(skill.getName(),userName,date);
-
+        return mapper.updateLevel(skill.getName(), userName, date);
     }
 
     @Override
-    public List<Role> showAllRoles(){
+    public List<Role> showAllRoles() {
         return mapper4.showAll();
     }
 }
