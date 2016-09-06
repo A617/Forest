@@ -57,4 +57,6 @@ public interface RepositoryMapper {
     List<String> getLastUpdate_Three();
 
     String getReposDescription(String login);
+
+    String getRepoUrl(String name);
 }
