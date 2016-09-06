@@ -6,24 +6,30 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.nju.data.dao.IRepoDao;
+import edu.nju.data.dao.mapper.MemberReportMapper;
 import edu.nju.data.dao.mapper.RepositoryMapper;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
-import edu.nju.data.model.SystemContext;
 import edu.nju.data.task.HttpRequest;
 
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fwtgm on 2016/9/4.
  */
 @org.springframework.stereotype.Repository("repoDao")
 public class RepoDaoImpl implements IRepoDao {
-    @Resource
-    private RepositoryMapper mapper;
+            @Resource
+            private RepositoryMapper mapper;
+            @Resource
+            private MemberReportMapper mapper2;
+
     String[] searchMethod = {"getStarFewer", "getStarLarger", "getForkFewer", "getForkLarger", "getContributeFewer", "getContributeLarger"};
 
     @Override
@@ -287,6 +293,10 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public void learnRepository(String userName, String reposName) {
+        java.sql.Date date;
+        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        MemberReport mr=new MemberReport(userName,reposName,0,"a",date);
+        int i=mapper2.insert(mr);
 
     }
 
@@ -294,13 +304,6 @@ public class RepoDaoImpl implements IRepoDao {
     public void reportRepository(MemberReport report) {
 
     }
-    private Map<String, Object> createMap() {
-        Map<String, Object> map = new HashMap<String, Object>();
-        int pageSize = SystemContext.getSize();
-        int pageOffset = SystemContext.getOffset();
-        map.put("pageSize", pageSize);
-        map.put("pageOffset", pageOffset);
-        return map;
-    }
+
 
 }

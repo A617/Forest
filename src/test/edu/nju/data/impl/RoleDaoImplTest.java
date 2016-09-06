@@ -33,6 +33,7 @@ public class RoleDaoImplTest {
         }
     }
 
+
     @Test
     public void levelUp() throws Exception {
 

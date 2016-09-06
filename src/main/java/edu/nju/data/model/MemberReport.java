@@ -13,6 +13,14 @@ public class MemberReport {
 
     private Date time;
 
+    public MemberReport(String username, String fullName, Integer evaluate, String reason, Date time) {
+        this.username = username;
+        this.fullName = fullName;
+        this.evaluate = evaluate;
+        this.reason = reason;
+        this.time = time;
+    }
+
     public String getUsername() {
         return username;
     }

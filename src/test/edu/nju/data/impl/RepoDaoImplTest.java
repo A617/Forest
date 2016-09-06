@@ -24,6 +24,12 @@ public class RepoDaoImplTest {
         Repository r=dao.getReposByFullName(name);
         System.out.println(r.getHtml_url());
     }
+    @Test
+    public void learnRepository() throws Exception {
+        String username="dy";
+        String repo="01org/appframework";
+        dao.learnRepository(username,repo);
 
+    }
 
 }
