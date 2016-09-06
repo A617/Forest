@@ -17,11 +17,11 @@ public interface MemberMapper {
 
     int updateByPrimaryKey(Member record);
 
-    void updateRole(String username,String role);
+    int updateRole(String username,String role);
 
-    void updateLevel(String skill_name,String username,Date date);
+    int updateLevel(String skill_name,String username,Date date);
 
-    void insertMemberSkill(String username,String skill_name,int level,Date time);
+    int insertMemberSkill(String username,String skill_name,int level,Date time);
 
 
 }

@@ -25,10 +25,10 @@ import java.util.Map;
  */
 @org.springframework.stereotype.Repository("repoDao")
 public class RepoDaoImpl implements IRepoDao {
-            @Resource
-            private RepositoryMapper mapper;
-            @Resource
-            private MemberReportMapper mapper2;
+    @Resource
+    private RepositoryMapper mapper;
+    @Resource
+    private MemberReportMapper mapper2;
 
     String[] searchMethod = {"getStarFewer", "getStarLarger", "getForkFewer", "getForkLarger", "getContributeFewer", "getContributeLarger"};
 
@@ -109,15 +109,16 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public List<Repository> searchRepository(String name, String token, int page) throws IOException {
-        String s = HttpRequest.getGithubContentUsingHttpClient(token,"api.github.com/search/repositories?q="+name+"&sort=stars&per_page=10&page="+page);
+        String s = HttpRequest.getGithubContentUsingHttpClient(token, "api.github.com/search/repositories?q=" + name + "&sort=stars&per_page=10&page=" + page);
         List<Repository> list = null;
 
         ObjectMapper mapper = new ObjectMapper();
         JsonFactory f = new JsonFactory();
 
-        if (s!=null&&!s.equals("[]")) {
+        if (s != null && !s.equals("[]")) {
             s = mapper.readTree(s).get("items").toString();
-            list = mapper.readValue(s,new TypeReference<List<Repository>>() {});
+            list = mapper.readValue(s, new TypeReference<List<Repository>>() {
+            });
         }
         return list;
     }
@@ -142,7 +143,7 @@ public class RepoDaoImpl implements IRepoDao {
     @Override
     public String getCodeFrequency(String name, String token) throws IOException {
         String url = "api.github.com/repos/" + name + "/stats/code_frequency";
-        return HttpRequest.getGithubContentUsingHttpClient( token, url);
+        return HttpRequest.getGithubContentUsingHttpClient(token, url);
     }
 
     @Override
@@ -171,7 +172,7 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public double getSizeScore(int size, String language) {
-        Double d = mapper.selectSizeScore_Extern(size,language);
+        Double d = mapper.selectSizeScore_Extern(size, language);
         double result = d == null ? 0.5 : d;
         return result;
     }
@@ -184,21 +185,21 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public double getContributorsScore_extern(int contributors) {
-        List<Integer>list=mapper.countContributors();
-        int count=0;
-        for(int i:list){
-            if(i<contributors){
+        List<Integer> list = mapper.countContributors();
+        int count = 0;
+        for (int i : list) {
+            if (i < contributors) {
                 count++;
             }
         }
-        double result=(double)count/list.size();
+        double result = (double) count / list.size();
         return result;
     }
 
     @Override
     public double getPromisingScore(String full_name, int stargazers_count, String token) throws IOException {
-        int page=stargazers_count/30+1;
-        int count=0;
+        int page = stargazers_count / 30 + 1;
+        int count = 0;
         Calendar date = Calendar.getInstance();
         date.set(Calendar.MONTH, date.get(Calendar.MONTH) - 1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
@@ -207,15 +208,15 @@ public class RepoDaoImpl implements IRepoDao {
         JsonFactory f = new JsonFactory();
         boolean flag = false;
 
-        int j =0;
-        while(!flag&&page>=1&&j<2) {
-            String s = HttpRequest.getStarJson("api.github.com/repos/"+full_name+"/stargazers?page=" + page, token);
-            if(s.equals("[]"))  break;
+        int j = 0;
+        while (!flag && page >= 1 && j < 2) {
+            String s = HttpRequest.getStarJson("api.github.com/repos/" + full_name + "/stargazers?page=" + page, token);
+            if (s.equals("[]")) break;
             JsonParser jp = f.createJsonParser(s);
             jp.nextToken();
 
             int i = 0;
-            while (jp.nextToken() == JsonToken.START_OBJECT ) {
+            while (jp.nextToken() == JsonToken.START_OBJECT) {
                 String starred_at = (String) mapper.readValue(jp, Map.class).get("starred_at");
                 if (starred_at.compareTo(sdf.format(date.getTime()).toString()) < 0) {
                     i++;
@@ -224,10 +225,11 @@ public class RepoDaoImpl implements IRepoDao {
                     break;
                 }
             }
-            count +=( j==0?stargazers_count % 30 :30 )- i;
-            page--;j++;
+            count += (j == 0 ? stargazers_count % 30 : 30) - i;
+            page--;
+            j++;
         }
-        return count > 30? 1 : count/30.0;
+        return count > 30 ? 1 : count / 30.0;
     }
 
     @Override
@@ -235,8 +237,8 @@ public class RepoDaoImpl implements IRepoDao {
         int sum = mapper.countAll();
         Integer rk = mapper.selectRankOfHot(full_name);
         double result = 0;
-        if(rk!=null)
-            result = rk.doubleValue()  / sum;
+        if (rk != null)
+            result = rk.doubleValue() / sum;
         return result;
     }
 
@@ -246,8 +248,8 @@ public class RepoDaoImpl implements IRepoDao {
         int sum = mapper.countLanguage(lan);
         Integer rk = mapper.selectRankOfSize(full_name);
         double result = 0;
-        if(rk!=null)
-            result = rk.doubleValue()  / sum;
+        if (rk != null)
+            result = rk.doubleValue() / sum;
         return result;
     }
 
@@ -256,8 +258,8 @@ public class RepoDaoImpl implements IRepoDao {
         int sum = mapper.countAll();
         Integer rk = mapper.selectRankOfParticipation(full_name);
         double result = 0;
-        if(rk!=null)
-            result = rk.doubleValue()  / sum;
+        if (rk != null)
+            result = rk.doubleValue() / sum;
         return result;
     }
 
@@ -266,8 +268,8 @@ public class RepoDaoImpl implements IRepoDao {
         int sum = mapper.countAll();
         Integer rk = mapper.selectRankOfPromising(full_name);
         double result = 0;
-        if(rk!=null)
-            result = rk.doubleValue()  / sum;
+        if (rk != null)
+            result = rk.doubleValue() / sum;
         return result;
     }
 
@@ -275,14 +277,14 @@ public class RepoDaoImpl implements IRepoDao {
     public double getContributorsScore(String full_name) {
         Integer rk = mapper.selectRankOfContributors(full_name);
         double result = 0;
-        if(rk!=null)
+        if (rk != null)
             result = rk.doubleValue();
         return result;
     }
 
     @Override
     public List<String> getLastUpdate_Three() {
-        List<String>list=mapper.getLastUpdate_Three();
+        List<String> list = mapper.getLastUpdate_Three();
         return list;
     }
 
@@ -292,19 +294,16 @@ public class RepoDaoImpl implements IRepoDao {
     }
 
     @Override
-    public void learnRepository(String userName, String reposName) {
+    public int learnRepository(String userName, String reposName) {
         java.sql.Date date;
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        MemberReport mr=new MemberReport(userName,reposName,0,"a",date);
-        int i=mapper2.insert(mr);
-
+        MemberReport mr = new MemberReport(userName, reposName, 0, "a", date);
+        return mapper2.insert(mr);
     }
 
     @Override
-    public void reportRepository(MemberReport report) {
-
-       mapper2.updateEvaluateAndReason(report);
-
+    public int reportRepository(MemberReport report) {
+        return mapper2.updateEvaluateAndReason(report);
     }
 
 

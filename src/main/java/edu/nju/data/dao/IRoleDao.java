@@ -15,7 +15,7 @@ public interface IRoleDao {
      * @param userName
      * @param roleName
      */
-    void selectRole(String userName, String roleName);
+    int selectRole(String userName, String roleName);
 
     /**
      * 展示角色包含的技能
@@ -32,7 +32,7 @@ public interface IRoleDao {
      * @param skill
      * @param userName
      */
-    void levelUp(String roleName, Skill skill, String userName);
+    int levelUp(String roleName, Skill skill, String userName);
 
     /**
      * 展示所有的角色
