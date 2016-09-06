@@ -68,4 +68,24 @@ public class RoleDaoImpl implements IRoleDao {
     public Member showMember(String username) {
         return mapper.searchMember(username);
     }
+
+    @Override
+    public String addMember(Member member) {
+        String result = "";
+        String name = member.getUsername();
+        Member data = mapper.searchMember(name);
+        if (data != null) {
+            result = "用户名重复";
+            return result;
+        } else {
+            if (member.getPassword().length() < 6) {
+                result = "密码长度要大于等于6";
+                return result;
+            } else {
+                mapper.addMember(member);
+                return null;
+            }
+
+        }
+    }
 }

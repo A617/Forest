@@ -46,4 +46,11 @@ public interface IRoleDao {
      * @return
      */
     Member showMember(String username);
+
+    /**
+     * 增加member
+     * @param member
+     * @return
+     */
+    String addMember(Member member);
 }

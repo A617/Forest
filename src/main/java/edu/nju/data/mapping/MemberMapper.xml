@@ -102,4 +102,7 @@
     from member
     where username = #{username,jdbcType=VARCHAR}
   </select>
+  <insert id="addMember" parameterType="edu.nju.model.Member" flushCache="true">
+    insert into member(username,password,member_email,role) values(#{username},#{password},#{member_email},#{role})
+  </insert>
 </mapper>

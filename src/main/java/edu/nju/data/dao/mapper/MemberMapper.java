@@ -24,4 +24,8 @@ public interface MemberMapper {
     int insertMemberSkill(String username,String skill_name,int level,Date time);
 
     Member searchMember(String username);
+
+    void addMember(Member member);
+
+
 }
