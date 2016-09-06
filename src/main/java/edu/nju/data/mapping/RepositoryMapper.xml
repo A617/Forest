@@ -377,4 +377,125 @@
     <include refid="Blob_Column_List" />
     from repository
   </select>
+  <select id="enlargeViaSubscribers" resultType="java.lang.String">
+    SELECT full_name FROM subscribe
+    WHERE login IN (
+    SELECT login
+    FROM subscribe
+    WHERE full_name = #{0}
+    )
+    GROUP BY full_name
+    ORDER BY count(full_name) DESC
+    LIMIT #{1};
+  </select>
+  <select id="getContributors" resultType="java.lang.String" parameterType="java.lang.String">
+    select login
+    from contribute
+    where full_name = #{full_name}
+  </select>
+  <select id="getCollaborators" resultType="java.lang.String" parameterType="java.lang.String">
+    select login
+    from collaborate
+    where full_name = #{full_name}
+  </select>
+  <select id="selectHotScore_Extern" resultType="java.lang.Double">
+    select count(full_name)/(SELECT count(*) FROM repository)
+    from repository
+    where  #{0}+#{1}>forks_count+stargazers_count
+  </select>
+  <select id="selectParticipationScore_Extern" resultType="java.lang.Double">
+    select count(full_name)/(SELECT count(*) FROM repository)
+    from repository
+    where  #{0}*3+#{1}>forks_count*3+open_issues_count
+  </select>
+  <select id="selectSizeScore_Extern" resultType="java.lang.Double">
+    select count(full_name)/(SELECT count(*) FROM repository WHERE LANGUAGE = #{1})
+    from repository
+    where  #{0}>size and #{1}=language
+  </select>
+  <select id="countContributors" resultType="java.lang.Integer">
+    select count(login)
+    from contribute
+    group by full_name
+  </select>
+  <select id="countAll" resultType="java.lang.Integer">
+    select count(full_name)
+    from repository
+  </select>
+  <select id="selectRankOfHot" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From repository
+    Order By (forks_count+stargazers_count+watchers_count)
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="getLan_SingleRepo" resultType="java.lang.String" parameterType="java.lang.String">
+    select language
+    from repository
+    where full_name = #{full_name}
+  </select>
+  <select id="countLanguage" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(full_name)as c
+    from repository
+    where language = #{language}
+  </select>
+  <select id="selectRankOfSize" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From repository
+    WHERE language IN (
+    SELECT language FROM repository
+    WHERE full_name = #{full_name}
+    )
+    Order By size
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="selectRankOfParticipation" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From repository
+    Order By (open_issues_count+forks_count*3)
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="selectRankOfPromising" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From repository
+    Order By updated_at
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="selectRankOfContributors" resultType="java.lang.Integer">
+    Set @rank:=0;
+    Select rank/(SELECT count(DISTINCT full_name) FROM contribute)
+    From (
+    Select full_name, @rank:=@rank+1 As rank
+    From contribute
+    Group By full_name
+    Order By count(*)
+    ) tb
+    where full_name = #{full_name};
+  </select>
+  <select id="getLastUpdate_Three" resultType="java.lang.String">
+    select full_name
+    from repository
+    order by updated_at desc
+    limit 3;
+  </select>
+  <select id="getReposDescription" resultType="java.lang.String" parameterType="java.lang.String">
+    select description
+    from repository
+    where full_name=#{login}
+  </select>
 </mapper>
