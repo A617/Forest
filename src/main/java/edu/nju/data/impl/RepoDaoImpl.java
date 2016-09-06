@@ -303,6 +303,8 @@ public class RepoDaoImpl implements IRepoDao {
     @Override
     public void reportRepository(MemberReport report) {
 
+       mapper2.updateEvaluateAndReason(report);
+
     }
 
 

@@ -1,5 +1,6 @@
 package edu.nju.data.impl;
 
+import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 /**
  * Created by fwtgm on 2016/9/4.
@@ -30,6 +32,15 @@ public class RepoDaoImplTest {
         String repo="01org/appframework";
         dao.learnRepository(username,repo);
 
+    }
+    @Test
+    public void reportRepository() throws Exception {
+        String username="dy";
+        String repo="01org/appframework";
+        java.sql.Date date;
+        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        MemberReport mr=new MemberReport(username,repo,1,"fire in the hole!",date);
+        dao.reportRepository(mr);
     }
 
 }

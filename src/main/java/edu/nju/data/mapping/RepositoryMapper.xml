@@ -498,7 +498,6 @@
     from repository
     where full_name=#{login}
   </select>
-
   <select id="getRepoUrl" resultType="java.lang.String" parameterType="java.lang.String">
     select html_url
     from repository
