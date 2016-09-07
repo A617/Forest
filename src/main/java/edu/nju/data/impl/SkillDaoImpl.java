@@ -20,7 +20,12 @@ public class SkillDaoImpl implements ISkillDao {
     private SkillMapper mapper;
 
     @Override
-    public List<SimpleRepo> showRecommendRepos(Skill skill) {
+    public List<Repository> showRecommendRepos(Skill skill) {
         return mapper.getSimpleRepo(skill.getName(),skill.getLevel());
+    }
+
+    @Override
+    public List<Skill> getUserMasterSkills(String userName) {
+        return null;
     }
 }

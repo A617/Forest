@@ -14,14 +14,14 @@ import javax.annotation.Resource;
 public class RepositoryServiceImpl implements RepositoryService {
     @Resource
     IRepoDao repoDao;
+
     @Override
     public int learnRepository(String userName, String reposName) {
-        repoDao.learnRepository(userName,reposName);
-        return 0;
+        return repoDao.learnRepository(userName, reposName);
     }
 
     @Override
     public int reportRepository(MemberReport report) {
-        return 0;
+        return repoDao.reportRepository(report);
     }
 }
