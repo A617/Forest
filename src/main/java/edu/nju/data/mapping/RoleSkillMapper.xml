@@ -6,6 +6,13 @@
     <id column="skill_name" property="skillName" jdbcType="VARCHAR" />
     <id column="level" property="level" jdbcType="INTEGER" />
   </resultMap>
+
+  <resultMap id="SkillResultMap" type="edu.nju.data.model.Skill" >
+    <id column="name" property="name" jdbcType="VARCHAR" />
+    <id column="level" property="level" jdbcType="INTEGER" />
+    <result column="catelog" property="catelog" jdbcType="VARCHAR" />
+  </resultMap>
+
   <delete id="deleteByPrimaryKey" parameterType="map" >
     delete from role_skill
     where role = #{role,jdbcType=VARCHAR}
@@ -43,9 +50,9 @@
       </if>
     </trim>
   </insert>
-  <select id="selectSkillName" resultType="java.lang.String" parameterType="java.lang.String" >
-    select skill_name
-    from role_skill
-    where role = #{role,jdbcType=VARCHAR}
+  <select id="selectSkill" resultMap="SkillResultMap" parameterType="java.lang.String" >
+    SELECT s.name,s.level,s.catelog FROM skill s, role_skill r
+    WHERE s.name = r.skill_name AND s.level = r.level
+    and r.role = #{role,jdbcType=VARCHAR}
   </select>
 </mapper>

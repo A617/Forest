@@ -39,17 +39,7 @@ public class RoleDaoImpl implements IRoleDao {
 
     @Override
     public List<Skill> showSkills(String roleName) {
-        List<String> list = mapper2.selectSkillName(roleName);
-        List<Skill> result = new ArrayList<Skill>();
-        for (String str : list) {
-            List<String> catelog = mapper3.selectCatelog(str);
-            List<Integer> level = mapper3.selectLevel(str);
-            for (int i = 0; i < level.size(); i++) {
-                Skill skill = new Skill(str, level.get(i), catelog.get(i));
-                result.add(skill);
-            }
-        }
-        return result;
+        return mapper2.selectSkill(roleName);
     }
 
     @Override
@@ -71,16 +61,12 @@ public class RoleDaoImpl implements IRoleDao {
 
     @Override
     public String addMember(Member member) {
-        String result = "";
-        String name = member.getUsername();
-        Member data = mapper.searchMember(name);
+        Member data = mapper.searchMember(member.getUsername());
         if (data != null) {
-            result = "用户名重复";
-            return result;
+            return "用户名重复";
         } else {
             if (member.getPassword().length() < 6) {
-                result = "密码长度要大于等于6";
-                return result;
+                return "密码长度要大于等于6";
             } else {
                 mapper.addMember(member);
                 return null;

@@ -3,6 +3,7 @@ package edu.nju.data.mapping;
 import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
 import edu.nju.data.model.Role;
+import edu.nju.data.model.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -25,9 +26,9 @@ public class RoleSkillMapperTest {
     @Test
     public void selectSkillNameTest() throws Exception {
         String role="Web Developer";
-        List<String> list=dao.selectSkillName(role);
-        for(String s:list){
-            System.out.println(s);
+        List<Skill> list=dao.selectSkill(role);
+        for(Skill s:list){
+            System.out.println(s.getName()+" "+s.getCatelog());
         }
     }
 }
