@@ -51,8 +51,8 @@
     </trim>
   </insert>
   <select id="selectSkill" resultMap="SkillResultMap" parameterType="java.lang.String" >
-    SELECT s.name,s.level,s.catelog FROM skill s, role_skill r
+    SELECT s.name,s.level,s.catelog FROM skill s,role_skill r
     WHERE s.name = r.skill_name AND s.level = r.level
-    and r.role = #{role,jdbcType=VARCHAR}
+    AND r.role = #{role,jdbcType=VARCHAR}
   </select>
 </mapper>

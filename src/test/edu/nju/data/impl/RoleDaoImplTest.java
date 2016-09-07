@@ -1,6 +1,7 @@
 package edu.nju.data.impl;
 
 import edu.nju.data.dao.IRoleDao;
+import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,8 +36,11 @@ public class RoleDaoImplTest {
 
 
     @Test
-    public void levelUp() throws Exception {
-
+    public void showAllRoles() throws Exception {
+        List<Role> list = dao.showAllRoles();
+        for(Role r : list){
+            System.out.println(r.getName());
+        }
     }
 
 }
