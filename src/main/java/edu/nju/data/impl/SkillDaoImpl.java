@@ -21,11 +21,12 @@ public class SkillDaoImpl implements ISkillDao {
 
     @Override
     public List<Repository> showRecommendRepos(Skill skill) {
-        return mapper.getSimpleRepo(skill.getName(),skill.getLevel());
+        return mapper.getRepo(skill.getName(),skill.getLevel());
     }
 
     @Override
     public List<Skill> getUserMasterSkills(String userName) {
-        return null;
+
+        return mapper.getUserMasterSkills(userName);
     }
 }

@@ -27,10 +27,18 @@ public class SkillDaoImplTest {
     public void getRepoNameTest() throws Exception {
         Skill skill = new Skill("Java",2,"Programming Language");
 
-        List<SimpleRepo> repo = dao.showRecommendRepos(skill);
-        for(SimpleRepo s : repo){
-            System.out.println(s.getName()+ " " + s.getHtml_url());
+        List<Repository> repo = dao.showRecommendRepos(skill);
+        for(Repository s : repo){
+            System.out.println(s.getName()+" "+s.getHtml_url());
         }
+    }
+
+    @Test
+    public void getUserMasterSkillsTest() throws Exception {
+
+        List<Skill> list = dao.getUserMasterSkills("dy");
+        for(Skill s : list)
+            System.out.println(s.getName()+" "+s.getLevel());
     }
 
 
