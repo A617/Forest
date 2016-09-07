@@ -18,6 +18,11 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 
 public class RoleDaoImplTest {
+    @Test
+    public void selectRoleById() throws Exception {
+        System.out.println(dao.selectRoleById(1));
+    }
+
     @Resource
     private IRoleDao dao;
     @Test

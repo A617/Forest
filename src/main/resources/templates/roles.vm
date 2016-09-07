@@ -65,7 +65,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="caption">
-                                                  <a href="/goal/${role.name}" title="${role.name}" class="btn btn-success btn-block" role="button">Learn it</a>
+                                                  <a href="/goal/${role.id}" title="${role.name}" class="btn btn-success btn-block" role="button">Learn it</a>
                                                 </div>
                                             </div>
                                         </div>

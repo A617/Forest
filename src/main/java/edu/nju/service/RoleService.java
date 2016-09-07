@@ -25,10 +25,10 @@ public interface RoleService {
     /**
      * 展示角色包含的技能
      *
-     * @param roleName
+     * @param id
      * @return
      */
-    List<SkillVO> showSkills(String roleName, String userName);
+    List<SkillVO> showSkills(int id, String userName);
 
     /**
      * 升级角色中的某项技能

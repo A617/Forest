@@ -36,4 +36,13 @@ public class Skill {
     public void setCatelog(String catelog) {
         this.catelog = catelog;
     }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                ", catelog='" + catelog + '\'' +
+                '}';
+    }
 }

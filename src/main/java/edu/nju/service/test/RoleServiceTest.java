@@ -21,6 +21,6 @@ public class RoleServiceTest {
     public void testShowSkills(){
         String userName = "dy";
         String roleName = "Web Developer";
-        service.showSkills(roleName,userName);
+        System.out.println(service.showSkills(1,userName));
     }
 }

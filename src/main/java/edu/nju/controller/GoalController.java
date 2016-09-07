@@ -27,9 +27,11 @@ public class GoalController {
         return "landing";
     }
 
-    @RequestMapping("/goal/{role}")
-    String showRole(@PathVariable("role")String role,@RequestParam(required = false)String user, Model model){
-        List<SkillVO> list = service.showSkills(role, user);
+    @RequestMapping("/goal/{id}")
+    String showRole(@PathVariable("id")int id,@RequestParam(required = false)String user, Model model){
+        System.out.println(id+" "+user);
+        List<SkillVO> list = service.showSkills(id, user);
+        System.out.println(list);
         model.addAttribute("skills",list);
         return "goal";
     }

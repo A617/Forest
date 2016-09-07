@@ -28,9 +28,9 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<SkillVO> showSkills(String roleName, String userName) {
+    public List<SkillVO> showSkills(int id, String userName) {
         List<SkillVO> result = new ArrayList<>();
-        List<Skill> list = roleDao.showSkills(roleName);
+        List<Skill> list = roleDao.showSkills(roleDao.selectRoleById(id).getName());
         List<Skill> masterList = skillDao.getUserMasterSkills(userName);
         for (Skill master : masterList) {
             int level = master.getLevel();

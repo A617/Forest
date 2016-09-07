@@ -1,9 +1,9 @@
 <tr>
     <td>#</td>
     <td>
-        <a href="/skill/${skill.name}${skill.level}">Java</a>
+        <a href="/skill/${skill.skillName}${skill.userLevel}">${skill.skillName}</a>
         <br />
-        <small>Programming Language</small>
+        <small>${skill.skillName}</small>
     </td>
     <td>
 ##        <ul class="list-inline">

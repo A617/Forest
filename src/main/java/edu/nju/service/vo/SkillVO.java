@@ -28,4 +28,16 @@ public class SkillVO {
      * 技能分类
      */
     public String category;
+
+    @Override
+    public String toString() {
+        return "SkillVO{" +
+                "skillName='" + skillName + '\'' +
+                ", userLevel=" + userLevel +
+                ", skillLevel=" + skillLevel +
+                ", progress=" + progress +
+                ", status=" + status +
+                ", category='" + category + '\'' +
+                '}';
+    }
 }
