@@ -16,7 +16,7 @@ import java.io.IOException;
 public class MemberServiceImpl implements MemberService {
     @Override
     public Member showMember(String userName) {
-        return null;
+        return new Member();
     }
 
     @Override

@@ -28,4 +28,12 @@ public class SignedInUser extends Member {
     public void setToken(String token) {
         this.token = token;
     }
+
+    @Override
+    public String toString() {
+        return "SignedInUser{" +
+                "avatar='" + avatar + '\'' +
+                ", token='" + token + '\'' +
+                "} " + super.toString();
+    }
 }

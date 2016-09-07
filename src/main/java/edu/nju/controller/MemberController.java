@@ -1,7 +1,5 @@
 package edu.nju.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.nju.data.task.HttpRequest;
 import edu.nju.service.MemberService;
 import edu.nju.service.vo.SignedInUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,18 +35,20 @@ public class MemberController {
 
         if (code == null) {
             return LoginHelper.jumpTo(client_id,redirect_uri);
+
         } else {
             try {
                 String responseString = LoginHelper.jumpBack(client_id,client_secret,code);
                 String token = responseString.split("&")[0].substring(13);
                 SignedInUser user = memberService.login(token);
+                System.out.println(user);
                 session.setAttribute("user",user);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            return "redirect:/";
+            return "redirect:/select";
 
 
         }
