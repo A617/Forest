@@ -17,11 +17,15 @@ public class SkillVO {
      */
     public int skillLevel;
     /**
-     * 项目完成度
+     * 技能完成度
      */
-    public double projectProgress;
+    public double progress;
     /**
      * 该技能是否完成
      */
     public boolean status;
+    /**
+     * 技能分类
+     */
+    public String category;
 }

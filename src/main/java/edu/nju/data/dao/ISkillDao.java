@@ -1,5 +1,6 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.Repository;
 import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
 
@@ -15,5 +16,12 @@ public interface ISkillDao {
      * @param skill
      * @return
      */
-    List<SimpleRepo> showRecommendRepos(Skill skill);
+    List<Repository> showRecommendRepos(Skill skill);
+
+    /**
+     * 拿到用户当前技能掌握的情况(查询member_skill)
+     * @param userName
+     * @return
+     */
+    List<Skill> getUserMasterSkills(String userName);
 }

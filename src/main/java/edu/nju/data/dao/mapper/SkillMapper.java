@@ -1,5 +1,6 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.Repository;
 import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
 import org.apache.ibatis.annotations.Param;
@@ -25,5 +26,7 @@ public interface SkillMapper {
 
     List<String> getRepoName(String skill_name,int level);
 
-    List<SimpleRepo> getSimpleRepo(String skill_name,int level);
+    List<Repository> getRepo(String skill_name, int level);
+
+    List<Skill> getUserMasterSkills(String username);
 }
