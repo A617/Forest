@@ -1,5 +1,6 @@
 package edu.nju.data.impl;
 
+import edu.nju.data.Impl.RepoDaoImpl;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 import org.junit.Test;
