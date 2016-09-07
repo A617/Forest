@@ -35,7 +35,9 @@
         <property name="contentType" value="text/html;charset=utf-8" />
     </bean>
 
-
-
+    <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="fileEncoding" value="UTF-8" />
+        <property name="location" value="classpath:application.properties" />
+    </bean>
 
 </beans>

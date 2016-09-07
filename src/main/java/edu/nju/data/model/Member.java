@@ -1,13 +1,20 @@
 package edu.nju.data.model;
 
 public class Member {
-    private String username;
+    protected String username;
 
-    private String password;
+    protected String password;
 
-    private String member_email;
+    protected String member_email;
 
-    private String role;
+    protected String role;
+
+    public Member(){}
+
+    public Member(String username, String role) {
+        this.username = username;
+        this.role = role;
+    }
 
     public String getUsername() {
         return username;

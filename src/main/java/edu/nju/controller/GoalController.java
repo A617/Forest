@@ -1,16 +1,20 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.Role;
 import edu.nju.service.RoleService;
+import edu.nju.service.vo.SkillVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Dora on 2016/8/14.
  */
 @Controller
+@SessionAttributes("user")
 public class GoalController {
 
     @Autowired
@@ -21,8 +25,10 @@ public class GoalController {
         return "landing";
     }
 
-    @RequestMapping("/goal")
-    String showGoal(){
+    @RequestMapping("/goal/{role}")
+    String showGoal(@PathVariable("role")String role,@RequestParam(required = false)String user, Model model){
+        List<SkillVO> list = service.showSkills(role, user);
+        model.addAttribute("skills",list);
         return "goal";
     }
 
@@ -35,7 +41,9 @@ public class GoalController {
     }
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
-    String select(){
+    String select(Model model){
+        List<Role> list = service.showAllRoles();
+        model.addAttribute("roles",list);
         return "roles";
     }
 }
