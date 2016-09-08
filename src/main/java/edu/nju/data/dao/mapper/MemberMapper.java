@@ -27,5 +27,4 @@ public interface MemberMapper {
 
     int addMember(Member member);
 
-
 }
