@@ -20,6 +20,8 @@ public interface IRoleDao {
 
     Role selectRoleById(int id);
 
+    Role selectRoleByName(String name);
+
     /**
      * 展示角色包含的技能
      *

@@ -1,0 +1,25 @@
+<!-- Large modal -->
+<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">START</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Select <strong>${role.name}</strong> as your goal</h4>
+            </div>
+            <div class="modal-body">
+##                <h4>${role.name}</h4>
+                <p>${role.description}</p>
+                <p>In Forest, you can have only one goal at a time.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="selectRole('${role.name}');">Save changes</button>
+            </div>
+
+        </div>
+    </div>
+</div>

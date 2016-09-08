@@ -2,7 +2,7 @@
 <html>
 <head>
     #parse("/templates/common/header.vm")
-    <title>Web Developer | Forest</title>
+    <title>${role.name} | Forest</title>
     <style>
         .tree-o:before {
             content: url("/images/tree-o.png");
@@ -26,7 +26,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Web Developer <small>Study Progress</small></h3>
+                        <h3>${role.name}  <small>Study Progress</small></h3>
                     </div>
 
 ##                    <div class="title_right">
@@ -65,21 +65,23 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 1%">#</th>
-                                        <th style="width: 20%">Project Name</th>
+                                        <th style="width: 20%">Skill</th>
                                         <th>Level</th>
-                                        <th>Project Progress</th>
+                                        <th>Progress</th>
                                         <th>Status</th>
                                         <th style="width: 20%">#Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-##                                        #set($skills=[1,2,3,4,5])
                                         #foreach($skill in $skills)
                                             #parse("/templates/goal/skill_item.vm")
                                         #end
                                     </tbody>
                                 </table>
                                 <!-- end project list -->
+                                #if(${user} and ${user.role} != ${role.name})
+                                    #parse("/templates/goal/select_role.vm")
+                                #end
 
                             </div>
                         </div>
@@ -107,5 +109,21 @@
 
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
+
+<script>
+    function selectRole(role) {
+        jQuery.ajax({
+            type:"POST",
+            url:"/selectRole",
+            data:{"userName":'$user.username',"roleName":'$role.name'},
+            dataType:"json",
+            success: function () {
+                location.reload();
+            }, error: function (xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+</script>
 </body>
 </html>

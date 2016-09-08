@@ -22,6 +22,10 @@ public interface RoleService {
      */
     int selectRole(String userName, String roleName);
 
+    Role showRole(int id);
+
+    Role showRole(String name);
+
     /**
      * 展示角色包含的技能
      *

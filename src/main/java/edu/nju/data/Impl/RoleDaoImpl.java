@@ -33,9 +33,13 @@ public class RoleDaoImpl implements IRoleDao {
     }
 
     @Override
-    public Role selectRoleById(int id) {
-        Role r=roleMapper.selectRoleById(id);
-        return r;
+    public Role selectRoleById(int id){
+        return roleMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Role selectRoleByName(String name) {
+        return roleMapper.selectRoleByName(name);
     }
 
     @Override

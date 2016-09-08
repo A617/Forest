@@ -95,7 +95,6 @@
 <script>
 
     function login() {
-        console.log(location.href);
         location.href = "/login?formerUrl=" + location.href;
     }
 

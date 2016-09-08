@@ -19,6 +19,11 @@ import java.util.List;
 
 public class RoleDaoImplTest {
     @Test
+    public void selectRoleByName() throws Exception {
+        System.out.println(dao.selectRoleByName("Web Developer"));
+    }
+
+    @Test
     public void selectRoleById() throws Exception {
         System.out.println(dao.selectRoleById(1));
     }

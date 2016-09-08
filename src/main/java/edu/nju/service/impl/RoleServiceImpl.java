@@ -28,6 +28,16 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    public Role showRole(int id) {
+        return roleDao.selectRoleById(id);
+    }
+
+    @Override
+    public Role showRole(String name) {
+        return roleDao.selectRoleByName(name);
+    }
+
+    @Override
     public List<SkillVO> showSkills(int id, String userName) {
         List<SkillVO> result = new ArrayList<>();
         List<Skill> list = roleDao.showSkills(roleDao.selectRoleById(id).getName());
