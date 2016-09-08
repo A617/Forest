@@ -75,4 +75,9 @@ public class RoleServiceImpl implements RoleService {
     public List<Role> showAllRoles() {
         return roleDao.showAllRoles();
     }
+
+    @Override
+    public List<Skill> showCommonSkills(int id) {
+        return roleDao.showSkills(roleDao.selectRoleById(id).getName());
+    }
 }

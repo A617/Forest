@@ -27,7 +27,7 @@ public interface RoleService {
     Role showRole(String name);
 
     /**
-     * 展示角色包含的技能
+     * 展示角色包含的技能以及该用户掌握情况（前提是用户选择的角色需要该技能）
      *
      * @param id
      * @return
@@ -47,5 +47,10 @@ public interface RoleService {
      * @return
      */
     List<Role> showAllRoles();
+    /**
+     * 展示角色包含的技能
+     * @return
+     */
+    List<Skill> showCommonSkills(int id);
 
 }
