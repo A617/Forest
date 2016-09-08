@@ -5,7 +5,6 @@ import edu.nju.data.dao.mapper.MemberMapper;
 import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
 import edu.nju.data.dao.mapper.SkillMapper;
-import edu.nju.data.model.Member;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
@@ -54,26 +53,5 @@ public class RoleDaoImpl implements IRoleDao {
     @Override
     public List<Role> showAllRoles() {
         return roleMapper.showAll();
-    }
-
-    @Override
-    public Member showMember(String username) {
-        return memberMapper.searchMember(username);
-    }
-
-    @Override
-    public String addMember(Member member) {
-        Member data = memberMapper.searchMember(member.getUsername());
-        if (data != null) {
-            return "用户名重复";
-        } else {
-            if (member.getPassword().length() < 6) {
-                return "密码长度要大于等于6";
-            } else {
-                memberMapper.addMember(member);
-                return null;
-            }
-
-        }
     }
 }

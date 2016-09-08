@@ -42,17 +42,4 @@ public interface IRoleDao {
      * @return
      */
     List<Role> showAllRoles();
-
-    /**
-     * 搜member信息
-     * @return
-     */
-    Member showMember(String username);
-
-    /**
-     * 增加member
-     * @param member
-     * @return
-     */
-    String addMember(Member member);
 }

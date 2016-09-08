@@ -48,9 +48,9 @@ public class RoleServiceImpl implements RoleService {
                     } else {
                         vo.status = false;
                     }
+                    result.add(vo);
                     break;
                 }
-                result.add(vo);
             }
         }
         return result;

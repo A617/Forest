@@ -25,7 +25,7 @@ public interface MemberMapper {
 
     Member searchMember(String username);
 
-    void addMember(Member member);
+    int addMember(Member member);
 
 
 }

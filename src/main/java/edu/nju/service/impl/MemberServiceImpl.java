@@ -1,12 +1,14 @@
 package edu.nju.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.nju.data.dao.IMemberDao;
 import edu.nju.data.model.Member;
 import edu.nju.data.task.HttpRequest;
 import edu.nju.service.MemberService;
 import edu.nju.service.vo.SignedInUser;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
@@ -14,14 +16,17 @@ import java.io.IOException;
  */
 @Service
 public class MemberServiceImpl implements MemberService {
+    @Resource
+    private IMemberDao dao;
+
     @Override
     public Member showMember(String userName) {
-        return new Member();
+        return dao.showMember(userName);
     }
 
     @Override
     public boolean createMember(Member member) {
-        return false;
+        return dao.addMember(member);
     }
 
     @Override
