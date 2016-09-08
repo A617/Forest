@@ -28,10 +28,6 @@ public class MemberMapperTest {
         System.out.print(m.getRole());
     }
 
-    @Test
-    public void selectRoleById() throws Exception{
-        Role r=mapper2.selectRoleById(4);
-        System.out.print(r.getDescription());
-    }
+
 
 }

@@ -1,6 +1,7 @@
 package edu.nju.service;
 
 import edu.nju.data.model.MemberReport;
+import edu.nju.data.model.Repository;
 
 /**
  * Created by Dora on 2016/8/3.
@@ -20,4 +21,6 @@ public interface RepositoryService {
      * @param report
      */
     int reportRepository(MemberReport report);
+
+    Repository showRepository(String fullname);
 }

@@ -1,6 +1,8 @@
 package edu.nju.controller;
 
+import edu.nju.service.SkillService;
 import edu.nju.service.vo.RepositoryVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,9 @@ import java.util.List;
 @Controller
 @SessionAttributes("user")
 public class SkillController {
+
+    @Autowired
+    SkillService service;
 
     @RequestMapping("/skill/{name}{level}")
     String showSkill(@PathVariable("name")String name, @PathVariable("level")String level, Model model){

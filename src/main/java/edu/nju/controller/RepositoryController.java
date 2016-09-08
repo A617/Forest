@@ -1,10 +1,9 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.Repository;
 import edu.nju.service.RepositoryService;
-import edu.nju.service.vo.RepositoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +20,10 @@ public class RepositoryController {
     @Autowired
     RepositoryService service;
 
-    @RequestMapping("/repository/{id}")
-    String showRepositories(@PathVariable("id")String id, Model model){
+    @RequestMapping("/repository/{fullname}")
+    String showRepositories(@PathVariable("fullname")String fullname, Model model){
 
-        RepositoryVO repository = new RepositoryVO();
-        repository.setFull_name("repository");
-        repository.setDescription("description");
+        Repository repository = service.showRepository(fullname);
 
         model.addAttribute("repo",repository);
         return "repository";

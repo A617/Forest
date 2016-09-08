@@ -2,6 +2,7 @@ package edu.nju.service.impl;
 
 import edu.nju.data.dao.IRepoDao;
 import edu.nju.data.model.MemberReport;
+import edu.nju.data.model.Repository;
 import edu.nju.service.RepositoryService;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,10 @@ public class RepositoryServiceImpl implements RepositoryService {
     @Override
     public int reportRepository(MemberReport report) {
         return repoDao.reportRepository(report);
+    }
+
+    @Override
+    public Repository showRepository(String fullname) {
+        return repoDao.getReposByFullName(fullname);
     }
 }

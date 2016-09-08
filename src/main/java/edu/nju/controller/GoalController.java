@@ -1,6 +1,7 @@
 package edu.nju.controller;
 
 import edu.nju.data.model.Role;
+import edu.nju.data.model.Skill;
 import edu.nju.service.MemberService;
 import edu.nju.service.RoleService;
 import edu.nju.service.vo.SignedInUser;
@@ -32,11 +33,21 @@ public class GoalController {
     }
 
     @RequestMapping("/goal/{id}")
-    String showRole(@PathVariable("id")int id,@RequestParam(required = false)String user, Model model){
+    String showRole(@PathVariable("id")int id,@RequestParam(required = false)String user, Model model, HttpSession session){
         Role role = service.showRole(id);
         model.addAttribute("role",role);
-        List<SkillVO> list = service.showSkills(id, user);
-        model.addAttribute("skills",list);
+
+        SignedInUser signedInUser = (SignedInUser) session.getAttribute("user");
+
+        if(signedInUser.getRole()!=null && signedInUser.getRole().equals(role.getName())){
+            // 浏览本人的role skills
+            List<SkillVO> list = service.showSkills(id, user);
+            model.addAttribute("skills",list);
+        }else{
+            //浏览的role非本人选择
+            List<Skill> list = service.showCommonSkills(id);
+            model.addAttribute("skills",list);
+        }
         return "goal";
     }
 
