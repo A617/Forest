@@ -34,6 +34,12 @@ public class RoleDaoImpl implements IRoleDao {
     }
 
     @Override
+    public Role selectRoleById(int id) {
+        Role r=roleMapper.selectRoleById(id);
+        return r;
+    }
+
+    @Override
     public List<Skill> showSkills(String roleName) {
         return roleSkillMapper.selectSkill(roleName);
     }

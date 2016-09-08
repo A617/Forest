@@ -1,6 +1,7 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Member;
+import edu.nju.data.model.Role;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,11 +18,20 @@ import javax.annotation.Resource;
 public class MemberMapperTest {
     @Resource
     private MemberMapper mapper;
+    @Resource
+    private RoleMapper mapper2;
+
     @Test
     public void searchMember() throws Exception {
         String name="dy";
         Member m=mapper.searchMember(name);
         System.out.print(m.getRole());
+    }
+
+    @Test
+    public void selectRoleById() throws Exception{
+        Role r=mapper2.selectRoleById(4);
+        System.out.print(r.getDescription());
     }
 
 }
