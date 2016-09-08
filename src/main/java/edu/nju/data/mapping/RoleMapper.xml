@@ -73,7 +73,7 @@
     <include refid="Base_Column_List" />
     from role
   </select>
-  <select id="showAll" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+  <select id="selectRoleById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
     <include refid="Base_Column_List" />
     from role
