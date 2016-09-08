@@ -1,4 +1,4 @@
-package edu.nju.data.impl;
+package edu.nju.data.Impl;
 
 import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.model.Role;

@@ -1,15 +1,12 @@
-package edu.nju.data.impl;
+package edu.nju.data.Impl;
 
 
 import edu.nju.data.dao.ISkillDao;
-import edu.nju.data.dao.mapper.RepositoryMapper;
 import edu.nju.data.dao.mapper.SkillMapper;
 import edu.nju.data.model.Repository;
-import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.model.Skill;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 @org.springframework.stereotype.Repository("skillDao")
 /**
