@@ -132,8 +132,8 @@
     AND s.skill_name = #{0} AND s.level = #{1}
   </select>
   <select id="getUserMasterSkills" resultMap="SkillResultMap" parameterType="java.lang.String">
-    SELECT s.name,s.level,s.catelog FROM skill s,member_skill m
-    WHERE s.name = m.skill_name AND s.level = m.level
+    SELECT s.name,m.level,s.catelog FROM skill s,member_skill m
+    WHERE s.name = m.skill_name
     AND m.username = #{username,jdbcType=VARCHAR}
   </select>
 </mapper>
