@@ -33,19 +33,23 @@ public class GoalController {
     }
 
     @RequestMapping("/goal/{id}")
-    String showRole(@PathVariable("id")int id,@RequestParam(required = false)String user, Model model, HttpSession session){
+    String showRole(@PathVariable("id")int id, Model model, HttpSession session){
         Role role = service.showRole(id);
         model.addAttribute("role",role);
 
         SignedInUser signedInUser = (SignedInUser) session.getAttribute("user");
 
-        if(signedInUser.getRole()!=null && signedInUser.getRole().equals(role.getName())){
+        if(signedInUser!=null && signedInUser.getRole()!=null && signedInUser.getRole().equals(role.getName())){
             // 浏览本人的role skills
-            List<SkillVO> list = service.showSkills(id, user);
+            List<SkillVO> list = service.showSkills(id, signedInUser.getUsername());
+            System.out.println("本人");
+            System.out.println(list);
             model.addAttribute("skills",list);
         }else{
             //浏览的role非本人选择
             List<Skill> list = service.showCommonSkills(id);
+            System.out.println("非本人");
+            System.out.println(list);
             model.addAttribute("skills",list);
         }
         return "goal";
@@ -91,5 +95,10 @@ public class GoalController {
         List<Role> list = service.showAllRoles();
         model.addAttribute("roles",list);
         return "roles";
+    }
+
+    @RequestMapping("/index")
+    String index(Model model){
+        return select(model);
     }
 }

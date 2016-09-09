@@ -1,11 +1,11 @@
 package edu.nju.data.model;
 
 public class Skill {
-    private String name;
+    protected String name;
 
-    private Integer level;
+    protected Integer level;
 
-    private String catelog;
+    protected String catelog;
 
     public Skill(String name, Integer level, String catelog) {
         this.name = name;

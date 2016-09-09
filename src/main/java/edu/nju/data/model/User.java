@@ -1,7 +1,11 @@
 package edu.nju.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class User {
     private String login;
 
@@ -29,8 +33,10 @@ public class User {
 
     private Integer following;
 
+    @JsonDeserialize(using = MyDateDeserializer.class)
     private Date created_at;
 
+    @JsonDeserialize(using = MyDateDeserializer.class)
     private Date updated_at;
 
     private Double popular_score;
@@ -211,5 +217,32 @@ public class User {
 
     public void setLanguages(String languages) {
         this.languages = languages;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", html_url='" + html_url + '\'' +
+                ", type='" + type + '\'' +
+                ", avatar_url='" + avatar_url + '\'' +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", email='" + email + '\'' +
+                ", blog='" + blog + '\'' +
+                ", company='" + company + '\'' +
+                ", public_repos=" + public_repos +
+                ", public_gists=" + public_gists +
+                ", followers=" + followers +
+                ", following=" + following +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", popular_score=" + popular_score +
+                ", teamwork_score=" + teamwork_score +
+                ", liveness_score=" + liveness_score +
+                ", experience_score=" + experience_score +
+                ", quantity_score=" + quantity_score +
+                ", languages='" + languages + '\'' +
+                '}';
     }
 }

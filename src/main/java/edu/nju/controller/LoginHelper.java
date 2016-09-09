@@ -1,5 +1,6 @@
 package edu.nju.controller;
 
+import edu.nju.service.vo.SignedInUser;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -8,6 +9,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,4 +51,10 @@ public class LoginHelper {
 
     }
 
+    public static SignedInUser getSignInUser(HttpSession session){
+        SignedInUser signedInUser = null;
+        if(session.getAttribute("user")!=null)
+            signedInUser = (SignedInUser) session.getAttribute("user");
+        return signedInUser;
+    }
 }

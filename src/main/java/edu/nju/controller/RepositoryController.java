@@ -20,11 +20,10 @@ public class RepositoryController {
     @Autowired
     RepositoryService service;
 
-    @RequestMapping("/repository/{fullname}")
-    String showRepositories(@PathVariable("fullname")String fullname, Model model){
-
-        Repository repository = service.showRepository(fullname);
-
+    @RequestMapping("/repository//{ownerName}/{repoName:.+}")
+    String showRepositories(@PathVariable String ownerName, @PathVariable String repoName, Model model){
+        String fullName = ownerName + "/" + repoName;
+        Repository repository = service.showRepository(fullName);
         model.addAttribute("repo",repository);
         return "repository";
 

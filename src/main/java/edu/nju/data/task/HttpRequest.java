@@ -15,15 +15,18 @@ import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.annotation.PostConstruct;
+
 @SuppressWarnings("deprecation")
 public class HttpRequest {
 
     private static final Logger log = Logger.getLogger(HttpRequest.class);
 
-    @Value("{token}")
-    private static String token;
+
+    private static final String token = "fb6f267f906faba3d59eace5376739ed737512ed";
 
     public static String getGithubContentUsingHttpClient(String url) throws IOException {
+//        System.out.println(token + ":x-oauth-basic@" + url);
         return sendGet(token + ":x-oauth-basic@" + url);
     }
 
@@ -153,4 +156,6 @@ public class HttpRequest {
             }
         }
     }
+
+
 }

@@ -1,9 +1,9 @@
 <tr>
     <td>#</td>
     <td>
-        <a href="/skill/${skill.skillName}${skill.userLevel}">${skill.skillName}</a>
+        <a href="/skill/${skill.name}/${skill.level}">${skill.name}</a>
         <br />
-        <small>${skill.skillName}</small>
+        <small>${skill.catelog}</small>
     </td>
     <td>
 ##        <ul class="list-inline">
@@ -24,7 +24,7 @@
     </td>
     <td class="project_progress">
         <div class="progress progress_sm">
-            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77"></div>
+            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="${}"></div>
         </div>
         <small>77% Complete</small>
     </td>
@@ -32,7 +32,7 @@
         <button type="button" class="btn btn-success btn-xs">Success</button>
     </td>
     <td>
-        <a href="/skill/${skill.name}${skill.level}" class="btn btn-primary btn-xs"><i class="fa fa-chevron-right"></i> View </a>
+        <a href="/skill/${skill.name}/${skill.level}" class="btn btn-primary btn-xs"><i class="fa fa-chevron-right"></i> View </a>
         <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
         <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
     </td>

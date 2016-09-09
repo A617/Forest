@@ -3,7 +3,7 @@ package edu.nju.data.dao.mapper;
 import edu.nju.data.model.Repository;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Component

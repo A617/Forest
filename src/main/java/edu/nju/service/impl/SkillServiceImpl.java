@@ -28,7 +28,7 @@ public class SkillServiceImpl implements SkillService {
         List<Repository> data = skillDao.showRecommendRepos(skill);
         List<String> learned = memberDao.getLearnedRepos(userName);
         for (Repository repo : data) {
-            RepositoryVO repos = (RepositoryVO) repo;
+            RepositoryVO repos = new RepositoryVO(repo);
             String name = repo.getName();
             for (String str : learned) {
                 if (str.equals(name)) {

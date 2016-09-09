@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     #parse("/templates/common/header.vm")
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <title>Java | Forest</title>
+    <title>${skill.name} | Forest</title>
 </head>
+
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
@@ -17,7 +16,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Java <small>Study Progress</small></h3>
+                        <h3>${skill.name} <small>Study Progress</small></h3>
                     </div>
 
                 ##                    <div class="title_right">
@@ -62,13 +61,13 @@
                                 <div class="to_do accordion" id="accordion" role="tablist" aria-multiselectable="true">
                                     #set($numbers=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'])
                                     #foreach($repo in $repos)
-                                        #set($index=$numbers[$velocityCount])
-                                        #if($repo.isLearned==false)
-                                            #parse("/templates/skill/repo_brief.vm")
-                                        #else
-                                            #parse("/templates/skill/repo_brief_collapsed.vm")
-                                        #end
+                                    #set($index=$numbers[$velocityCount])
+                                    #if($repo.isLearned==false)
+                                        #parse("/templates/skill/repo_brief.vm")
+                                    #else
+                                        #parse("/templates/skill/repo_brief_collapsed.vm")
                                     #end
+                                #end
                                 </div>
                             </div>
                         </div>
@@ -77,29 +76,31 @@
                 </div>
             </div>
         </div>
+        <!-- page content -->
+
         #parse("/templates/common/footer.vm")
     </div>
 </div>
+
 <!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<script src="/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- iCheck -->
-<script src="../vendors/iCheck/icheck.min.js"></script>
+<script src="/vendors/nprogress/nprogress.js"></script>
 <!-- bootstrap-progressbar -->
-<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
 <!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+<script src="/build/js/custom.min.js"></script>
 
 <script>
     function submitLearn(repoName) {
         alert(repoName);
     }
-
 </script>
+
 </body>
 </html>

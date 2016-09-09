@@ -19,7 +19,7 @@ public class RoleServiceTest {
 
     @Test
     public void testShowSkills(){
-        String userName = "tj";
+        String userName = "oraisdy";
         System.out.println(service.showSkills(1,userName));
     }
 

@@ -1,12 +1,20 @@
 package edu.nju.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Repository {
+
     protected String full_name;
 
     protected String name;
 
+    @JsonProperty("login")
     protected String owner_name;
 
     protected String language;
@@ -21,10 +29,13 @@ public class Repository {
 
     protected String homepage;
 
+    @JsonDeserialize(using = MyDateDeserializer.class)
     protected Date created_at;
 
+    @JsonDeserialize(using = MyDateDeserializer.class)
     protected Date pushed_at;
 
+    @JsonDeserialize(using = MyDateDeserializer.class)
     protected Date updated_at;
 
     protected Integer size;
@@ -232,4 +243,34 @@ public class Repository {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Repository{" +
+                "full_name='" + full_name + '\'' +
+                ", name='" + name + '\'' +
+                ", owner_name='" + owner_name + '\'' +
+                ", language='" + language + '\'' +
+                ", open_issues_count=" + open_issues_count +
+                ", watchers_count=" + watchers_count +
+                ", clone_url='" + clone_url + '\'' +
+                ", html_url='" + html_url + '\'' +
+                ", homepage='" + homepage + '\'' +
+                ", created_at=" + created_at +
+                ", pushed_at=" + pushed_at +
+                ", updated_at=" + updated_at +
+                ", size=" + size +
+                ", stargazers_count=" + stargazers_count +
+                ", forks_count=" + forks_count +
+                ", subscribers_count=" + subscribers_count +
+                ", languages='" + languages + '\'' +
+                ", size_score=" + size_score +
+                ", scale_score=" + scale_score +
+                ", promising_score=" + promising_score +
+                ", participation_score=" + participation_score +
+                ", hot_score=" + hot_score +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
 }

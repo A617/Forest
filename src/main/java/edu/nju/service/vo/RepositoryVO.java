@@ -16,4 +16,20 @@ public class RepositoryVO extends Repository {
     public void setLearned(boolean learned) {
         isLearned = learned;
     }
+
+    public RepositoryVO(Repository repository) {
+        setDescription(repository.getDescription());
+        setFull_name(repository.getFull_name());
+        setClone_url(repository.getClone_url());
+        setCreated_at(repository.getCreated_at());
+        setForks_count(repository.getForks_count());
+        setHomepage(repository.getHomepage());
+        setHtml_url(repository.getHtml_url());
+        setName(repository.getName());
+        setStargazers_count(repository.getStargazers_count());
+        setOpen_issues_count(repository.getOpen_issues_count());
+        setSize(repository.getSize());
+    }
+
+
 }

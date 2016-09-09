@@ -48,15 +48,15 @@ public class RoleServiceImpl implements RoleService {
             SkillVO vo = new SkillVO();
             for (Skill need : list) {
                 if (need.getName().equals(name)) {
-                    vo.skillName = name;
-                    vo.userLevel = level;
-                    vo.skillLevel = need.getLevel();
-                    vo.category = need.getCatelog();
-                    vo.progress = vo.userLevel * 1.0 / vo.skillLevel;
-                    if (vo.progress >= 1) {
-                        vo.status = true;
+                    vo.setName(name);
+                    vo.setUserLevel(level);
+                    vo.setLevel(need.getLevel());
+                    vo.setCatelog(need.getCatelog());
+                    vo.setProgress((int)(vo.getUserLevel() * 1.0 / vo.getLevel() * 100));
+                    if (vo.getProgress() >= 1) {
+                        vo.setStatus(true);
                     } else {
-                        vo.status = false;
+                        vo.setStatus(false);
                     }
                     result.add(vo);
                     break;

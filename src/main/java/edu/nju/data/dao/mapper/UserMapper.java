@@ -1,7 +1,9 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface UserMapper {
     int deleteByPrimaryKey(String login);
 
