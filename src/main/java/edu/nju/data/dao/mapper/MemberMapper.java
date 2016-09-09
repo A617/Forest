@@ -3,6 +3,7 @@ package edu.nju.data.dao.mapper;
 import edu.nju.data.model.Member;
 
 import java.sql.Date;
+import java.util.List;
 
 public interface MemberMapper {
     int deleteByPrimaryKey(String username);
@@ -27,4 +28,5 @@ public interface MemberMapper {
 
     int addMember(Member member);
 
+    List<String> getLearnedRepos(String username);
 }

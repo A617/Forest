@@ -13,6 +13,14 @@ public class Skill {
         this.catelog = catelog;
     }
 
+    public Skill(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+
+    public Skill() {
+    }
+
     public String getName() {
         return name;
     }

@@ -2,6 +2,7 @@ package edu.nju.data.mapping;
 
 import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
+import edu.nju.data.dao.mapper.SkillMapper;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import org.junit.Test;
@@ -21,7 +22,8 @@ import java.util.List;
 public class RoleSkillMapperTest {
     @Resource
     private RoleSkillMapper dao;
-
+    @Resource
+    private SkillMapper skillMapper;
 
     @Test
     public void selectSkillNameTest() throws Exception {
@@ -30,5 +32,10 @@ public class RoleSkillMapperTest {
         for(Skill s:list){
             System.out.println(s.getName()+" "+s.getCatelog());
         }
+    }
+
+    @Test
+    public void testShowRepos(){
+        System.out.println(skillMapper.getRepo("CSS",2));
     }
 }

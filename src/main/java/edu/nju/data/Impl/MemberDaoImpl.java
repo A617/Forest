@@ -6,6 +6,8 @@ import edu.nju.data.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by tjDu on 2016/9/8.
  */
@@ -27,5 +29,10 @@ public class MemberDaoImpl implements IMemberDao {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<String> getLearnedRepos(String username) {
+        return memberMapper.getLearnedRepos(username);
     }
 }

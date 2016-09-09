@@ -2,6 +2,8 @@ package edu.nju.data.dao;
 
 import edu.nju.data.model.Member;
 
+import java.util.List;
+
 /**
  * Created by tjDu on 2016/9/8.
  */
@@ -18,4 +20,6 @@ public interface IMemberDao {
      * @return
      */
     boolean addMember(Member member);
+
+    List<String> getLearnedRepos(String username);
 }

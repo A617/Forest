@@ -43,4 +43,9 @@ public class MemberMapperTest {
         dao.updateLevel(skill_name,username,date);
     }
 
+    @Test
+    public void testGetLearnedRepo(){
+        System.out.println(dao.getLearnedRepos("tj"));
+    }
+
 }

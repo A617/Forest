@@ -105,4 +105,9 @@
   <insert id="addMember" parameterType="edu.nju.data.model.Member" flushCache="true">
     insert into member(username,password,member_email,role) values(#{username},#{password},#{member_email},#{role})
   </insert>
+  <select id="getLearnedRepos"  resultType="java.lang.String" parameterType="java.lang.String" >
+    select repoName
+    from member_repo
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
 </mapper>
