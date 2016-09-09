@@ -62,7 +62,6 @@
                                     #set($numbers=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'])
                                     #foreach($repo in $repos)
                                     #set($index=$numbers[$velocityCount])
-                                    $repo
                                     #if($repo.isLearned==false)
                                         #parse("/templates/skill/repo_brief.vm")
                                     #else
