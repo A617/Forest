@@ -29,7 +29,7 @@ public class SkillServiceImpl implements SkillService {
         List<String> learned = memberDao.getLearnedRepos(userName);
         for (Repository repo : data) {
             RepositoryVO repos = new RepositoryVO(repo);
-            String name = repo.getName();
+            String name = repo.getFull_name();
             for (String str : learned) {
                 if (str.equals(name)) {
                     repos.setLearned(true);

@@ -3,8 +3,8 @@
 <head>
     #parse("/templates/common/header.vm")
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <title>Java | Forest</title>
+    <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <title>${repo.full_name}</title>
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -17,7 +17,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Project Detail</h3>
+                        <h3><a href="${repo.html_url}">${repo.full_name}  <i class="fa fa-github"></i></a></small></h3>
                     </div>
                 </div>
 
@@ -27,13 +27,7 @@
                     <div class="col-md-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>${repo.full_name}</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
+##                                <h2></h2>
                                 <div class="clearfix"></div>
                             </div>
 
@@ -48,11 +42,11 @@
                                         </li>
                                         <li>
                                             <span class="name"> Stargazers </span>
-                                            <span class="value text-success"> 2000 </span>
+                                            <span class="value text-success"> ${repo.stargazers_count} </span>
                                         </li>
                                         <li class="hidden-phone">
                                             <span class="name"> Forks </span>
-                                            <span class="value text-success"> 20 </span>
+                                            <span class="value text-success"> ${repo.forks_count} </span>
                                         </li>
                                     </ul>
                                     <br />
@@ -128,43 +122,43 @@
                                     <section class="panel">
 
                                         <div class="x_title">
-                                            <h2>Repository Description</h2>
+                                            <h2 style="margin-top: 8px;margin-bottom: 14px">Repository Description</h2>
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="panel-body">
-                                            <h3 class="green">${repo.full_name}</h3>
+                                            <h3 class="green" style="margin-top: 2px;">${repo.full_name}</h3>
 
                                             <p>${repo.description}</p>
                                             <br />
 
                                             <div class="project_detail">
 
-                                                <p class="title">Repository owner</p>
-                                                <p>${repo.owner}</p>
+                                                <p class="title">Language</p>
+                                                <p>${repo.language}</p>
                                                 <p class="title">Created at</p>
-                                                <p>${repo.createdAt}</p>
+                                                <p>${repo.created_at}</p>
                                             </div>
 
                                             <br />
-                                            <h5>Project files</h5>
-                                            <ul class="list-unstyled project_files">
-                                                <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
-                                                </li>
-                                                <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
-                                                </li>
-                                                <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
-                                                </li>
-                                                <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
-                                                </li>
-                                                <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
-                                                </li>
-                                            </ul>
-                                            <br />
-
-                                            <div class="text-center mtop20">
-                                                <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                                                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-                                            </div>
+##                                            <h5>Project files</h5>
+##                                            <ul class="list-unstyled project_files">
+##                                                <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
+##                                                </li>
+##                                                <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
+##                                                </li>
+##                                                <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
+##                                                </li>
+##                                                <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+##                                                </li>
+##                                                <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
+##                                                </li>
+##                                            </ul>
+##                                            <br />
+##
+##                                            <div class="text-center mtop20">
+##                                                <a href="#" class="btn btn-sm btn-primary">Add files</a>
+##                                                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+##                                            </div>
                                         </div>
 
                                     </section>

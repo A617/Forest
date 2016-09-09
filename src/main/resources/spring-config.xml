@@ -13,7 +13,8 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/skill/*"/>
+            <mvc:mapping path="/skill/**"/>
+            <mvc:mapping path="/repository/**"/>
             <bean class="edu.nju.controller.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

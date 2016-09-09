@@ -16,7 +16,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>${skill.name} <small>Study Progress</small></h3>
+                        <h3>${skill.name} <small>level ${skill.level}</small></h3>
                     </div>
 
                 ##                    <div class="title_right">
@@ -62,6 +62,7 @@
                                     #set($numbers=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'])
                                     #foreach($repo in $repos)
                                     #set($index=$numbers[$velocityCount])
+                                    $repo
                                     #if($repo.isLearned==false)
                                         #parse("/templates/skill/repo_brief.vm")
                                     #else
@@ -98,7 +99,15 @@
 
 <script>
     function submitLearn(repoName) {
-        alert(repoName);
+        console.log("submit");
+        jQuery.post("/repository/learn",
+                {
+                    repoName:repoName,
+                },
+                function(data,status){
+                    if(data==true)
+                            location.reload();
+                });
     }
 </script>
 

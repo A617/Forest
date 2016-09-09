@@ -1,13 +1,15 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 import edu.nju.service.RepositoryService;
+import edu.nju.service.vo.SignedInUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Dora on 2016/7/27.
@@ -20,7 +22,7 @@ public class RepositoryController {
     @Autowired
     RepositoryService service;
 
-    @RequestMapping("/repository//{ownerName}/{repoName:.+}")
+    @RequestMapping("/repository/{ownerName}/{repoName:.+}")
     String showRepositories(@PathVariable String ownerName, @PathVariable String repoName, Model model){
         String fullName = ownerName + "/" + repoName;
         Repository repository = service.showRepository(fullName);
@@ -29,4 +31,20 @@ public class RepositoryController {
 
     }
 
+    @RequestMapping(value = "/repository/learn", method = RequestMethod.POST)
+    @ResponseBody  boolean learn(String repoName, HttpSession session){
+        SignedInUser user = LoginHelper.getSignInUser(session);
+        if(user==null)
+            return false;
+        return service.learnRepository(user.getUsername(),repoName)>0?true:false;
+    }
+
+//    @RequestMapping(value = "/repository/report", method = RequestMethod.POST)
+//    @ResponseBody  boolean report(String repoName, HttpSession session){
+//        SignedInUser user = LoginHelper.getSignInUser(session);
+//        if(user==null)
+//            return false;
+//        MemberReport report = new MemberReport();
+//        return service.reportRepository(report)>0?true:false;
+//    }
 }

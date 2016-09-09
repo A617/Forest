@@ -32,4 +32,10 @@ public class RepositoryVO extends Repository {
     }
 
 
+    @Override
+    public String toString() {
+        return "RepositoryVO{" +
+                "isLearned=" + isLearned +
+                "} " + super.toString();
+    }
 }
