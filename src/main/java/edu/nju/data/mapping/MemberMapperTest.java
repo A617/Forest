@@ -45,7 +45,8 @@ public class MemberMapperTest {
 
     @Test
     public void testGetLearnedRepo(){
-        System.out.println(dao.getLearnedRepos("tj"));
+
+       dao.getLearnedRepos("oraisdy");
     }
 
 }

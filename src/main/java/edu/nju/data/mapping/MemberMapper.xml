@@ -106,8 +106,8 @@
     insert into member(username,password,member_email,role) values(#{username},#{password},#{member_email},#{role})
   </insert>
   <select id="getLearnedRepos"  resultType="java.lang.String" parameterType="java.lang.String" >
-    select repoName
-    from member_repo
-    where username = #{username,jdbcType=VARCHAR}
+    select full_name
+    from member_report
+    where evaluate = 0 AND username = #{username,jdbcType=VARCHAR}
   </select>
 </mapper>
