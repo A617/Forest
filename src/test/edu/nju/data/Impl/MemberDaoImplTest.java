@@ -22,7 +22,7 @@ public class MemberDaoImplTest {
 
     @Test
     public void showMember() throws Exception {
-
+        System.out.println(dao.showMember("dtj").getRole());
     }
 
     @Test
