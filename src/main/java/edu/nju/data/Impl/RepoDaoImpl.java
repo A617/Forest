@@ -305,7 +305,7 @@ public class RepoDaoImpl implements IRepoDao {
     @Override
     public int reportRepository(MemberReport report) {
 
-        return mapper2.updateEvaluateAndReason(report);
+        return mapper2.insert(report);
     }
 
     @Override

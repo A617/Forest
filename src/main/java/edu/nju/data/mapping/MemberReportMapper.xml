@@ -90,10 +90,4 @@
       time = #{time,jdbcType=TIMESTAMP}
     where username = #{username,jdbcType=VARCHAR}
   </update>
-  <update id="updateEvaluateAndReason" parameterType="edu.nju.data.model.MemberReport" >
-    update member_report
-    set evaluate = #{evaluate,jdbcType=INTEGER},
-    reason = #{reason,jdbcType=VARCHAR}
-    where username = #{username,jdbcType=VARCHAR} and full_name = #{fullName,jdbcType=VARCHAR}
-  </update>
 </mapper>
