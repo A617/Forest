@@ -16,6 +16,11 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class MemberDaoImplTest {
     @Test
+    public void levelUp() throws Exception {
+
+    }
+
+    @Test
     public void showMember() throws Exception {
 
     }

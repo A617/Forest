@@ -3,7 +3,8 @@
 <head>
     #parse("/templates/common/header.vm")
     <title>${skill.name} | Forest</title>
-    #set($nextLevel = ${skill.level} + 1)
+    #set($myLevel = ${skill.level} - 1)
+    #set($nextTarget = ${skill.level} + 1)
 </head>
 
 <body class="nav-md">
@@ -17,7 +18,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>${skill.name} <small>level ${skill.level}</small></h3>
+                        <h3>${skill.name} <small>Current Target: level ${skill.level}</small></h3>
                     </div>
 
                 ##                    <div class="title_right">
@@ -85,12 +86,12 @@
                                                 <h4 class="modal-title" id="myModalLabel2">${skill.name} level up</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Your will reach <strong>level $nextLevel</strong> !</h4>
-                                                <p>After learning all the repositories for ${skill.name} you can uprade your skill level.</p>
+                                                <h4>You will reach <strong>level ${skill.level}</strong> !</h4>
+                                                <p>After learning all the repositories for ${skill.name} you can upgrade your skill.</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-success" onclick="levelUp('$skill.name');">Level up</button>
+                                                <button type="button" class="btn btn-success" onclick="levelUp('${skill.name}',$myLevel);">Level up</button>
                                             </div>
                                         </div>
                                     </div>
@@ -130,6 +131,7 @@
                     repoName:repoName,
                 },
                 function(data,status){
+                    console.log(data,status);
                     if(data==true)
                             location.reload();
                 });
@@ -148,14 +150,18 @@
 
     }
 
-    function levelUp(skillName) {
+    function levelUp(skillName,nowLevel) {
         jQuery.post("/skill/levelup",
                 {
-                    skillName:skillName
+                    skillName:skillName,
+                    nowLevel:nowLevel
                 },
                 function(data,status){
+                    console.log(data,status);
                     if(data==true)
-                        location.href = "/skill/$skill.name/$nextLevel";
+                        location.href = "/skill/$skill.name/$nextTarget";
+                    else
+                        location.href = "/goal";
                 });
 
     }

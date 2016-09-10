@@ -47,6 +47,14 @@ public class SkillServiceImpl implements SkillService {
 
     @Override
     public int levelUp(String roleName, Skill skill, String userName) {
-        return memberDao.levelUp( skill, userName);
+        Skill sk = skillDao.getSkills(roleName,skill.getName());
+        if(sk==null)    return 0;
+        int highestLevel = sk.getLevel();
+        if(skill.getLevel()+1<highestLevel)
+            return memberDao.levelUp( skill, userName);
+        //  升级后达到最大等级也返回false
+        if(skill.getLevel()+1==highestLevel)
+            memberDao.levelUp( skill, userName);
+        return 0;
     }
 }
