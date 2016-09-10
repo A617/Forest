@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.nju.data.dao.mapper.GraduateRecordMapper" >
+  <resultMap id="BaseResultMap" type="edu.nju.data.model.GraduateRecord" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <id column="role" property="role" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    username, role, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from member_goal
+    where username = #{username,jdbcType=VARCHAR}
+      and role = #{role,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from member_goal
+    where username = #{username,jdbcType=VARCHAR}
+      and role = #{role,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="edu.nju.data.model.GraduateRecord" >
+    insert into member_goal (username, role, time
+      )
+    values (#{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="edu.nju.data.model.GraduateRecord" >
+    insert into member_goal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.GraduateRecord" >
+    update member_goal
+    <set >
+      <if test="time != null" >
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where username = #{username,jdbcType=VARCHAR}
+      and role = #{role,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.GraduateRecord" >
+    update member_goal
+    set time = #{time,jdbcType=TIMESTAMP}
+    where username = #{username,jdbcType=VARCHAR}
+      and role = #{role,jdbcType=VARCHAR}
+  </update>
+</mapper>

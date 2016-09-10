@@ -35,7 +35,7 @@ public class MemberMapperTest {
         int level=0;
         java.sql.Date date;
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        dao.insertMemberSkill(username,skill_name,level,date);
+//        dao.insertMemberSkill(username,skill_name,level,date);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class MemberMapperTest {
         date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         String username="dy";
         String skill_name="OW";
-        dao.updateLevel(skill_name,username,date);
+//        dao.updateLevel(skill_name,username,date);
     }
 
     @Test
