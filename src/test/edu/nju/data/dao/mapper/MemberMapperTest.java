@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 /**
  * Created by fwtgm on 2016/9/6.
@@ -17,15 +18,44 @@ import javax.annotation.Resource;
 
 public class MemberMapperTest {
     @Resource
-    private MemberMapper mapper;
+    private MemberMapper dao;
     @Resource
-    private RoleMapper mapper2;
+    private RepositoryMapper repoMapper;
 
     @Test
-    public void searchMember() throws Exception {
+    public void updateRoleTest() throws Exception {
         String name="dy";
-        Member m=mapper.searchMember(name);
-        System.out.print(m.getRole());
+        String role="doge";
+        dao.updateRole(name,role);
+    }
+    @Test
+    public void insertMemberSkillTest() throws Exception {
+        String username="dy";
+        String skill_name="OW";
+        int level=0;
+        java.sql.Date date;
+        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        dao.insertMemberSkill(username,skill_name,level,date);
+    }
+
+    @Test
+    public void updateLevelTest() throws Exception {
+        java.sql.Date date;
+        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        String username="dy";
+        String skill_name="OW";
+        dao.updateLevel(skill_name,username,date);
+    }
+
+    @Test
+    public void testGetLearnedRepo(){
+
+        dao.getLearnedRepos("oraisdy");
+    }
+
+    @Test
+    public void testGetAllSimpleRepos(){
+        System.out.println(repoMapper.getAllSimpleRepo().size());
     }
 
 
