@@ -1,7 +1,8 @@
 <tr>
-    <td>#</td>
+    #set($nextLevel = ${skill.userLevel} + 1)
+    <td>$foreach.count</td>
     <td>
-        <a href="/skill/${skill.name}/${skill.level}">${skill.name}</a>
+        <a href="/skill/${skill.name}/$nextLevel">${skill.name}</a>
         <br />
         <small>${skill.catelog}</small>
     </td>
@@ -15,24 +16,31 @@
 ##            </li>
 ##        </ul>
         <p class="ratings">
-            <a href="#"><span class="tree"></span></a>
-            <a href="#"><span class="tree"></span></a>
-            <a href="#"><span class="tree"></span></a>
-            <a href="#"><span class="tree"></span></a>
-            <a href="#"><span class="tree-o"></span></a>
+            #set($i = 0)
+             #foreach($i in [1,2,3,4,5,6,7])
+                 #if($foreach.count <= $skill.userLevel)
+                     <a href="#"><span class="tree"></span></a>
+                 #elseif($foreach.count <= $skill.level)
+                     <a href="#"><span class="tree-o"></span></a>
+                 #else
+                     #break
+                 #end
+             #end
         </p>
     </td>
+    #if(${skill.progress})
     <td class="project_progress">
         <div class="progress progress_sm">
-            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="${}"></div>
+            <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="${skill.progress}"></div>
         </div>
-        <small>77% Complete</small>
+            <small>$!{skill.progress}% Complete</small>
     </td>
     <td>
         <button type="button" class="btn btn-success btn-xs">Success</button>
     </td>
+    #end
     <td>
-        <a href="/skill/${skill.name}/${skill.level}" class="btn btn-primary btn-xs"><i class="fa fa-chevron-right"></i> View </a>
+        <a href="/skill/${skill.name}/$nextLevel" class="btn btn-primary btn-xs"><i class="fa fa-chevron-right"></i> View </a>
         <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
         <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
     </td>

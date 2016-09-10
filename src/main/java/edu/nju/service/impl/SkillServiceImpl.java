@@ -40,4 +40,9 @@ public class SkillServiceImpl implements SkillService {
         }
         return result;
     }
+
+    @Override
+    public int levelUp( Skill skill, String userName) {
+        return memberDao.levelUp( skill, userName);
+    }
 }

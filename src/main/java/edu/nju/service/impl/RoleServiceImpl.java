@@ -66,10 +66,7 @@ public class RoleServiceImpl implements RoleService {
         return result;
     }
 
-    @Override
-    public int levelUp(String roleName, Skill skill, String userName) {
-        return roleDao.levelUp(roleName, skill, userName);
-    }
+
 
     @Override
     public List<Role> showAllRoles() {

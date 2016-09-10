@@ -17,10 +17,17 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class SkillServiceImplTest {
     @Test
+    public void levelUp() throws Exception {
+        System.out.println(service.levelUp(new Skill("Java",0),"oraisdy"));
+    }
+
+    @Test
     public void showRecommendRepos() throws Exception {
 
         System.out.println(service.showRecommendRepos(new Skill("CSS",2),"oraisdy"));
     }
+
+
 
     @Autowired
     SkillService service;

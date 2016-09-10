@@ -1,6 +1,7 @@
 package edu.nju.data.dao;
 
 import edu.nju.data.model.Member;
+import edu.nju.data.model.Skill;
 
 import java.util.List;
 
@@ -20,6 +21,14 @@ public interface IMemberDao {
      * @return
      */
     boolean addMember(Member member);
+
+    /**
+     * 升级角色中的某项技能
+     *
+     * @param skill
+     * @param userName
+     */
+    int levelUp(Skill skill, String userName);
 
     List<String> getLearnedRepos(String username);
 }

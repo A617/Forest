@@ -35,14 +35,6 @@ public interface RoleService {
     List<SkillVO> showSkills(int id, String userName);
 
     /**
-     * 升级角色中的某项技能
-     *
-     * @param roleName
-     * @param skill
-     * @param userName
-     */
-    int levelUp(String roleName, Skill skill, String userName);
-    /**
      * 展示所有的角色
      * @return
      */

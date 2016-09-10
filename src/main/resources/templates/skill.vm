@@ -3,6 +3,7 @@
 <head>
     #parse("/templates/common/header.vm")
     <title>${skill.name} | Forest</title>
+    #set($nextLevel = ${skill.level} + 1)
 </head>
 
 <body class="nav-md">
@@ -42,15 +43,15 @@
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Settings 1</a>
-                                            </li>
-                                            <li><a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
+##                                    <li class="dropdown">
+##                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+##                                        <ul class="dropdown-menu" role="menu">
+##                                            <li><a href="#">Settings 1</a>
+##                                            </li>
+##                                            <li><a href="#">Settings 2</a>
+##                                            </li>
+##                                        </ul>
+##                                    </li>
                                     <li><a class="close-link"><i class="fa fa-close"></i></a>
                                     </li>
                                 </ul>
@@ -69,6 +70,32 @@
                                     #end
                                 #end
                                 </div>
+                                <br>
+
+                                <!-- Small modal -->
+                                <center><button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-sm">${skill.name} level up!</button>
+                                </center>
+                                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel2">${skill.name} level up</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Your will reach <strong>level $nextLevel</strong> !</h4>
+                                                <p>After learning all the repositories for ${skill.name} you can uprade your skill level.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-success" onclick="levelUp($skill.name);">Level up</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -98,7 +125,6 @@
 
 <script>
     function submitLearn(repoName) {
-        console.log("submit");
         jQuery.post("/repository/learn",
                 {
                     repoName:repoName,
@@ -107,6 +133,30 @@
                     if(data==true)
                             location.reload();
                 });
+    }
+
+    function submitReport(repoName) {
+        jQuery.post("/repository/report",
+                {
+                    repoName:repoName,
+                },
+                function(data,status){
+                    if(data==true)
+                        location.reload();
+                });
+
+    }
+
+    function levelUp(skillName) {
+        jQuery.post("/skill/levelup",
+                {
+                    skillName:skillName
+                },
+                function(data,status){
+                    if(data==true)
+                        location.href = location;
+                });
+
     }
 </script>
 

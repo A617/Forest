@@ -52,12 +52,6 @@ public class RoleDaoImpl implements IRoleDao {
         return roleSkillMapper.selectSkill(roleName);
     }
 
-    @Override
-    public int levelUp(String roleName, Skill skill, String userName) {
-        java.sql.Date date;
-        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        return memberMapper.updateLevel(skill.getName(), userName, date);
-    }
 
     @Override
     public List<Role> showAllRoles() {

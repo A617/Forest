@@ -7,10 +7,7 @@ import edu.nju.service.vo.SignedInUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class SkillController {
     SkillService service;
 
     @RequestMapping("/skill/{name}/{level}")
-    String showSkill(@PathVariable("name")String name, @PathVariable("level")int level, Model model, HttpSession session){
+    String showRecommendRepos(@PathVariable("name")String name, @PathVariable("level")int level, Model model, HttpSession session){
         SignedInUser user = LoginHelper.getSignInUser(session);
         List<RepositoryVO> list = null;
         Skill skill = new Skill(name,level);
@@ -38,5 +35,12 @@ public class SkillController {
         return "skill";
     }
 
-
+    @RequestMapping("/skill/levelup")
+    @ResponseBody boolean levelup(String skillName, HttpSession session) {
+        SignedInUser user = LoginHelper.getSignInUser(session);
+        if(user==null)  return false;
+        Skill skill = new Skill();
+        skill.setName(skillName);
+        return service.levelUp(skill, user.getUsername()) > 0? true:false;
+    }
 }

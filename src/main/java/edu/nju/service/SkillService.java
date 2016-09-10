@@ -17,4 +17,12 @@ public interface SkillService {
      * @return
      */
     List<RepositoryVO> showRecommendRepos(Skill skill,String userName);
+
+    /**
+     * 升级角色中的某项技能
+     *
+     * @param skill 只需要填写skillname
+     * @param userName
+     */
+    int levelUp(Skill skill, String userName);
 }
