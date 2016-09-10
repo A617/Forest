@@ -21,7 +21,7 @@
                 <span class="caret"></span>
             </a>
             <ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:submitReport(${repo.full_name});">Bad repository for the skill</a>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:submitReport('${repo.full_name}');">Bad repository for the skill</a>
                 </li>
 ##                <li role="presentation" class="divider"></li>
 ##                <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>

@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-success" onclick="levelUp($skill.name);">Level up</button>
+                                                <button type="button" class="btn btn-success" onclick="levelUp('$skill.name');">Level up</button>
                                             </div>
                                         </div>
                                     </div>
@@ -141,6 +141,7 @@
                     repoName:repoName,
                 },
                 function(data,status){
+                    console.log(data,status);
                     if(data==true)
                         location.reload();
                 });
@@ -154,7 +155,7 @@
                 },
                 function(data,status){
                     if(data==true)
-                        location.href = location;
+                        location.href = "/skill/$skill.name/$nextLevel";
                 });
 
     }

@@ -1,6 +1,7 @@
 package edu.nju.controller;
 
 import edu.nju.data.model.Skill;
+import edu.nju.service.RoleService;
 import edu.nju.service.SkillService;
 import edu.nju.service.vo.RepositoryVO;
 import edu.nju.service.vo.SignedInUser;
@@ -22,6 +23,8 @@ public class SkillController {
 
     @Autowired
     SkillService service;
+    @Autowired
+    RoleService roleService;
 
     @RequestMapping("/skill/{name}/{level}")
     String showRecommendRepos(@PathVariable("name")String name, @PathVariable("level")int level, Model model, HttpSession session){
@@ -38,9 +41,9 @@ public class SkillController {
     @RequestMapping("/skill/levelup")
     @ResponseBody boolean levelup(String skillName, HttpSession session) {
         SignedInUser user = LoginHelper.getSignInUser(session);
-        if(user==null)  return false;
+        if(user==null||user.getRole()==null)  return false;
         Skill skill = new Skill();
         skill.setName(skillName);
-        return service.levelUp(skill, user.getUsername()) > 0? true:false;
+        return service.levelUp(user.getRole(),skill, user.getUsername()) > 0? true:false;
     }
 }

@@ -21,8 +21,9 @@ public interface SkillService {
     /**
      * 升级角色中的某项技能
      *
+     * @param roleName
      * @param skill 只需要填写skillname
      * @param userName
      */
-    int levelUp(Skill skill, String userName);
+    int levelUp(String roleName, Skill skill, String userName);
 }

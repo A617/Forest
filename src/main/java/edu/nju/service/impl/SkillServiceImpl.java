@@ -1,11 +1,13 @@
 package edu.nju.service.impl;
 
 import edu.nju.data.dao.IMemberDao;
+import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.dao.ISkillDao;
 import edu.nju.data.model.Repository;
 import edu.nju.data.model.Skill;
 import edu.nju.service.SkillService;
 import edu.nju.service.vo.RepositoryVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +23,8 @@ public class SkillServiceImpl implements SkillService {
     ISkillDao skillDao;
     @Resource
     IMemberDao memberDao;
+    @Autowired
+    IRoleDao roleDao;
 
     @Override
     public List<RepositoryVO> showRecommendRepos(Skill skill, String userName) {
@@ -42,7 +46,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public int levelUp( Skill skill, String userName) {
+    public int levelUp(String roleName, Skill skill, String userName) {
         return memberDao.levelUp( skill, userName);
     }
 }
