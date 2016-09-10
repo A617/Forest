@@ -37,39 +37,42 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Select a role as your goal</h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+##                            <div class="x_title">
+##                                <h2>Select a role as your goal</h2>
+##                                <ul class="nav navbar-right panel_toolbox">
+##                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+##                                    </li>
+##                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+##                                    </li>
+##                                </ul>
+##                                <div class="clearfix"></div>
+##                            </div>
                             <div class="x_content">
 
-                                <div class="row">
+                                <div class="bs-glyphicons">
+                                    <ul class="bs-glyphicons-list">
                                     #foreach($role in $roles)
-                                        <div class="col-md-55">
-                                            <div class="thumbnail">
-                                                <div class="image view view-first">
-                                                    <img style="width: 100%; display: block;" src="/images/role${role.id}.png" alt="image" />
-                                                    <div class="mask">
-    ##                                                    <p>Web Developer</p>
-    ##                                                    <div class="tools tools-bottom">
-    ##                                                        <a href="#"><i class="fa fa-link"></i></a>
-    ##                                                        <a href="#"><i class="fa fa-pencil"></i></a>
-    ##                                                        <a href="#"><i class="fa fa-times"></i></a>
-    ##                                                    </div>
-                                                    </div>
-                                                </div>
-                                                <div class="caption">
-                                                  <a href="/goal/${role.id}" title="${role.name}" class="btn btn-success btn-block" role="button">Learn it</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <li>
+                                            <a href="/goal/${role.id}" title="${role.name}">
+                                                <span class="glyphicon glyphicon-king" style="font-size: 2.6em;" aria-hidden="true"></span>
+                                                <span class="glyphicon-class" style="font-size: 1.4em;">${role.name}</span>
+                                            </a>
+
+                                        </li>
+##                                        <div class="col-md-55">
+##                                            <div class="thumbnail">
+##                                                <div class="image view view-first">
+##                                                    <img style="width: 100%; display: block;" src="/images/role${role.id}.png" alt="image" />
+##                                                    <div class="mask">
+##                                                    </div>
+##                                                </div>
+##                                                <div class="caption">
+##                                                  <a href="/goal/${role.id}" title="${role.name}" class="btn btn-success btn-block" role="button">Learn it</a>
+##                                                </div>
+##                                            </div>
+##                                        </div>
                                     #end
+                                    </ul>
                                 </div>
                             </div>
                         </div>

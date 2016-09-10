@@ -1,5 +1,7 @@
 <!-- Large modal -->
-<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">START</button>
+<center>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg">  START  </button>
+</center>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -17,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="selectRole('${role.name}');">Save changes</button>
+                <button type="button" class="btn btn-success" onclick="selectRole('${role.name}');">Save changes</button>
             </div>
 
         </div>

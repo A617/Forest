@@ -36,7 +36,10 @@
             <small>$!{skill.progress}% Complete</small>
     </td>
     <td>
-        <button type="button" class="btn btn-success btn-xs">Success</button>
+##        #if(${skill.status}==true)
+##            <button type="button" class="btn btn-success btn-xs">Success</button>
+##            #elseif(${skill.process})
+##        #end
     </td>
     #end
     <td>
