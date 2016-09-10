@@ -5,10 +5,8 @@ import edu.nju.service.vo.SignedInUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
@@ -60,5 +58,16 @@ public class MemberController {
             sessionStatus.setComplete();
         }
         return "redirect:" + formerUrl;
+    }
+
+    @RequestMapping("/achievements/{username}")
+    String showAchievements(@PathVariable("username") String username, Model model){
+        return "achievements";
+    }
+
+    @RequestMapping("/achievements")
+    String showMyAchievements(HttpSession session){
+        SignedInUser user = LoginHelper.getSignInUser(session);
+        return "redirect:/achievements/"+user.getUsername();
     }
 }
