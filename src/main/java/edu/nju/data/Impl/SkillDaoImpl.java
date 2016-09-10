@@ -26,4 +26,9 @@ public class SkillDaoImpl implements ISkillDao {
 
         return mapper.getUserMasterSkills(userName);
     }
+
+    @Override
+    public Skill getSkills(String roleName,String skillName){
+        return mapper.getSkills(roleName,skillName);
+    }
 }

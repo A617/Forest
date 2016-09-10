@@ -37,5 +37,11 @@ public class SkillDaoImplTest {
             System.out.println(s.getName()+" "+s.getLevel());
     }
 
+    @Test
+    public void getSkillsTest() throws Exception {
+        Skill s = dao.getSkills("Web Developer","CSS");
+        System.out.println(s.getName()+" "+s.getLevel()+" "+s.getCatelog());
+    }
+
 
 }

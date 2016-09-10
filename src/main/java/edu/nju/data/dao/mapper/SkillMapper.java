@@ -29,4 +29,6 @@ public interface SkillMapper {
     List<Repository> getRepo(String skill_name, int level);
 
     List<Skill> getUserMasterSkills(String username);
+
+    Skill getSkills(String rolename,String skillName);
 }
