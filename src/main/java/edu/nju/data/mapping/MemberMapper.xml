@@ -91,7 +91,7 @@
     where username = #{1} and skill_name= #{0}
   </update>
   <insert id="insertMemberSkill">
-    insert into member_skill (username, skill_name, level,
+    insert IGNORE into member_skill (username, skill_name, level,
     time)
     values (#{0}, #{1}, #{2},
     #{3})
