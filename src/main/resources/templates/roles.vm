@@ -59,18 +59,6 @@
                                             </a>
 
                                         </li>
-##                                        <div class="col-md-55">
-##                                            <div class="thumbnail">
-##                                                <div class="image view view-first">
-##                                                    <img style="width: 100%; display: block;" src="/images/role${role.id}.png" alt="image" />
-##                                                    <div class="mask">
-##                                                    </div>
-##                                                </div>
-##                                                <div class="caption">
-##                                                  <a href="/goal/${role.id}" title="${role.name}" class="btn btn-success btn-block" role="button">Learn it</a>
-##                                                </div>
-##                                            </div>
-##                                        </div>
                                     #end
                                     </ul>
                                 </div>
