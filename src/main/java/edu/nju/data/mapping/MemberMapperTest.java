@@ -46,7 +46,7 @@ public class MemberMapperTest {
         Timestamp date = new Timestamp(d.getTime());
         String username="dy";
         String skill_name="OW";
-        dao.updateLevel(skill_name,username,date);
+//        dao.updateLevel(skill_name,username,date);
     }
 
     @Test
