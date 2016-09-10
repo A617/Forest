@@ -39,11 +39,9 @@ public class SkillController {
     }
 
     @RequestMapping("/skill/levelup")
-    @ResponseBody boolean levelup(String skillName, HttpSession session) {
+    @ResponseBody boolean levelup(String skillName, int nowLevel, HttpSession session) {
         SignedInUser user = LoginHelper.getSignInUser(session);
         if(user==null||user.getRole()==null)  return false;
-        Skill skill = new Skill();
-        skill.setName(skillName);
-        return service.levelUp(user.getRole(),skill, user.getUsername()) > 0? true:false;
+        return service.levelUp(user.getRole(),new Skill(skillName,nowLevel), user.getUsername()) > 0? true:false;
     }
 }

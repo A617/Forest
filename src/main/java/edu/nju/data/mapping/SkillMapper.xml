@@ -1,143 +1,143 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="edu.nju.data.dao.mapper.SkillMapper" >
-  <resultMap id="BaseResultMap" type="edu.nju.data.model.Skill" >
-    <id column="name" property="name" jdbcType="VARCHAR" />
-    <id column="level" property="level" jdbcType="INTEGER" />
-    <result column="catelog" property="catelog" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="edu.nju.data.dao.mapper.SkillMapper">
+    <resultMap id="BaseResultMap" type="edu.nju.data.model.Skill">
+        <id column="name" property="name" jdbcType="VARCHAR"/>
+        <id column="level" property="level" jdbcType="INTEGER"/>
+        <result column="catelog" property="catelog" jdbcType="VARCHAR"/>
+    </resultMap>
 
-  <resultMap id="extraResultMap" type="edu.nju.data.model.Repository">
-    <id property="full_name" column="full_name"/>
-    <result property="name" column="name"/>
-    <result property="owner_name" column="owner_name"/>
-    <result property="language" column="language"/>
-    <result property="open_issues_count" column="open_issues_count"/>
-    <result property="watchers_count" column="watchers_count"/>
-    <result property="clone_url" column="clone_url"/>
-    <result property="html_url" column="html_url"/>
-    <result property="homepage" column="homepage"/>
-    <result property="description" column="description"/>
-    <result property="created_at" column="created_at"/>
-    <result property="pushed_at" column="pushed_at"/>
-    <result property="updated_at" column="updated_at"/>
-    <result property="size" column="size"/>
-    <result property="stargazers_count" column="stargazers_count"/>
-    <result property="forks_count" column="forks_count"/>
-    <result property="subscribers_count" column="subscribers_count"/>
-    <result property="languages" column="languages"/>
-    <result property="size_score" column="size_score"/>
-    <result property="scale_score" column="scale_score"/>
-    <result property="promising_score" column="promising_score"/>
-    <result property="participation_score" column="participation_score"/>
-    <result property="hot_score" column="hot_score"/>
-  </resultMap>
+    <resultMap id="extraResultMap" type="edu.nju.data.model.Repository">
+        <id property="full_name" column="full_name"/>
+        <result property="name" column="name"/>
+        <result property="owner_name" column="owner_name"/>
+        <result property="language" column="language"/>
+        <result property="open_issues_count" column="open_issues_count"/>
+        <result property="watchers_count" column="watchers_count"/>
+        <result property="clone_url" column="clone_url"/>
+        <result property="html_url" column="html_url"/>
+        <result property="homepage" column="homepage"/>
+        <result property="description" column="description"/>
+        <result property="created_at" column="created_at"/>
+        <result property="pushed_at" column="pushed_at"/>
+        <result property="updated_at" column="updated_at"/>
+        <result property="size" column="size"/>
+        <result property="stargazers_count" column="stargazers_count"/>
+        <result property="forks_count" column="forks_count"/>
+        <result property="subscribers_count" column="subscribers_count"/>
+        <result property="languages" column="languages"/>
+        <result property="size_score" column="size_score"/>
+        <result property="scale_score" column="scale_score"/>
+        <result property="promising_score" column="promising_score"/>
+        <result property="participation_score" column="participation_score"/>
+        <result property="hot_score" column="hot_score"/>
+    </resultMap>
 
-  <resultMap id="SkillResultMap" type="edu.nju.data.model.Skill" >
-    <id column="name" property="name" jdbcType="VARCHAR" />
-    <id column="level" property="level" jdbcType="INTEGER" />
-    <result column="catelog" property="catelog" jdbcType="VARCHAR" />
-  </resultMap>
-
-  <sql id="Base_Column_List" >
+    <sql id="Base_Column_List">
     name, level, catelog
   </sql>
-  <sql id="Extra_Column_List" >
+    <sql id="Extra_Column_List">
     full_name,name, owner_name,language,open_issues_count,watchers_count,clone_url,
     html_url,homepage,description,created_at,pushed_at,updated_at,size,stargazers_count,
     forks_count,subscribers_count,languages,size_score,scale_score,promising_score,
     participation_score,hot_score
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
-    select 
-    <include refid="Base_Column_List" />
-    from skill
-    where name = #{name,jdbcType=VARCHAR}
-      and level = #{level,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="map" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map">
+        select
+        <include refid="Base_Column_List"/>
+        from skill
+        where name = #{name,jdbcType=VARCHAR}
+        and level = #{level,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="map">
     delete from skill
     where name = #{name,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="edu.nju.data.model.Skill" >
+    <insert id="insert" parameterType="edu.nju.data.model.Skill">
     insert into skill (name, level, catelog
       )
     values (#{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{catelog,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="edu.nju.data.model.Skill" >
-    insert into skill
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="catelog != null" >
-        catelog,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="catelog != null" >
-        #{catelog,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.Skill" >
-    update skill
-    <set >
-      <if test="catelog != null" >
-        catelog = #{catelog,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where name = #{name,jdbcType=VARCHAR}
-      and level = #{level,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.Skill" >
+    <insert id="insertSelective" parameterType="edu.nju.data.model.Skill">
+        insert into skill
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="level != null">
+                level,
+            </if>
+            <if test="catelog != null">
+                catelog,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="catelog != null">
+                #{catelog,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="edu.nju.data.model.Skill">
+        update skill
+        <set>
+            <if test="catelog != null">
+                catelog = #{catelog,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where name = #{name,jdbcType=VARCHAR}
+        and level = #{level,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="edu.nju.data.model.Skill">
     update skill
     set catelog = #{catelog,jdbcType=VARCHAR}
     where name = #{name,jdbcType=VARCHAR}
       and level = #{level,jdbcType=INTEGER}
   </update>
-  <select id="selectLevel" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    <select id="selectLevel" resultType="java.lang.Integer" parameterType="java.lang.String">
     select level
     from skill
     where name = #{name,jdbcType=VARCHAR}
   </select>
-  <select id="selectCatelog" resultType="java.lang.String" parameterType="java.lang.String" >
+    <select id="selectCatelog" resultType="java.lang.String" parameterType="java.lang.String">
     select catelog
     from skill
     where name = #{name,jdbcType=VARCHAR}
   </select>
-  <select id="getRepoName" resultType="java.lang.String" >
+    <select id="getRepoName" resultType="java.lang.String">
     select repo_name
     from skill_repo
     where skill_name = #{0} and level = #{1}
   </select>
 
-  <select id="getRepo" resultMap="extraResultMap" >
-    select
-    <include refid="Extra_Column_List" />
-    from repository r ,skill_repo s
-    WHERE r.full_name = s.repo_name
-    AND s.skill_name = #{0} AND s.level = #{1}
-  </select>
-  <select id="getUserMasterSkills" resultMap="SkillResultMap" parameterType="java.lang.String">
+    <select id="getRepo" resultMap="extraResultMap">
+        select
+        <include refid="Extra_Column_List"/>
+        from repository r ,skill_repo s
+        WHERE r.full_name = s.repo_name
+        AND s.skill_name = #{0} AND s.level = #{1}
+    </select>
+    <select id="getUserMasterSkills" resultMap="BaseResultMap" parameterType="java.lang.String">
     SELECT DISTINCT s.name,m.level,s.catelog FROM skill s,member_skill m
     WHERE s.name = m.skill_name
     AND m.username = #{username,jdbcType=VARCHAR}
   </select>
-  <select id="getAllSkills" resultType="java.lang.String">
+    <select id="getAllSkills" resultType="java.lang.String">
     select name
     from skill
+  </select>
+    <select id="getSkills" resultMap="BaseResultMap">
+    SELECT s.name,s.level,s.catelog
+    FROM role_skill AS r ,skill AS s
+    WHERE r.skill_name = s.name and r.level = s.level
+    AND r.role = #{0} AND s.name = #{1}
   </select>
 </mapper>

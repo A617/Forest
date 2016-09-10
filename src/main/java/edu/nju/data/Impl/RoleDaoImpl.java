@@ -23,8 +23,6 @@ public class RoleDaoImpl implements IRoleDao {
     @Resource
     private RoleSkillMapper roleSkillMapper;
     @Resource
-    private SkillMapper skillMapper;
-    @Resource
     private RoleMapper roleMapper;
 
     @Override

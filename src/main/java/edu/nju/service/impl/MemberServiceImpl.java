@@ -36,10 +36,18 @@ public class MemberServiceImpl implements MemberService {
         String login = mapper.readTree(s).get("login").asText();
         String avatar_url = mapper.readTree(s).get("avatar_url").asText();
 
-        SignedInUser user = new SignedInUser(showMember(login));
+        Member member = showMember(login);
+        if(member==null){
+            member = new Member();
+            member.setUsername(login);
+            createMember(member);
+        }
+
+        SignedInUser user = new SignedInUser(member);
         user.setUsername(login);
         user.setAvatar(avatar_url);
         user.setToken(token);
+
         return user;
     }
 }

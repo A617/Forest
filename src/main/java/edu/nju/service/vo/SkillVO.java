@@ -13,7 +13,7 @@ public class SkillVO extends Skill {
     private int userLevel;
 
     /**
-     * 技能完成度
+     * 技能完成度 百分号前面的数
      */
     private int progress;
     /**

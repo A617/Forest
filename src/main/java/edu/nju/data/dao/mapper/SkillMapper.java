@@ -30,5 +30,9 @@ public interface SkillMapper {
 
     List<Skill> getUserMasterSkills(String username);
 
+
     List<String> getAllSkills();
+
+    Skill getSkills(String rolename,String skillName);
+
 }

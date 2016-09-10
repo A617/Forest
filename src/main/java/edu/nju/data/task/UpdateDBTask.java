@@ -15,10 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
@@ -73,28 +70,25 @@ public class UpdateDBTask {
 //
 //        List<String> list = analyzeTop30Repos(map);
 
-        List<String> list = new ArrayList<>();
-        Collections.addAll(list,"benschwarz/gallery-css","javascript-society/javascript-path",
-                "mthli/Java","ebidel/html5demos");
 
-//        ObjectMapper m = new ObjectMapper();
-//        List<String> list= new ArrayList<>();
-//        try {
-//            BufferedInputStream is = new BufferedInputStream(new FileInputStream("src/main/java/edu/nju/task/1.txt"));
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-//            String line;
-//            while ((line = reader.readLine())!=null){
-//                list.add(line);
-//            }
-//            //        list = Arrays.asList(str.substring(1,str.length()-1).split(", "));
-//
-//            System.out.println(list);
-//            saveRepo(list,dt);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        ObjectMapper m = new ObjectMapper();
+        List<String> list= new ArrayList<>();
+        try {
+            BufferedInputStream is = new BufferedInputStream(new FileInputStream("src/main/java/edu/nju/data/task/1.txt"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while ((line = reader.readLine())!=null){
+                list.add(line);
+            }
+            //        list = Arrays.asList(str.substring(1,str.length()-1).split(", "));
+
+            System.out.println(list);
+            saveRepo(list,dt);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         saveRepo(list,dt);
     }

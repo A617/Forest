@@ -67,9 +67,9 @@
                                         <th style="width: 1%">#</th>
                                         <th style="width: 20%">Skill</th>
                                         <th>Level</th>
-                                        #if(${skill.progress})
+                                        #if(${skills[1].progress})
                                             <th>Progress</th>
-                                            <th>Status</th>
+                                            <th>        </th>
                                         #end
                                         <th style="width: 20%">#Edit</th>
                                     </tr>

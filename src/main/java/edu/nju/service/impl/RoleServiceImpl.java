@@ -53,7 +53,7 @@ public class RoleServiceImpl implements RoleService {
                     vo.setLevel(need.getLevel());
                     vo.setCatelog(need.getCatelog());
                     vo.setProgress((int)(vo.getUserLevel() * 1.0 / vo.getLevel() * 100));
-                    if (vo.getProgress() >= 1) {
+                    if (vo.getProgress() >= 100) {
                         vo.setStatus(true);
                     } else {
                         vo.setStatus(false);
