@@ -20,16 +20,26 @@ public interface ISkillDao {
 
     /**
      * 拿到用户当前技能掌握的情况(查询member_skill)
+     *
      * @param userName
      * @return
      */
     List<Skill> getUserMasterSkills(String userName);
 
     /**
+     * 获得所有skill的名字
+     *
+     * @return
+     */
+    List<String> getAllSkillNames();
+
+    /**
      * 根据角色名和技能的名字得到skill
+     *
      * @param rolename
      * @param skillName
      * @return
      */
-    Skill getSkills(String rolename,String skillName);
+    Skill getSkills(String rolename, String skillName);
+
 }

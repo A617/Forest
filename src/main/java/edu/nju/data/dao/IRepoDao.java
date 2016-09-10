@@ -172,4 +172,10 @@ public interface IRepoDao {
      * @return
      */
     List<SimpleRepo> getAllSimpleRepo();
+
+    /**
+     * 获得项目的watcher名单
+     * @return
+     */
+    List<String> getWatchers(String repoName);
 }

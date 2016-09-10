@@ -8,6 +8,7 @@ import edu.nju.data.model.Skill;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @org.springframework.stereotype.Repository("skillDao")
 /**
  * Created by phoebegl on 2016/9/6.
@@ -18,7 +19,7 @@ public class SkillDaoImpl implements ISkillDao {
 
     @Override
     public List<Repository> showRecommendRepos(Skill skill) {
-        return mapper.getRepo(skill.getName(),skill.getLevel());
+        return mapper.getRepo(skill.getName(), skill.getLevel());
     }
 
     @Override
@@ -28,7 +29,12 @@ public class SkillDaoImpl implements ISkillDao {
     }
 
     @Override
-    public Skill getSkills(String roleName,String skillName){
-        return mapper.getSkills(roleName,skillName);
+
+    public List<String> getAllSkillNames() {
+        return mapper.getAllSkills();
+    }
+
+    public Skill getSkills(String roleName, String skillName) {
+        return mapper.getSkills(roleName, skillName);
     }
 }
