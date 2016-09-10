@@ -11,13 +11,13 @@ import java.util.List;
 public interface RepositoryMapper {
     int insert(Repository record);
 
-    int insertContribute(String full_name,String login);
+    int insertContribute(String full_name, String login);
 
-    int insertSubscribe(String full_name,String login);
+    int insertSubscribe(String full_name, String login);
 
-    int insertCollaborate(String full_name,String login);
+    int insertCollaborate(String full_name, String login);
 
-    int updateUpdatedAt(String full_name,Date date);
+    int updateUpdatedAt(String full_name, Date date);
 
     Repository selectByFullName(String full_name);
 
@@ -35,7 +35,7 @@ public interface RepositoryMapper {
 
     Double selectParticipationScore_Extern(int open_issues_count, int forks_count);
 
-    Double selectSizeScore_Extern(int size,String language);
+    Double selectSizeScore_Extern(int size, String language);
 
     List<Integer> countContributors();
 
@@ -62,4 +62,6 @@ public interface RepositoryMapper {
     String getRepoUrl(String name);
 
     List<SimpleRepo> getAllSimpleRepo();
+
+    List<String> getWatchers(String full_name);
 }

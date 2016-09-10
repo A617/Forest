@@ -136,4 +136,8 @@
     WHERE s.name = m.skill_name
     AND m.username = #{username,jdbcType=VARCHAR}
   </select>
+  <select id="getAllSkills" resultType="java.lang.String">
+    select name
+    from skill
+  </select>
 </mapper>

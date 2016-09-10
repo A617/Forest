@@ -58,4 +58,9 @@ public class MemberMapperTest {
         System.out.println(repoMapper.getAllSimpleRepo().size());
     }
 
+    @Test
+    public void testGetWatchers(){
+        System.out.println(repoMapper.getWatchers("01org/appframework"));
+    }
+
 }

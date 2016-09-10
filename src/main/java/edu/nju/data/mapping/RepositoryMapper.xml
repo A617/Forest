@@ -512,4 +512,9 @@
     select full_name,language,description
     from repository
   </select>
+  <select id = "getWatchers" resultType="java.lang.String" parameterType = "java.lang.String">
+    select login
+    from subscribe
+    where full_name = #{0}
+  </select>
 </mapper>

@@ -310,7 +310,12 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public List<SimpleRepo> getAllSimpleRepo() {
-        return null;
+        return mapper.getAllSimpleRepo();
+    }
+
+    @Override
+    public List<String> getWatchers(String repoName) {
+        return mapper.getWatchers(repoName);
     }
 
 
