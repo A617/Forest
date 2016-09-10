@@ -126,9 +126,9 @@
         AND s.skill_name = #{0} AND s.level = #{1}
     </select>
     <select id="getUserMasterSkills" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT DISTINCT s.name,m.level,s.catelog FROM skill s,member_skill m
-    WHERE s.name = m.skill_name
-    AND m.username = #{username,jdbcType=VARCHAR}
+        SELECT name,max(m.level) as level,catelog FROM member_skill m,skill s
+        WHERE m.skill_name = s.name AND s.level = m.level AND m.username = #{username,jdbcType=VARCHAR}
+        GROUP BY m.skill_name,catelog
   </select>
     <select id="getAllSkills" resultType="java.lang.String">
     select name
