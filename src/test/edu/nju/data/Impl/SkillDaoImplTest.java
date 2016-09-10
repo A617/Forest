@@ -32,7 +32,7 @@ public class SkillDaoImplTest {
     @Test
     public void getUserMasterSkillsTest() throws Exception {
 
-        List<Skill> list = dao.getUserMasterSkills("dy");
+        List<Skill> list = dao.getUserMasterSkills("oraisdy");
         for(Skill s : list)
             System.out.println(s.getName()+" "+s.getLevel());
     }

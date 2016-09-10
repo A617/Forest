@@ -15,11 +15,9 @@ import edu.nju.data.task.HttpRequest;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by fwtgm on 2016/9/4.
@@ -294,8 +292,8 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public int learnRepository(String userName, String reposName) {
-        java.sql.Date date;
-        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
         MemberReport mr = new MemberReport(userName, reposName, 0, "a", date);
         return mapper2.insert(mr);
     }

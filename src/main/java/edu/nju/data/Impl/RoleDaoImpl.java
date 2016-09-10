@@ -9,7 +9,9 @@ import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @org.springframework.stereotype.Repository("roleDao")
@@ -28,7 +30,8 @@ public class RoleDaoImpl implements IRoleDao {
     @Override
     public int selectRole(String userName, String roleName) {
         List<Skill> needs = roleSkillMapper.selectSkill(roleName);
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
         for(Skill need: needs){
             memberMapper.insertMemberSkill(userName,need.getName(),0,date);
         }

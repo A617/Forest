@@ -1,11 +1,15 @@
 package edu.nju.data.Impl;
 
 import edu.nju.data.dao.IMemberDao;
+import edu.nju.data.model.Skill;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +21,9 @@ import static org.junit.Assert.*;
 public class MemberDaoImplTest {
     @Test
     public void levelUp() throws Exception {
-
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
+        System.out.println(dao.levelUp(new Skill("CSS",0,"Web Front-end"),"tj"));
     }
 
     @Test

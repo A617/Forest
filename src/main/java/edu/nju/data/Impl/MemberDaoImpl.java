@@ -7,7 +7,9 @@ import edu.nju.data.model.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,9 +37,9 @@ public class MemberDaoImpl implements IMemberDao {
 
     @Override
     public int levelUp( Skill skill, String userName) {
-        java.sql.Date date;
-        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        return memberMapper.updateLevel(skill.getName(), userName, date);
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
+        return memberMapper.insertMemberSkill(userName,skill.getName(),skill.getLevel()+1,date);
     }
 
     @Override

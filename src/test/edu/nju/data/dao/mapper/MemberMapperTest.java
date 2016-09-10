@@ -8,7 +8,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by fwtgm on 2016/9/6.
@@ -33,18 +35,16 @@ public class MemberMapperTest {
         String username="dy";
         String skill_name="OW";
         int level=0;
-        java.sql.Date date;
-        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
         dao.insertMemberSkill(username,skill_name,level,date);
     }
 
     @Test
     public void updateLevelTest() throws Exception {
-        java.sql.Date date;
-        date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        String username="dy";
-        String skill_name="OW";
-        dao.updateLevel(skill_name,username,date);
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
+        dao.insertMemberSkill("tj","CSS",0,date);
     }
 
     @Test

@@ -3,6 +3,7 @@ package edu.nju.data.dao.mapper;
 import edu.nju.data.model.Member;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface MemberMapper {
@@ -20,9 +21,9 @@ public interface MemberMapper {
 
     int updateRole(String username,String role);
 
-    int updateLevel(String skill_name,String username,Date date);
+    int updateLevel(String skill_name,String username,Timestamp  date);
 
-    int insertMemberSkill(String username,String skill_name,int level,Date time);
+    int insertMemberSkill(String username,String skill_name,int level,Timestamp time);
 
     Member searchMember(String username);
 
