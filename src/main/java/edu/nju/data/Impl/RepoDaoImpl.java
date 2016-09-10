@@ -31,8 +31,6 @@ public class RepoDaoImpl implements IRepoDao {
     @Resource
     private MemberReportMapper mapper2;
 
-    String[] searchMethod = {"getStarFewer", "getStarLarger", "getForkFewer", "getForkLarger", "getContributeFewer", "getContributeLarger"};
-
     @Override
     public int insert(Repository record) {
         return mapper.insert(record);
@@ -310,7 +308,7 @@ public class RepoDaoImpl implements IRepoDao {
 
     @Override
     public List<SimpleRepo> getAllSimpleRepo() {
-        return null;
+        return mapper.getAllSimpleRepo();
     }
 
 
