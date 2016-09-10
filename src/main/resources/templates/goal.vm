@@ -84,7 +84,9 @@
                                 #if(${user} and ${user.role} != ${role.name})
                                     #parse("/templates/goal/select_role.vm")
                                 #end
-
+                                #if($graduate)
+                                    Congratulations!
+                                #end
                             </div>
                         </div>
                     </div>

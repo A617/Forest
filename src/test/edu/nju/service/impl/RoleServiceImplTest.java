@@ -1,6 +1,7 @@
 package edu.nju.service.impl;
 
 import edu.nju.service.RoleService;
+import edu.nju.service.vo.SkillVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,9 @@ public class RoleServiceImplTest {
 
     @Test
     public void showSkills() throws Exception {
-        System.out.println(roleService.showSkills(1,"oraisdy"));
+        for(SkillVO vo:roleService.showSkills(3,"oraisdy")){
+            System.out.println(vo);
+        }
     }
 
 }

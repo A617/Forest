@@ -45,6 +45,11 @@ public class GoalController {
             System.out.println("本人");
             System.out.println(list);
             model.addAttribute("skills",list);
+            for (SkillVO vo:list){
+                if(vo.getProgress()<100)
+                    return "goal";
+            }
+            model.addAttribute("graduate",1);
         }else{
             //浏览的role非本人选择
             List<Skill> list = service.showCommonSkills(id);
