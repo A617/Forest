@@ -2,6 +2,7 @@ package edu.nju.data.dao;
 
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
+import edu.nju.data.model.SimpleRepo;
 
 import java.io.IOException;
 import java.util.List;
@@ -165,4 +166,10 @@ public interface IRepoDao {
      * @param report
      */
     int reportRepository(MemberReport report);
+
+    /**
+     * 获取所有项目
+     * @return
+     */
+    List<SimpleRepo> getAllSimpleRepo();
 }

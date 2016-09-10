@@ -28,6 +28,11 @@
   <resultMap id="ResultMapWithBLOBs" type="edu.nju.data.model.Repository" extends="BaseResultMap" >
     <result column="description" property="description" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <resultMap id="simpleRepo" type="edu.nju.data.model.SimpleRepo">
+    <id column="full_name" property="full_name" jdbcType="CHAR" />
+    <result column="language" property="language" jdbcType="CHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     full_name, name, owner_name, language, open_issues_count, watchers_count, clone_url, 
     html_url, homepage, created_at, pushed_at, updated_at, size, stargazers_count, forks_count, 
@@ -502,5 +507,9 @@
     select html_url
     from repository
     where full_name=#{name}
+  </select>
+  <select id="getAllSimpleRepo" resultMap="simpleRepo">
+    select full_name,language,description
+    from repository
   </select>
 </mapper>
