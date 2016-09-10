@@ -1,6 +1,7 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Repository;
+import edu.nju.data.model.SimpleRepo;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -59,4 +60,6 @@ public interface RepositoryMapper {
     String getReposDescription(String login);
 
     String getRepoUrl(String name);
+
+    List<SimpleRepo> getAllSimpleRepo();
 }

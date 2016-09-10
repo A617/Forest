@@ -1,8 +1,10 @@
 package edu.nju.data.mapping;
 
 import edu.nju.data.dao.mapper.MemberMapper;
+import edu.nju.data.dao.mapper.RepositoryMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -17,6 +19,8 @@ import java.util.Calendar;
 public class MemberMapperTest {
     @Resource
     private MemberMapper dao;
+    @Resource
+    private RepositoryMapper repoMapper;
 
     @Test
     public void updateRoleTest() throws Exception {
@@ -47,6 +51,11 @@ public class MemberMapperTest {
     public void testGetLearnedRepo(){
 
        dao.getLearnedRepos("oraisdy");
+    }
+
+    @Test
+    public void testGetAllSimpleRepos(){
+        System.out.println(repoMapper.getAllSimpleRepo().size());
     }
 
 }

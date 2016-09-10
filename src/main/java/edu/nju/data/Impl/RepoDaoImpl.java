@@ -10,6 +10,7 @@ import edu.nju.data.dao.mapper.MemberReportMapper;
 import edu.nju.data.dao.mapper.RepositoryMapper;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
+import edu.nju.data.model.SimpleRepo;
 import edu.nju.data.task.HttpRequest;
 
 import javax.annotation.Resource;
@@ -305,6 +306,11 @@ public class RepoDaoImpl implements IRepoDao {
     public int reportRepository(MemberReport report) {
 
         return mapper2.updateEvaluateAndReason(report);
+    }
+
+    @Override
+    public List<SimpleRepo> getAllSimpleRepo() {
+        return null;
     }
 
 
