@@ -1,5 +1,7 @@
 package edu.nju.service.vo;
 
+import edu.nju.data.model.Role;
+
 import java.util.Date;
 
 /**
@@ -7,12 +9,26 @@ import java.util.Date;
  */
 public class GraduateRecordVO extends RecordVO{
 
-    protected String role;
+    protected Role role;
 
-    public GraduateRecordVO(String username, String role, Date time) {
+    public GraduateRecordVO(String username, Role role, Date time) {
+        super(username,time);
         this.role = role;
         this.category = RecordCategory.graduate;
-        this.time = time;
-        this.username = username;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "GraduateRecordVO{" +
+                "role=" + role +
+                "} " + super.toString();
     }
 }

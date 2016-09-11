@@ -1,7 +1,10 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.Skill;
 import edu.nju.service.MemberService;
-import edu.nju.service.vo.SignedInUser;
+import edu.nju.service.RoleService;
+import edu.nju.service.SkillService;
+import edu.nju.service.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,9 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Dora on 2016/9/7.
@@ -27,6 +33,8 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
+    @Autowired
+    RoleService roleService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     String login(@RequestParam(value = "code", required = false) String code,
@@ -47,10 +55,9 @@ public class MemberController {
                 e.printStackTrace();
             }
             return "redirect:" + formerUrl;
-
-
         }
     }
+
     @RequestMapping("/logout")
     String logout(HttpSession session, SessionStatus sessionStatus, @RequestParam("formerUrl")String formerUrl){
         if(session.getAttribute("user")!=null) {
@@ -62,6 +69,18 @@ public class MemberController {
 
     @RequestMapping("/achievements/{username}")
     String showAchievements(@PathVariable("username") String username, Model model){
+        List<RecordVO> recordVOs= new ArrayList<>();
+//        recordVOs.add(new GraduateRecordVO(username,"Web Developer", new Date()));
+//        recordVOs.add(new LearnRecordVO(username,"0xAX/linux-insides",new Date()));
+//        recordVOs.add(new LevelUpRecordVO(username,"CSS",2,new Date()));
+        model.addAttribute("records",recordVOs);
+
+        for (RecordVO vo: recordVOs)
+            System.out.println(vo);
+
+        List<Skill> skillVOs = roleService.getUserMasterSkills(username);
+        model.addAttribute("skills",skillVOs);
+
         return "achievements";
     }
 

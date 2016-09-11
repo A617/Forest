@@ -1,28 +1,33 @@
 package edu.nju.service.vo;
 
+import edu.nju.data.model.Skill;
+
 import java.util.Date;
 
 /**
  * Created by Dora on 2016/9/10.
  */
 public class LevelUpRecordVO extends RecordVO {
-    protected String skill_name;
+    protected Skill skill;
 
-    protected Integer level;
-
-    public LevelUpRecordVO(String username, String skill_name, Integer level, Date time) {
-        this.username = username;
-        this.skill_name = skill_name;
-        this.level = level;
+    public LevelUpRecordVO(String username, Skill skill, Date time) {
+        super(username,time);
+        this.skill = skill;
         this.category = RecordCategory.levelup;
-        this.time = time;
+    }
+
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
     }
 
     @Override
     public String toString() {
         return "LevelUpRecordVO{" +
-                "skill_name='" + skill_name + '\'' +
-                ", level=" + level +
+                "skill=" + skill +
                 "} " + super.toString();
     }
 }

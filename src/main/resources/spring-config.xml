@@ -8,13 +8,14 @@
     <context:component-scan base-package="edu.nju.controller"></context:component-scan>
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="edu.nju.data.task" />
-    <task:annotation-driven />
+    <!--<context:component-scan base-package="edu.nju.data.task" />-->
+    <!--<task:annotation-driven />-->
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/skill/**"/>
             <mvc:mapping path="/repository/**"/>
+            <mvc:mapping path="/achievements/**"/>
             <bean class="edu.nju.controller.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>

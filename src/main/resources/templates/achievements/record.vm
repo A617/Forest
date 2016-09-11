@@ -1,0 +1,51 @@
+<li>
+    <div class="message_date">
+        <h3 class="date text-info">${record.day}</h3>
+        <p class="month">${record.month}</p>
+    </div>
+
+    <div class="block">
+        <div class="tags">
+            <a href="" class="tag">
+                <span>${record.category}</span>
+            </a>
+        </div>
+
+        #if(${record.category} == 'learn')
+            <div class="block_content">
+                <h2 class="title">
+                    Learned repository <a href="/repository/${record.full_name}">${record.full_name}</a>
+                </h2>
+                <div class="byline">
+                    <span>${record.time}</span>
+                </div>
+##                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+##                </p>
+            </div>
+        #elseif(${record.category} == 'graduate')
+            <div class="block_content">
+                <h2 class="title">
+                    Graduated from the Role ${record.role}
+                </h2>
+                <div class="byline">
+                    <span>${record.time}</span>
+                </div>
+            ##                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+            ##                </p>
+            </div>
+        #elseif(${record.category} == 'levelup')
+            <div class="block_content">
+                <h2 class="title">
+                    Upgraded skill ${record.skill_name} to level ${record.level}
+                </h2>
+                <div class="byline">
+                    <span>${record.time}</span>
+                </div>
+            ##                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
+            ##                </p>
+            </div>
+        #end
+
+
+    </div>
+</li>

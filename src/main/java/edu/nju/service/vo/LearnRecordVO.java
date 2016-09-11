@@ -1,5 +1,7 @@
 package edu.nju.service.vo;
 
+import edu.nju.data.model.Repository;
+
 import java.util.Date;
 
 /**
@@ -7,12 +9,26 @@ import java.util.Date;
  */
 public class LearnRecordVO extends RecordVO {
 
-    protected String full_name;
+    protected Repository repository;
 
-    public LearnRecordVO(String username, String full_name, Date time) {
-        this.username = username;
-        this.full_name = full_name;
-        this.time = time;
+    public LearnRecordVO(String username, Repository repository, Date time) {
+        super(username,time);
+        this.repository = repository;
         this.category = RecordCategory.learn;
+    }
+
+    @Override
+    public String toString() {
+        return "LearnRecordVO{" +
+                "repository=" + repository +
+                "} " + super.toString();
+    }
+
+    public Repository getRepository() {
+        return repository;
+    }
+
+    public void setRepository(Repository repository) {
+        this.repository = repository;
     }
 }
