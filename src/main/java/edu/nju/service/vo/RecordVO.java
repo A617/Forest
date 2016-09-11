@@ -5,8 +5,8 @@ import java.util.Date;
 /**
  * Created by Dora on 2016/9/10.
  */
-public class RecordVO implements Comparable<RecordVO>{
-    private static final String months[] = {"Jan","Feb","Mar","April","May","Jun", "Jul","Aug","Sep","Oct","Nov","Dec"};
+public abstract class RecordVO implements Comparable<RecordVO>{
+    static final String months[] = {"Jan","Feb","Mar","April","May","Jun", "Jul","Aug","Sep","Oct","Nov","Dec"};
 
     protected String username;
 

@@ -14,7 +14,7 @@
         #if(${record.category} == 'learn')
             <div class="block_content">
                 <h2 class="title">
-                    Learned repository <a href="/repository/${record.full_name}">${record.full_name}</a>
+                    Learned repository <a href="/repository/${record.repository.full_name}">${record.repository.full_name}</a>
                 </h2>
                 <div class="byline">
                     <span>${record.time}</span>
@@ -25,7 +25,7 @@
         #elseif(${record.category} == 'graduate')
             <div class="block_content">
                 <h2 class="title">
-                    Graduated from the Role ${record.role}
+                    Graduated from the Role ${record.role.name}
                 </h2>
                 <div class="byline">
                     <span>${record.time}</span>
@@ -36,7 +36,7 @@
         #elseif(${record.category} == 'levelup')
             <div class="block_content">
                 <h2 class="title">
-                    Upgraded skill ${record.skill_name} to level ${record.level}
+                    Upgraded skill ${record.skill.name} to level ${record.skill.level}
                 </h2>
                 <div class="byline">
                     <span>${record.time}</span>

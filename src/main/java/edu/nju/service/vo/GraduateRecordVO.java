@@ -13,7 +13,9 @@ public class GraduateRecordVO extends RecordVO{
 
     public GraduateRecordVO(String username, Role role, Date time) {
         super(username,time);
-        this.role = role;
+        this.role.setId(role.getId());
+        this.role.setName(role.getName());
+        this.role.setDescription(role.getDescription());
         this.category = RecordCategory.graduate;
     }
 
