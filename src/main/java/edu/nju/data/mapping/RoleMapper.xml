@@ -6,9 +6,16 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="GraduateResultMap" type="edu.nju.data.model.GraduateRecord" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <id column="role" property="role" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     id, name, description
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -77,8 +84,24 @@
 
   <select id="selectRoleByName" resultMap="BaseResultMap" parameterType="java.lang.String">
     select
-    <include refid="Base_Column_List" />
+      <include refid="Base_Column_List" />
     from role
     where name = #{name,jdbcType=VARCHAR}
   </select>
+
+  <select id="getGraduateRecordOfGoal" resultMap="GraduateResultMap" parameterType="java.lang.String">
+    select
+    username,role,time
+    from graduate_record
+    where role = #{roleName,jdbcType=VARCHAR}
+      ORDER BY graduate_record.time DESC
+  </select>
+
+  <insert id="addGraduateRecordOfGoal" parameterType="edu.nju.data.model.GraduateRecord" >
+    insert into graduate_record (username, role, time
+    )
+    values (#{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+    )
+  </insert>
+
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -45,7 +46,7 @@ public class RepositoryController {
         SignedInUser user = LoginHelper.getSignInUser(session);
         if(user==null)
             return false;
-        MemberReport report = new MemberReport(user.getUsername(),repoName,1,null,new Date());
+        MemberReport report = new MemberReport(user.getUsername(),repoName,1,null,new Timestamp(new Date().getTime()));
         return service.reportRepository(report)>0?true:false;
     }
 }

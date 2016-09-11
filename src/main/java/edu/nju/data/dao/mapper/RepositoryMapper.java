@@ -1,5 +1,6 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.ReportRecord;
 import edu.nju.data.model.Repository;
 import edu.nju.data.model.SimpleRepo;
 import org.springframework.stereotype.Component;
@@ -64,4 +65,5 @@ public interface RepositoryMapper {
     List<SimpleRepo> getAllSimpleRepo();
 
     List<String> getWatchers(String full_name);
+
 }

@@ -8,9 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.nju.data.dao.IRepoDao;
 import edu.nju.data.dao.mapper.MemberReportMapper;
 import edu.nju.data.dao.mapper.RepositoryMapper;
-import edu.nju.data.model.MemberReport;
-import edu.nju.data.model.Repository;
-import edu.nju.data.model.SimpleRepo;
+import edu.nju.data.model.*;
 import edu.nju.data.task.HttpRequest;
 
 import javax.annotation.Resource;
@@ -314,5 +312,10 @@ public class RepoDaoImpl implements IRepoDao {
         return mapper.getWatchers(repoName);
     }
 
+    @Override
+    public List<MemberReport> getLearnRecordsOfRepo(String repoName){
+
+        return mapper2.getLearnRecordsOfRepo(repoName);
+    }
 
 }

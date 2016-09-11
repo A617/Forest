@@ -1,6 +1,9 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.GraduateRecord;
+import edu.nju.data.model.LevelUpRecord;
 import edu.nju.data.model.Member;
+import edu.nju.data.model.MemberReport;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -30,4 +33,9 @@ public interface MemberMapper {
     int addMember(Member member);
 
     List<String> getLearnedRepos(String username);
+
+    List<LevelUpRecord> getLevelUpRecordOfUser(String userName);
+
+    List<GraduateRecord> getGraduateRecordOfUser(String userName);
+
 }

@@ -1,13 +1,19 @@
 package edu.nju.data.model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class GraduateRecord {
     protected String username;
 
     protected String role;
 
-    protected Date time;
+    protected Timestamp time;
+
+    public GraduateRecord(String username, String role, Timestamp time) {
+        this.username = username;
+        this.role = role;
+        this.time = time;
+    }
 
     public String getUsername() {
         return username;
@@ -25,11 +31,11 @@ public class GraduateRecord {
         this.role = role;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

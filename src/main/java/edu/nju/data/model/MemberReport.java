@@ -1,5 +1,7 @@
 package edu.nju.data.model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class MemberReport {
@@ -11,9 +13,9 @@ public class MemberReport {
 
     private String reason;
 
-    private Date time;
+    private Timestamp time;
 
-    public MemberReport(String username, String fullName, Integer evaluate, String reason, Date time) {
+    public MemberReport(String username, String fullName, Integer evaluate, String reason,Timestamp time) {
         this.username = username;
         this.fullName = fullName;
         this.evaluate = evaluate;
@@ -53,11 +55,11 @@ public class MemberReport {
         this.reason = reason;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 }

@@ -517,4 +517,5 @@
     from subscribe
     where full_name = #{0}
   </select>
+
 </mapper>

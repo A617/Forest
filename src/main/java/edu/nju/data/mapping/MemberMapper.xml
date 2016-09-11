@@ -7,9 +7,25 @@
     <result column="member_email" property="member_email" jdbcType="VARCHAR" />
     <result column="role" property="role" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="SkillResultMap" type="edu.nju.data.model.LevelUpRecord" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <id column="skill_name" property="skill_name" jdbcType="VARCHAR" />
+    <id column="level" property="level" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="GraduateResultMap" type="edu.nju.data.model.GraduateRecord" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <id column="role" property="role" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     username, password, member_email, role
   </sql>
+  <sql id="Skill_Column_List" >
+    username, skill_name, level, time
+  </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -109,5 +125,19 @@
     select full_name
     from member_report
     where evaluate = 0 AND username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="getLevelUpRecordOfUser"  resultMap="SkillResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Skill_Column_List" />
+    from member_skill
+    where username = #{userName,jdbcType=VARCHAR}
+    ORDER BY time DESC
+  </select>
+
+  <select id="getGraduateRecordOfUser" resultMap="GraduateResultMap" parameterType="java.lang.String" >
+    select username,role,time
+    from graduate_record
+    where username = #{userName,jdbcType=VARCHAR}
+    ORDER BY time DESC
   </select>
 </mapper>

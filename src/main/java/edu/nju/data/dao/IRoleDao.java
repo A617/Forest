@@ -1,5 +1,6 @@
 package edu.nju.data.dao;
 
+import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.Member;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
@@ -36,4 +37,8 @@ public interface IRoleDao {
      * @return
      */
     List<Role> showAllRoles();
+
+    List<GraduateRecord> getGraduateRecordOfGoal(String roleName);
+
+    int addGraduateRecordOfGoal(GraduateRecord record);
 }

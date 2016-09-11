@@ -5,6 +5,7 @@ import edu.nju.data.dao.mapper.MemberMapper;
 import edu.nju.data.dao.mapper.RoleMapper;
 import edu.nju.data.dao.mapper.RoleSkillMapper;
 import edu.nju.data.dao.mapper.SkillMapper;
+import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 
@@ -57,5 +58,15 @@ public class RoleDaoImpl implements IRoleDao {
     @Override
     public List<Role> showAllRoles() {
         return roleMapper.showAll();
+    }
+
+    @Override
+    public List<GraduateRecord> getGraduateRecordOfGoal(String roleName) {
+        return roleMapper.getGraduateRecordOfGoal(roleName);
+    }
+
+    @Override
+    public int addGraduateRecordOfGoal(GraduateRecord record) {
+        return roleMapper.addGraduateRecordOfGoal(record);
     }
 }

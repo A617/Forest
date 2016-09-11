@@ -1,6 +1,7 @@
 package edu.nju.data.Impl;
 
 import edu.nju.data.dao.IRoleDao;
+import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,6 +53,22 @@ public class RoleDaoImplTest {
         List<Role> list = dao.showAllRoles();
         for(Role r : list){
             System.out.println(r.getName());
+        }
+    }
+
+    @Test
+    public void testAddRecord() {
+        Date d = new Date();
+        Timestamp date = new Timestamp(d.getTime());
+        GraduateRecord record = new GraduateRecord("phoebegl","Web Developer",date);
+        System.out.print(dao.addGraduateRecordOfGoal(record));
+    }
+
+    @Test
+    public void testGetRecord() {
+        List<GraduateRecord> list = dao.getGraduateRecordOfGoal("Web Developer");
+        for(GraduateRecord g :list) {
+            System.out.println(g.getUsername()+" "+g.getTime());
         }
     }
 

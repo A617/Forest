@@ -2,8 +2,8 @@ package edu.nju.data.Impl;
 
 import edu.nju.data.dao.IMemberDao;
 import edu.nju.data.dao.mapper.MemberMapper;
-import edu.nju.data.model.Member;
-import edu.nju.data.model.Skill;
+import edu.nju.data.dao.mapper.MemberReportMapper;
+import edu.nju.data.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,8 @@ import java.util.List;
 public class MemberDaoImpl implements IMemberDao {
     @Autowired
     private MemberMapper memberMapper;
+    @Autowired
+    private MemberReportMapper reportMapper;
 
     @Override
     public Member showMember(String username) {
@@ -45,5 +47,21 @@ public class MemberDaoImpl implements IMemberDao {
     @Override
     public List<String> getLearnedRepos(String username) {
         return memberMapper.getLearnedRepos(username);
+    }
+
+    @Override
+    public List<LevelUpRecord> getLevelUpRecordOfUser(String userName){
+
+        return memberMapper.getLevelUpRecordOfUser(userName);
+    }
+
+    @Override
+    public List<GraduateRecord> getGraduateRecordOfUser(String userName){
+        return memberMapper.getGraduateRecordOfUser(userName);
+    }
+
+    @Override
+    public List<MemberReport> getLearnRecordsOfUser(String userName){
+        return reportMapper.getLearnRecordsOfUser(userName);
     }
 }

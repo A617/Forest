@@ -1,7 +1,6 @@
 package edu.nju.data.dao;
 
-import edu.nju.data.model.Member;
-import edu.nju.data.model.Skill;
+import edu.nju.data.model.*;
 
 import java.util.List;
 
@@ -31,4 +30,11 @@ public interface IMemberDao {
     int levelUp(Skill skill, String userName);
 
     List<String> getLearnedRepos(String username);
+
+    List<LevelUpRecord> getLevelUpRecordOfUser(String userName);
+
+    List<GraduateRecord> getGraduateRecordOfUser(String userName);
+
+    List<MemberReport> getLearnRecordsOfUser(String userName);
+
 }

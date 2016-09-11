@@ -1,5 +1,6 @@
 package edu.nju.data.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class LevelUpRecord {
@@ -9,7 +10,7 @@ public class LevelUpRecord {
 
     protected Integer level;
 
-    protected Date time;
+    protected Timestamp time;
 
     public String getUsername() {
         return username;
@@ -35,11 +36,11 @@ public class LevelUpRecord {
         this.level = level;
     }
 
-    public Date getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

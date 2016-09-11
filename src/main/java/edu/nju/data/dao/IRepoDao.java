@@ -1,6 +1,7 @@
 package edu.nju.data.dao;
 
 import edu.nju.data.model.MemberReport;
+import edu.nju.data.model.ReportRecord;
 import edu.nju.data.model.Repository;
 import edu.nju.data.model.SimpleRepo;
 
@@ -178,4 +179,6 @@ public interface IRepoDao {
      * @return
      */
     List<String> getWatchers(String repoName);
+
+    List<MemberReport> getLearnRecordsOfRepo(String repoName);
 }

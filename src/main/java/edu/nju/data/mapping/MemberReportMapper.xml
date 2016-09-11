@@ -90,4 +90,20 @@
       time = #{time,jdbcType=TIMESTAMP}
     where username = #{username,jdbcType=VARCHAR}
   </update>
+
+  <select id="getLearnRecordsOfRepo" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from member_report
+    where full_name = #{repoName,jdbcType=VARCHAR}
+    ORDER BY member_report.time DESC
+  </select>
+
+  <select id="getLearnRecordsOfUser" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from member_report
+    where username = #{userName,jdbcType=VARCHAR}
+    ORDER BY member_report.time DESC
+  </select>
 </mapper>

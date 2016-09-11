@@ -1,6 +1,7 @@
 package edu.nju.data.dao.mapper;
 
 import edu.nju.data.model.Member;
+import edu.nju.data.model.ReportRecord;
 import edu.nju.data.model.Role;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by fwtgm on 2016/9/6.
@@ -57,7 +59,5 @@ public class MemberMapperTest {
     public void testGetAllSimpleRepos(){
         System.out.println(repoMapper.getAllSimpleRepo().size());
     }
-
-
 
 }

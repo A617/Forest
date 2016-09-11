@@ -1,5 +1,6 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.Role;
 
 import java.util.List;
@@ -20,4 +21,8 @@ public interface RoleMapper {
     List<Role> showAll();
 
     Role selectRoleByName(String name);
+
+    List<GraduateRecord> getGraduateRecordOfGoal(String roleName);
+
+    int addGraduateRecordOfGoal(GraduateRecord record);
 }
