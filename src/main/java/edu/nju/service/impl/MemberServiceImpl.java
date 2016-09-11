@@ -3,6 +3,7 @@ package edu.nju.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.nju.data.dao.IMemberDao;
 import edu.nju.data.model.Member;
+import edu.nju.data.model.User;
 import edu.nju.data.task.HttpRequest;
 import edu.nju.service.MemberService;
 import edu.nju.service.vo.SignedInUser;
@@ -48,6 +49,14 @@ public class MemberServiceImpl implements MemberService {
         user.setAvatar(avatar_url);
         user.setToken(token);
 
+        return user;
+    }
+
+    @Override
+    public User getUserDetail(String login, String token) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        String s = HttpRequest.getGithubContentUsingHttpClient(token,"api.github.com/users/" + login);
+        User user = mapper.readValue(s, User.class);
         return user;
     }
 }

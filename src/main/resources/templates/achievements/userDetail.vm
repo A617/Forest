@@ -1,0 +1,38 @@
+<div class="profile_img">
+
+    <!-- end of image cropping -->
+    <div id="crop-avatar">
+        <!-- Current avatar -->
+        <img class="img-responsive avatar-view" src="${detail.avatar_url}" alt="Avatar" style="width:60% ;">
+
+##        <!-- Cropping modal -->
+##        <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+##            <div class="modal-dialog modal-lg">
+##                <div class="modal-content">
+##
+##                </div>
+##            </div>
+##        </div>
+##        <!-- /.modal -->
+
+        <!-- Loading state -->
+        <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+    </div>
+    <!-- end of image cropping -->
+
+</div>
+<h3>${detail.login} <small>   ${detail.name}</small></h3>
+
+
+<ul class="list-unstyled user_data">
+    <li><i class="fa fa-map-marker user-profile-icon"></i> ${detail.location}
+    </li>
+
+    <li>
+        <i class="fa fa-briefcase user-profile-icon"></i> ${detail.company}
+    </li>
+
+    <li class="m-top-xs">
+        <i class="fa fa-external-link user-profile-icon"></i> ${detail.bio}</a>
+    </li>
+</ul>

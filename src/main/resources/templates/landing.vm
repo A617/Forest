@@ -8,7 +8,7 @@
         #header {
             box-shadow: none;
             background-color: transparent;
-            position: absolute;
+            /*position: absolute;*/
             width: 100%;
         }
         .bc_gutters {
@@ -118,6 +118,7 @@
             <div class="">
                 <div class="bg"></div>
                 #parse("/templates/landing_header.vm")
+
                 <div class="hero">
                     <div class="row">
                         <div class="col-md-12">
@@ -130,8 +131,8 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
+                    <div class="col-md-12>
+                        <div id="about" class="x_panel">
                             <br>
                             <div class="x_title">
                                 <h2>Get Started </h2>
@@ -215,100 +216,101 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Not sure your role?</h2>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="x_content">
-
-                                <div class="bs-example" data-example-id="simple-jumbotron">
-                                    <div class="jumbotron">
-                                        <h1>Hello, world!</h1>
-                                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Daily active users</h2>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <ul class="list-unstyled msg_list">
-                                <li>
-                                    <a>
-                        <span class="image">
-                          <img src="images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                        <span class="image">
-                          <img src="images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                        <span class="image">
-                          <img src="images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                        <span class="image">
-                          <img src="images/img.jpg" alt="img" />
-                        </span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
-                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+##                <div class="row">
+##                    <div class="col-md-12 col-sm-12 col-xs-12">
+##                        <div class="x_panel">
+##                            <div class="x_title">
+##                                <h2>Not sure your role?</h2>
+##                                <div class="clearfix"></div>
+##                            </div>
+##                            <div class="x_content">
+##
+##                                <div class="bs-example" data-example-id="simple-jumbotron">
+##                                    <div class="jumbotron">
+##                                        <h1>Hello, world!</h1>
+##                                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+##                                    </div>
+##                                </div>
+##
+##                            </div>
+##                        </div>
+##                    </div>
+##                </div>
+##                </div>
+##            </div>
+##
+##            <div class="row">
+##                <div class="col-md-12 col-sm-12 col-xs-12">
+##                    <div class="x_panel">
+##                        <div class="x_title">
+##                            <h2>Daily active users</h2>
+##                            <div class="clearfix"></div>
+##                        </div>
+##                        <div class="x_content">
+##                            <ul class="list-unstyled msg_list">
+##                                <li>
+##                                    <a>
+##                        <span class="image">
+##                          <img src="images/img.jpg" alt="img" />
+##                        </span>
+##                        <span>
+##                          <span>John Smith</span>
+##                          <span class="time">3 mins ago</span>
+##                        </span>
+##                        <span class="message">
+##                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+##                        </span>
+##                                    </a>
+##                                </li>
+##                                <li>
+##                                    <a>
+##                        <span class="image">
+##                          <img src="images/img.jpg" alt="img" />
+##                        </span>
+##                        <span>
+##                          <span>John Smith</span>
+##                          <span class="time">3 mins ago</span>
+##                        </span>
+##                        <span class="message">
+##                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+##                        </span>
+##                                    </a>
+##                                </li>
+##                                <li>
+##                                    <a>
+##                        <span class="image">
+##                          <img src="images/img.jpg" alt="img" />
+##                        </span>
+##                        <span>
+##                          <span>John Smith</span>
+##                          <span class="time">3 mins ago</span>
+##                        </span>
+##                        <span class="message">
+##                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+##                        </span>
+##                                    </a>
+##                                </li>
+##                                <li>
+##                                    <a>
+##                        <span class="image">
+##                          <img src="images/img.jpg" alt="img" />
+##                        </span>
+##                        <span>
+##                          <span>John Smith</span>
+##                          <span class="time">3 mins ago</span>
+##                        </span>
+##                        <span class="message">
+##                          Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that
+##                        </span>
+##                                    </a>
+##                                </li>
+##                            </ul>
+##                        </div>
+##                    </div>
                 </div>
             </div>
         <!-- /page content -->
+        #parse("/templates/common/footer.vm")
         </div>
     </div>
 

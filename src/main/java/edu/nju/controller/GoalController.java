@@ -1,8 +1,10 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.Role;
 import edu.nju.data.model.Skill;
 import edu.nju.service.MemberService;
+import edu.nju.service.RecordService;
 import edu.nju.service.RoleService;
 import edu.nju.service.vo.SignedInUser;
 import edu.nju.service.vo.SkillVO;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +30,8 @@ public class GoalController {
     RoleService service;
     @Autowired
     MemberService memberService;
+    @Autowired
+    RecordService recordService;
 
     @RequestMapping("/hello")
     String showLanding(){
@@ -50,6 +56,7 @@ public class GoalController {
                     return "goal";
             }
             model.addAttribute("graduate",1);
+            recordService.addGraduateRecord(new GraduateRecord(signedInUser.getUsername(),role.getName(), new Timestamp(new Date().getTime())));
         }else{
             //浏览的role非本人选择
             List<Skill> list = service.showCommonSkills(id);

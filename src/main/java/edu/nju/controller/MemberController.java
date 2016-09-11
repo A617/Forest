@@ -1,6 +1,7 @@
 package edu.nju.controller;
 
 import edu.nju.data.model.Skill;
+import edu.nju.data.model.User;
 import edu.nju.service.MemberService;
 import edu.nju.service.RecordService;
 import edu.nju.service.RoleService;
@@ -71,12 +72,20 @@ public class MemberController {
     }
 
     @RequestMapping("/achievements/{username}")
-    String showAchievements(@PathVariable("username") String username, Model model){
+    String showAchievements(@PathVariable("username") String username, Model model, HttpSession session){
         List<RecordVO> recordVOs= recordService.getUserRecords(username);
         model.addAttribute("records",recordVOs);
 
         List<SkillVO> skillVOs = roleService.getUserMasterSkills(username);
         model.addAttribute("skills",skillVOs);
+
+        SignedInUser signedInUser = LoginHelper.getSignInUser(session);
+        try {
+            User user  = memberService.getUserDetail(username, signedInUser.getToken());
+            model.addAttribute("detail",user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return "achievements";
     }

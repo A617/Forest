@@ -19,8 +19,7 @@
                 <div class="byline">
                     <span>${record.time}</span>
                 </div>
-##                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-##                </p>
+                <p class="excerpt">${record.repository.description}</p>
             </div>
         #elseif(${record.category} == 'graduate')
             <div class="block_content">
@@ -30,8 +29,7 @@
                 <div class="byline">
                     <span>${record.time}</span>
                 </div>
-            ##                <p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>
-            ##                </p>
+                <p class="excerpt">${record.role.description}</p>
             </div>
         #elseif(${record.category} == 'levelup')
             <div class="block_content">
