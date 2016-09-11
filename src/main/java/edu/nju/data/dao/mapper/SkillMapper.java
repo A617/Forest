@@ -24,7 +24,7 @@ public interface SkillMapper {
 
     List<Integer> selectLevel(String name);
 
-    List<String> getRepoName(String skill_name,int level);
+    List<String> getRepoName(String skill_name, int level);
 
     List<Repository> getRepo(String skill_name, int level);
 
@@ -33,6 +33,7 @@ public interface SkillMapper {
 
     List<String> getAllSkills();
 
-    Skill getSkills(String rolename,String skillName);
+    Skill getSkills(String rolename, String skillName);
 
+    int geteSkillMaxLevel(String skillName);
 }

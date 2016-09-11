@@ -37,4 +37,9 @@ public class SkillDaoImpl implements ISkillDao {
     public Skill getSkills(String roleName, String skillName) {
         return mapper.getSkills(roleName, skillName);
     }
+
+    @Override
+    public int getSkillMaxLevel(String skillName) {
+        return mapper.geteSkillMaxLevel(skillName);
+    }
 }

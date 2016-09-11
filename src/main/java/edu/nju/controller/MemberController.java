@@ -78,8 +78,8 @@ public class MemberController {
         for (RecordVO vo: recordVOs)
             System.out.println(vo);
 
-        List<Skill> skillVOs = roleService.getUserMasterSkills(username);
-        model.addAttribute("skills",skillVOs);
+        //List<Skill> skillVOs = roleService.getUserMasterSkills(username);
+       // model.addAttribute("skills",skillVOs);
 
         return "achievements";
     }

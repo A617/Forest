@@ -38,8 +38,24 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Skill> getUserMasterSkills(String userName){
-        return skillDao.getUserMasterSkills(userName);
+    public List<SkillVO> getUserMasterSkills(String userName) {
+        List<SkillVO> result = new ArrayList<>();
+        List<Skill> list = skillDao.getUserMasterSkills(userName);
+        for (Skill skill : list) {
+            SkillVO vo = new SkillVO();
+            vo.setName(skill.getName());
+            vo.setLevel(skillDao.getSkillMaxLevel(skill.getName()));
+            vo.setUserLevel(skill.getLevel());
+            vo.setProgress((int) (vo.getUserLevel() * 1.0 / vo.getLevel() * 100));
+            vo.setCatelog(skill.getCatelog());
+            if (vo.getProgress() >= 100) {
+                vo.setStatus(true);
+            } else {
+                vo.setStatus(false);
+            }
+            result.add(vo);
+        }
+        return result;
     }
 
     @Override
@@ -57,7 +73,7 @@ public class RoleServiceImpl implements RoleService {
                     vo.setUserLevel(level);
                     vo.setLevel(need.getLevel());
                     vo.setCatelog(need.getCatelog());
-                    vo.setProgress((int)(vo.getUserLevel() * 1.0 / vo.getLevel() * 100));
+                    vo.setProgress((int) (vo.getUserLevel() * 1.0 / vo.getLevel() * 100));
                     if (vo.getProgress() >= 100) {
                         vo.setStatus(true);
                     } else {
@@ -70,7 +86,6 @@ public class RoleServiceImpl implements RoleService {
         }
         return result;
     }
-
 
 
     @Override
