@@ -12,9 +12,7 @@ public class LevelUpRecordVO extends RecordVO {
 
     public LevelUpRecordVO(String username, Skill skill, Date time) {
         super(username,time);
-        this.skill.setName(skill.getName());
-        this.skill.setCatelog(skill.getCatelog());
-        this.skill.setLevel(skill.getLevel());
+        this.skill = skill;
         this.category = RecordCategory.levelup;
     }
 

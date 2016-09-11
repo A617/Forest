@@ -5,8 +5,7 @@ import edu.nju.data.dao.IRepoDao;
 import edu.nju.data.dao.IRoleDao;
 import edu.nju.data.model.*;
 import edu.nju.service.RecordService;
-import edu.nju.service.vo.RecordCategory;
-import edu.nju.service.vo.RecordVO;
+import edu.nju.service.vo.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,51 +26,67 @@ public class RecordServiceImpl implements RecordService {
     private IRoleDao roleDao;
 
     @Override
-    public List<MemberReport> getLearnRecordsOfRepo(String repoName) {
-        return repoDao.getLearnRecordsOfRepo(repoName);
+    public List<LearnRecordVO> getLearnRecordsOfRepo(String repoName) {
+        List<LearnRecordVO> result = new ArrayList<>();
+        List<MemberReport> datas = repoDao.getLearnRecordsOfRepo(repoName);
+        for (MemberReport report : datas) {
+            LearnRecordVO vo = generateLearn(report);
+            result.add(vo);
+        }
+        return result;
+    }
+
+
+    @Override
+    public List<LearnRecordVO> getLearnRecordsOfUser(String userName) {
+        List<LearnRecordVO> result = new ArrayList<>();
+        List<MemberReport> datas = memberDao.getLearnRecordsOfUser(userName);
+        for (MemberReport report : datas) {
+            LearnRecordVO vo = generateLearn(report);
+            result.add(vo);
+        }
+        return result;
     }
 
     @Override
-    public List<MemberReport> getLearnRecordsOfUser(String userName) {
-        return memberDao.getLearnRecordsOfUser(userName);
+    public List<GraduateRecordVO> getGraduateRecordOfGoal(String roleName) {
+        List<GraduateRecordVO> result = new ArrayList<>();
+        for (GraduateRecord record : roleDao.getGraduateRecordOfGoal(roleName)) {
+            GraduateRecordVO vo = generateGraduate(record);
+            result.add(vo);
+        }
+        return result;
     }
 
     @Override
-    public List<GraduateRecord> getGraduateRecordOfGoal(String roleName) {
-        return roleDao.getGraduateRecordOfGoal(roleName);
+    public List<GraduateRecordVO> getGraduateRecordOfUser(String userName) {
+        List<GraduateRecordVO> result = new ArrayList<>();
+        for (GraduateRecord record : memberDao.getGraduateRecordOfUser(userName)) {
+            GraduateRecordVO vo = generateGraduate(record);
+            result.add(vo);
+        }
+        return result;
     }
 
     @Override
-    public List<GraduateRecord> getGraduateRecordOfUser(String userName) {
-        return memberDao.getGraduateRecordOfUser(userName);
-    }
-
-    @Override
-    public List<LevelUpRecord> getLevelUpRecordOfUser(String userName) {
-        return memberDao.getLevelUpRecordOfUser(userName);
+    public List<LevelUpRecordVO> getLevelUpRecordOfUser(String userName) {
+        List<LevelUpRecordVO> result = new ArrayList<>();
+        for (LevelUpRecord record : memberDao.getLevelUpRecordOfUser(userName)) {
+            LevelUpRecordVO vo = generateLevelup(record);
+            result.add(vo);
+        }
+        return result;
     }
 
     @Override
     public List<RecordVO> getUserRecords(String userName) {
         List<RecordVO> result = new ArrayList<>();
-        List<MemberReport> memberReports = getLearnRecordsOfUser(userName);
-        for (MemberReport report : memberReports) {
-            RecordVO vo = new RecordVO(report.getUsername(), report.getTime());
-            vo.setCategory(RecordCategory.learn);
-            result.add(vo);
-        }
-        List<GraduateRecord> graduateRecords = getGraduateRecordOfUser(userName);
-        for (GraduateRecord report : graduateRecords) {
-            RecordVO vo = new RecordVO(report.getUsername(), report.getTime());
-            vo.setCategory(RecordCategory.graduate);
-            result.add(vo);
-        }
-        List<LevelUpRecord> levelUpRecords = getLevelUpRecordOfUser(userName);
-        for (LevelUpRecord report : levelUpRecords) {
-            RecordVO vo = new RecordVO(report.getUsername(), report.getTime());
-            vo.setCategory(RecordCategory.levelup);
-            result.add(vo);
-        }
+        List<LearnRecordVO> memberReports = getLearnRecordsOfUser(userName);
+        List<GraduateRecordVO> graduateRecords = getGraduateRecordOfUser(userName);
+        List<LevelUpRecordVO> levelUpRecords = getLevelUpRecordOfUser(userName);
+        result.addAll(memberReports);
+        result.addAll(graduateRecords);
+        result.addAll(levelUpRecords);
         Collections.sort(result);
         return result;
     }
@@ -92,5 +107,22 @@ public class RecordServiceImpl implements RecordService {
         skill.setLevel(record.getLevel());
         skill.setName(record.getSkill_name());
         return memberDao.levelUp(skill, record.getUsername());
+    }
+
+    private LearnRecordVO generateLearn(MemberReport report) {
+        String name = report.getFullName();
+        Repository repos = repoDao.getReposByFullName(name);
+        return new LearnRecordVO(report.getUsername(), repos, report.getTime());
+    }
+
+    private GraduateRecordVO generateGraduate(GraduateRecord report) {
+        String roleName = report.getRole();
+        Role role = roleDao.selectRoleByName(roleName);
+        return new GraduateRecordVO(report.getUsername(), role, report.getTime());
+    }
+
+    private LevelUpRecordVO generateLevelup(LevelUpRecord report) {
+        Skill skill = new Skill(report.getSkill_name(), report.getLevel());
+        return new LevelUpRecordVO(report.getUsername(), skill, report.getTime());
     }
 }

@@ -4,6 +4,9 @@ import edu.nju.data.model.GraduateRecord;
 import edu.nju.data.model.LevelUpRecord;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.ReportRecord;
+import edu.nju.service.vo.GraduateRecordVO;
+import edu.nju.service.vo.LearnRecordVO;
+import edu.nju.service.vo.LevelUpRecordVO;
 import edu.nju.service.vo.RecordVO;
 
 import java.util.List;
@@ -16,31 +19,31 @@ public interface RecordService {
      * @param repoName
      * @return
      */
-    List<MemberReport> getLearnRecordsOfRepo(String repoName);
+    List<LearnRecordVO> getLearnRecordsOfRepo(String repoName);
 
     /**
      * @param userName
      * @return
      */
-    List<MemberReport> getLearnRecordsOfUser(String userName);
+    List<LearnRecordVO> getLearnRecordsOfUser(String userName);
 
     /**
      * @param roleName
      * @return
      */
-    List<GraduateRecord> getGraduateRecordOfGoal(String roleName);
+    List<GraduateRecordVO> getGraduateRecordOfGoal(String roleName);
 
     /**
      * @param userName
      * @return
      */
-    List<GraduateRecord> getGraduateRecordOfUser(String userName);
+    List<GraduateRecordVO> getGraduateRecordOfUser(String userName);
 
     /**
      * @param userName
      * @return
      */
-    List<LevelUpRecord> getLevelUpRecordOfUser(String userName);
+    List<LevelUpRecordVO> getLevelUpRecordOfUser(String userName);
 
     /**
      * @param userName
