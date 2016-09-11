@@ -11,11 +11,10 @@ public class LevelUpRecordVO extends RecordVO {
     protected Integer level;
 
     public LevelUpRecordVO(String username, String skill_name, Integer level, Date time) {
-        this.username = username;
+        super(username,time);
         this.skill_name = skill_name;
         this.level = level;
         this.category = RecordCategory.levelup;
-        this.time = time;
     }
 
     @Override

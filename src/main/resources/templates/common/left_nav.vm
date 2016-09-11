@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-tree"></i>     <span>Forest</span></a>
+            <a href="/" class="site_title"><i class="fa fa-tree"></i>     <span>Forest</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -33,7 +33,7 @@
                     </li>
                     <li><a href="/goal"><i class="fa fa-compass"></i> Goal </a>
                     </li>
-                    <li><a><i class="fa fa-trophy"></i> Achievements </a>
+                    <li><a href="/achievements"><i class="fa fa-trophy"></i> Achievements </a>
                     </li>
                     <li><a><i class="fa fa-th-large"></i> Explore <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">

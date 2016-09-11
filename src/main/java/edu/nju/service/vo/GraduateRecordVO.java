@@ -10,9 +10,8 @@ public class GraduateRecordVO extends RecordVO{
     protected String role;
 
     public GraduateRecordVO(String username, String role, Date time) {
+        super(username,time);
         this.role = role;
         this.category = RecordCategory.graduate;
-        this.time = time;
-        this.username = username;
     }
 }

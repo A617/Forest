@@ -12,6 +12,26 @@ public class RecordVO {
 
     protected RecordCategory category;
 
+    protected String timeForShow;
+
+    public RecordVO(String username, Date time) {
+        this.username = username;
+        this.time = time;
+        this.timeForShow = calculateTimeForShow();
+    }
+
+    private String calculateTimeForShow() {
+        return "two days ago";
+    }
+
+    public String getTimeForShow() {
+        return timeForShow;
+    }
+
+    public void setTimeForShow(String timeForShow) {
+        this.timeForShow = timeForShow;
+    }
+
     public String getUsername() {
         return username;
     }
