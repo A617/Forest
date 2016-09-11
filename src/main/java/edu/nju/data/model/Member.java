@@ -1,6 +1,9 @@
 package edu.nju.data.model;
 
 public class Member {
+
+    protected int id;
+
     protected String username;
 
     protected String password;
@@ -46,6 +49,14 @@ public class Member {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
