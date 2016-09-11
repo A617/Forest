@@ -79,6 +79,8 @@ public class MemberController {
         List<SkillVO> skillVOs = roleService.getUserMasterSkills(username);
         model.addAttribute("skills",skillVOs);
 
+
+
         SignedInUser signedInUser = LoginHelper.getSignInUser(session);
         try {
             User user  = memberService.getUserDetail(username, signedInUser.getToken());
