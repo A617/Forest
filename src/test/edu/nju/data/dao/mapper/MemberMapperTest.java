@@ -21,6 +21,12 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 
 public class MemberMapperTest {
+    @Test
+    public void searchMember() throws Exception {
+
+        System.out.println(dao.searchMember("oraisdy"));
+    }
+
     @Resource
     private MemberMapper dao;
     @Resource

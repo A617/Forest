@@ -1,5 +1,5 @@
 <li>
-    <img src="images/img.jpg" class="avatar" alt="Avatar">
+    <img src="https://avatars.githubusercontent.com/u/${record.userid}?v=3" class="avatar" alt="Avatar">
     <div class="message_date">
         <h3 class="date text-info">${record.day}</h3>
         <p class="month">${record.month}</p>

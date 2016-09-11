@@ -111,6 +111,6 @@ public class GoalController {
 
     @RequestMapping("/index")
     String index(Model model){
-        return select(model);
+        return "landing";
     }
 }

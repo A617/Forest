@@ -36,11 +36,13 @@ public class MemberServiceImpl implements MemberService {
         String s = HttpRequest.sendGet("api.github.com/user?access_token=" + token);
         String login = mapper.readTree(s).get("login").asText();
         String avatar_url = mapper.readTree(s).get("avatar_url").asText();
+        int id = mapper.readTree(s).get("id").asInt();
 
         Member member = showMember(login);
         if(member==null){
             member = new Member();
             member.setUsername(login);
+            member.setId(id);
             createMember(member);
         }
 

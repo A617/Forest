@@ -111,8 +111,9 @@ public class RecordServiceImpl implements RecordService {
 
     private LearnRecordVO generateLearn(MemberReport report) {
         String name = report.getFullName();
+        int id = memberDao.showMember(report.getUsername()).getId();
         Repository repos = repoDao.getReposByFullName(name);
-        return new LearnRecordVO(report.getUsername(), repos, report.getTime());
+        return new LearnRecordVO(report.getUsername(), id, repos, report.getTime());
     }
 
     private GraduateRecordVO generateGraduate(GraduateRecord report) {

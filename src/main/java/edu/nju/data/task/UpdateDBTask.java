@@ -35,7 +35,7 @@ public class UpdateDBTask {
     UserMapper userdao;
 
     //                秒 分 时 天 月
-    @Scheduled(cron = "0 54 * * * ?")
+    @Scheduled(cron = "0 24 * * * ?")
     public void job() {
         System.out.println("task starts");
         Calendar date = Calendar.getInstance();
@@ -51,44 +51,44 @@ public class UpdateDBTask {
 
         Map<String, Integer> map = new HashMap<>();
 
-//        for (int i = 0; i < 8; i++) {
-//            String url = "http://data.githubarchive.org/" + sdf.format(dt) + "-" + (12 + i) + ".json.gz";
-//            System.out.println(url);
-//            String path = "src/main/resources/data.json.gz";
-//            try {
-//                HttpRequest.downloadFile(path, url);
-//
-//                System.out.println("download " + sdf.format(dt) + "-" + (12 + i) + " successfully!");
-//                getRepoForkMap(path, map);
-//
-//
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//
-//            }
-//        }
-//
-//        List<String> list = analyzeTop30Repos(map);
+        for (int i = 0; i < 8; i++) {
+            String url = "http://data.githubarchive.org/" + sdf.format(dt) + "-" + (12 + i) + ".json.gz";
+            System.out.println(url);
+            String path = "src/main/resources/data.json.gz";
+            try {
+                HttpRequest.downloadFile(path, url);
+
+                System.out.println("download " + sdf.format(dt) + "-" + (12 + i) + " successfully!");
+                getRepoForkMap(path, map);
 
 
-        ObjectMapper m = new ObjectMapper();
-        List<String> list= new ArrayList<>();
-        try {
-            BufferedInputStream is = new BufferedInputStream(new FileInputStream("src/main/java/edu/nju/data/task/1.txt"));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            String line;
-            while ((line = reader.readLine())!=null){
-                list.add(line);
+            } catch (IOException e) {
+                e.printStackTrace();
+
             }
-            //        list = Arrays.asList(str.substring(1,str.length()-1).split(", "));
-
-            System.out.println(list);
-            saveRepo(list,dt);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+        List<String> list = analyzeTop30Repos(map);
+
+
+//        ObjectMapper m = new ObjectMapper();
+//        List<String> list= new ArrayList<>();
+//        try {
+//            BufferedInputStream is = new BufferedInputStream(new FileInputStream("src/main/java/edu/nju/data/task/1.txt"));
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+//            String line;
+//            while ((line = reader.readLine())!=null){
+//                list.add(line);
+//            }
+//            //        list = Arrays.asList(str.substring(1,str.length()-1).split(", "));
+//
+//            System.out.println(list);
+//            saveRepo(list,dt);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         saveRepo(list,dt);
     }
