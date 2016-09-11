@@ -29,12 +29,11 @@ public class MemberDaoImplTest {
 
     @Test
     public void showMember() throws Exception {
-        System.out.println(dao.showMember("dtj").getRole());
+        System.out.println(dao.showMember("oppalu").getRole());
     }
 
     @Test
     public void addMember() throws Exception {
-
     }
 
     @Test

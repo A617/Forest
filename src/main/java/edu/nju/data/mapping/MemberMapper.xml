@@ -3,7 +3,8 @@
 <mapper namespace="edu.nju.data.dao.mapper.MemberMapper" >
   <resultMap id="BaseResultMap" type="edu.nju.data.model.Member" >
     <id column="username" property="username" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
+      <result column="id" property="id" jdbcType="INTEGER" />
+      <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="member_email" property="member_email" jdbcType="VARCHAR" />
     <result column="role" property="role" jdbcType="VARCHAR" />
   </resultMap>
@@ -37,9 +38,9 @@
     where username = #{username,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="edu.nju.data.model.Member" >
-    insert into member (username, password, member_email, 
+    insert into member (id,username, password, member_email,
       role)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{member_email,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{member_email,jdbcType=VARCHAR},
       #{role,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="edu.nju.data.model.Member" >
@@ -119,7 +120,7 @@
     where username = #{username,jdbcType=VARCHAR}
   </select>
   <insert id="addMember" parameterType="edu.nju.data.model.Member" flushCache="true">
-    insert into member(username,password,member_email,role) values(#{username},#{password},#{member_email},#{role})
+    insert into member(id,username,password,member_email,role) values(#{id},#{username},#{password},#{member_email},#{role})
   </insert>
   <select id="getLearnedRepos"  resultType="java.lang.String" parameterType="java.lang.String" >
     select full_name
