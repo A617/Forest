@@ -273,4 +273,8 @@ public class Repository {
                 '}';
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

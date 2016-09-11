@@ -381,6 +381,8 @@
     ,
     <include refid="Blob_Column_List" />
     from repository
+    ORDER BY updated_at DESC
+    LIMIT 10
   </select>
   <select id="enlargeViaSubscribers" resultType="java.lang.String">
     SELECT full_name FROM subscribe

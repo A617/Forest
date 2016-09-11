@@ -7,6 +7,8 @@ import edu.nju.service.RepositoryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.AssertFalse;
+import java.util.List;
 
 /**
  * Created by Dora on 2016/8/3.
@@ -29,5 +31,10 @@ public class RepositoryServiceImpl implements RepositoryService {
     @Override
     public Repository showRepository(String fullname) {
         return repoDao.getReposByFullName(fullname);
+    }
+
+    @Override
+    public List<Repository> showHotRepos(){
+        return repoDao.getAll();
     }
 }

@@ -15,6 +15,12 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)		//表示继承了SpringJUnit4ClassRunner类
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class MemberServiceImplTest {
+    @Test
+    public void getUserDetail() throws Exception {
+
+        System.out.println(service.getUserDetail("oraisdy","fb6f267f906faba3d59eace5376739ed737512ed"));
+    }
+
     @Autowired
     MemberService service;
 

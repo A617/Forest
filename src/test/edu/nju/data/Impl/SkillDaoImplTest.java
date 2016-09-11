@@ -43,5 +43,9 @@ public class SkillDaoImplTest {
         System.out.println(s.getName()+" "+s.getLevel()+" "+s.getCatelog());
     }
 
+    @Test
+    public void testGetMaxSkillLevel(){
+        System.out.println(dao.getSkillMaxLevel("Ant"));
+    }
 
 }

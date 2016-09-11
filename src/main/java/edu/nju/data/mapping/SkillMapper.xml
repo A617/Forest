@@ -140,4 +140,9 @@
     WHERE r.skill_name = s.name and r.level = s.level
     AND r.role = #{0} AND s.name = #{1}
   </select>
+    <select id="geteSkillMaxLevel" resultType = "java.lang.Integer" parameterType="java.lang.String">
+        select max(level) from skill
+        where name = #{0}
+        group by name
+    </select>
 </mapper>

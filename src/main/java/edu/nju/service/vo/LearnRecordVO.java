@@ -9,11 +9,11 @@ import java.util.Date;
  */
 public class LearnRecordVO extends RecordVO {
 
-    protected Repository repository;
+    protected RepositoryVO repository;
 
     public LearnRecordVO(String username, Repository repository, Date time) {
         super(username,time);
-        this.repository = repository;
+        this.repository = new RepositoryVO(repository);
         this.category = RecordCategory.learn;
     }
 
@@ -28,7 +28,7 @@ public class LearnRecordVO extends RecordVO {
         return repository;
     }
 
-    public void setRepository(Repository repository) {
+    public void setRepository(RepositoryVO repository) {
         this.repository = repository;
     }
 }

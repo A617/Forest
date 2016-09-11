@@ -33,6 +33,8 @@ public class User {
 
     private Integer following;
 
+    private String bio;
+
     @JsonDeserialize(using = MyDateDeserializer.class)
     private Date created_at;
 
@@ -217,6 +219,14 @@ public class User {
 
     public void setLanguages(String languages) {
         this.languages = languages;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     @Override

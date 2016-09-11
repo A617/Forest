@@ -22,7 +22,7 @@ public interface IRepoDao {
 
     List<String> getAllFullname();
     /**
-     * 获取所有项目
+     * 获取10条最新的项目
      *
      * @return
      */

@@ -1,6 +1,7 @@
 package edu.nju.service;
 
 import edu.nju.data.model.Member;
+import edu.nju.data.model.User;
 import edu.nju.service.vo.SignedInUser;
 
 import java.io.IOException;
@@ -15,4 +16,6 @@ public interface MemberService {
     boolean createMember(Member member);
 
     SignedInUser login(String token) throws IOException;
+
+    User getUserDetail(String login, String token) throws IOException;
 }

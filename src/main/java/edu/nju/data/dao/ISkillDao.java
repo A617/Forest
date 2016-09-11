@@ -42,4 +42,11 @@ public interface ISkillDao {
      */
     Skill getSkills(String rolename, String skillName);
 
+    /**
+     * 得到某一技能最高需要达到的level
+     * @param skillName
+     * @return
+     */
+    int getSkillMaxLevel(String skillName);
+
 }

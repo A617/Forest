@@ -3,6 +3,8 @@ package edu.nju.service;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.Repository;
 
+import java.util.List;
+
 /**
  * Created by Dora on 2016/8/3.
  */
@@ -23,4 +25,6 @@ public interface RepositoryService {
     int reportRepository(MemberReport report);
 
     Repository showRepository(String fullname);
+
+    List<Repository> showHotRepos();
 }

@@ -98,7 +98,7 @@
   </select>
 
   <insert id="addGraduateRecordOfGoal" parameterType="edu.nju.data.model.GraduateRecord" >
-    insert into graduate_record (username, role, time
+    insert ignore into graduate_record (username, role, time
     )
     values (#{username,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
     )

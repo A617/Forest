@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #parse("/templates/common/header.vm")
+    <title>Explore | Forest</title>
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+
+        #parse("/templates/common/left_nav.vm")
+        #parse("/templates/common/top_nav.vm")
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Hot Repositories on Github Yesterday</h3>
+                    </div>
+
+                ##                    <div class="title_right">
+                ##                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                ##                            <div class="input-group">
+                ##                                <input type="text" class="form-control" placeholder="Search for...">
+                ##                    <span class="input-group-btn">
+                ##                      <button class="btn btn-default" type="button">Go!</button>
+                ##                    </span>
+                ##                            </div>
+                ##                        </div>
+                ##                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                        ##                            <div class="x_title">
+                        ##                                <h2>Skills</h2>
+                        ##                                <ul class="nav navbar-right panel_toolbox">
+                        ##                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        ##                                    </li>
+                        ##                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        ##                                    </li>
+                        ##                                </ul>
+                        ##                                <div class="clearfix"></div>
+                        ##                            </div>
+                            <div class="x_content">
+
+                            ##                                <p>Simple table with project listing with progress and editing options</p>
+
+                                <!-- start project list -->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 1%">#</th>
+                                        <th style="width: 25%">Full Name</th>
+                                        <th style="width: 10%">Language</th>
+                                        <th>Description</th>
+                                        <th style="width: 5%"><i class="fa fa-star"></i></th>
+                                        <th style="width: 5%"><i class="fa fa-code-fork"></i></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        #foreach($repo in $repos)
+                                            #parse("/templates/repositories/repo_item.vm")
+                                        #end
+                                    </tbody>
+                                </table>
+                                <!-- end project list -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+
+        #parse("/templates/common/footer.vm")
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<script>
+    function selectRole(role) {
+        jQuery.ajax({
+            type:"POST",
+            url:"/selectRole",
+            data:{"userName":'$user.username',"roleName":'$role.name'},
+            dataType:"json",
+            success: function () {
+                location.reload();
+            }, error: function (xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+</script>
+</body>
+</html>

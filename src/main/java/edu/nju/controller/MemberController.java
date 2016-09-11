@@ -1,7 +1,9 @@
 package edu.nju.controller;
 
 import edu.nju.data.model.Skill;
+import edu.nju.data.model.User;
 import edu.nju.service.MemberService;
+import edu.nju.service.RecordService;
 import edu.nju.service.RoleService;
 import edu.nju.service.SkillService;
 import edu.nju.service.vo.*;
@@ -35,6 +37,8 @@ public class MemberController {
     MemberService memberService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    RecordService recordService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     String login(@RequestParam(value = "code", required = false) String code,
@@ -68,18 +72,20 @@ public class MemberController {
     }
 
     @RequestMapping("/achievements/{username}")
-    String showAchievements(@PathVariable("username") String username, Model model){
-        List<RecordVO> recordVOs= new ArrayList<>();
-//        recordVOs.add(new GraduateRecordVO(username,"Web Developer", new Date()));
-//        recordVOs.add(new LearnRecordVO(username,"0xAX/linux-insides",new Date()));
-//        recordVOs.add(new LevelUpRecordVO(username,"CSS",2,new Date()));
+    String showAchievements(@PathVariable("username") String username, Model model, HttpSession session){
+        List<RecordVO> recordVOs= recordService.getUserRecords(username);
         model.addAttribute("records",recordVOs);
 
-        for (RecordVO vo: recordVOs)
-            System.out.println(vo);
-
-        List<Skill> skillVOs = roleService.getUserMasterSkills(username);
+        List<SkillVO> skillVOs = roleService.getUserMasterSkills(username);
         model.addAttribute("skills",skillVOs);
+
+        SignedInUser signedInUser = LoginHelper.getSignInUser(session);
+        try {
+            User user  = memberService.getUserDetail(username, signedInUser.getToken());
+            model.addAttribute("detail",user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return "achievements";
     }

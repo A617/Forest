@@ -26,7 +26,7 @@ public interface RoleService {
 
     Role showRole(String name);
 
-    List<Skill> getUserMasterSkills(String userName);
+    List<SkillVO> getUserMasterSkills(String userName);
 
     /**
      * 展示角色包含的技能以及该用户掌握情况（前提是用户选择的角色需要该技能）
