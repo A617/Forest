@@ -1,0 +1,12 @@
+<li>
+    <img src="images/img.jpg" class="avatar" alt="Avatar">
+    <div class="message_date">
+        <h3 class="date text-info">${record.day}</h3>
+        <p class="month">${record.month}</p>
+    </div>
+    <div class="message_wrapper">
+        <h4 class="heading"><a href="/achievements/${record.username}">${record.username}</a></h4>
+        <blockquote class="message">learned this repository</blockquote>
+        <br />
+    </div>
+</li>
