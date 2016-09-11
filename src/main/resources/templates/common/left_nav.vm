@@ -37,7 +37,7 @@
                     </li>
                     <li><a><i class="fa fa-th-large"></i> Explore <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="general_elements.html">Repositories</a></li>
+                            <li><a href="/repositories">Repositories</a></li>
                             <li><a href="media_gallery.html">Users</a></li>
                         </ul>
                     </li>

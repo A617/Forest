@@ -49,4 +49,11 @@ public class RepositoryController {
         MemberReport report = new MemberReport(user.getUsername(),repoName,1,null,new Timestamp(new Date().getTime()));
         return service.reportRepository(report)>0?true:false;
     }
+
+    @RequestMapping("/repositories")
+    String showRepositories(Model model) {
+        model.addAttribute("repos",service.showHotRepos());
+        return "/repositories";
+    }
+
 }
