@@ -5,8 +5,8 @@ import java.util.Date;
 /**
  * Created by Dora on 2016/9/10.
  */
-public abstract class RecordVO implements Comparable<RecordVO>{
-    static final String months[] = {"Jan","Feb","Mar","April","May","Jun", "Jul","Aug","Sep","Oct","Nov","Dec"};
+public abstract class RecordVO implements Comparable<RecordVO> {
+    static final String months[] = {"Jan", "Feb", "Mar", "April", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     protected String username;
 
@@ -83,9 +83,11 @@ public abstract class RecordVO implements Comparable<RecordVO>{
 
     @Override
     public int compareTo(RecordVO o) {
-        if(this.getTime().getTime()>o.getTime().getTime()){
+        if (this.getTime().getTime() > o.getTime().getTime()) {
+            return -1;
+        } else if (this.getTime().getTime() < o.getTime().getTime()) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

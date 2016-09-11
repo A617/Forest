@@ -21,7 +21,7 @@ public class RecordServiceTest {
 
     @Test
     public void testGetUserRecords() {
-        List<RecordVO> vos = service.getUserRecords("tj");
+        List<RecordVO> vos = service.getUserRecords("oraisdy");
         for (RecordVO vo : vos) {
             System.out.println(vo.getTime());
         }
