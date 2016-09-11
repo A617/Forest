@@ -1,5 +1,6 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.Skill;
 import edu.nju.service.MemberService;
 import edu.nju.service.RoleService;
 import edu.nju.service.SkillService;
@@ -54,10 +55,9 @@ public class MemberController {
                 e.printStackTrace();
             }
             return "redirect:" + formerUrl;
-
-
         }
     }
+
     @RequestMapping("/logout")
     String logout(HttpSession session, SessionStatus sessionStatus, @RequestParam("formerUrl")String formerUrl){
         if(session.getAttribute("user")!=null) {
@@ -70,12 +70,16 @@ public class MemberController {
     @RequestMapping("/achievements/{username}")
     String showAchievements(@PathVariable("username") String username, Model model){
         List<RecordVO> recordVOs= new ArrayList<>();
-        recordVOs.add(new GraduateRecordVO(username,"Web Developer", new Date()));
-        recordVOs.add(new LearnRecordVO(username,"0xAX/linux-insides",new Date()));
-        recordVOs.add(new LevelUpRecordVO(username,"CSS",2,new Date()));
+//        recordVOs.add(new GraduateRecordVO(username,"Web Developer", new Date()));
+//        recordVOs.add(new LearnRecordVO(username,"0xAX/linux-insides",new Date()));
+//        recordVOs.add(new LevelUpRecordVO(username,"CSS",2,new Date()));
         model.addAttribute("records",recordVOs);
 
-//        List<SkillVO> skillVOs = roleService.
+        for (RecordVO vo: recordVOs)
+            System.out.println(vo);
+
+        List<Skill> skillVOs = roleService.getUserMasterSkills(username);
+        model.addAttribute("skills",skillVOs);
 
         return "achievements";
     }
