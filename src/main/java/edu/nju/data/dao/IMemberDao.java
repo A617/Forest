@@ -37,4 +37,6 @@ public interface IMemberDao {
 
     List<MemberReport> getLearnRecordsOfUser(String userName);
 
+    List<LearnCounts> getLearnCountsEveryday(String username);
+
 }

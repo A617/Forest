@@ -21,18 +21,18 @@
     <!-- end of image cropping -->
 
 </div>
-<h3>${detail.login} <small>   ${detail.name}</small></h3>
+<h3>${detail.login} <small>   $!{detail.name}</small></h3>
 
 
 <ul class="list-unstyled user_data">
-    <li><i class="fa fa-map-marker user-profile-icon"></i> ${detail.location}
+    <li><i class="fa fa-map-marker user-profile-icon"></i> $!{detail.location}
     </li>
 
     <li>
-        <i class="fa fa-briefcase user-profile-icon"></i> ${detail.company}
+        <i class="fa fa-briefcase user-profile-icon"></i> $!{detail.company}
     </li>
 
     <li class="m-top-xs">
-        <i class="fa fa-external-link user-profile-icon"></i> ${detail.bio}</a>
+        <i class="fa fa-external-link user-profile-icon"></i> $!{detail.bio}</a>
     </li>
 </ul>

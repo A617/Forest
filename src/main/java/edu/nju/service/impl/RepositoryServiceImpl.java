@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.AssertFalse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -36,5 +37,15 @@ public class RepositoryServiceImpl implements RepositoryService {
     @Override
     public List<Repository> showHotRepos(){
         return repoDao.getAll();
+    }
+
+    @Override
+    public String getCodeFrequency(String full_name,String token) {
+        try {
+            return repoDao.getCodeFrequency(full_name,token);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

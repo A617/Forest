@@ -27,4 +27,6 @@ public interface RepositoryService {
     Repository showRepository(String fullname);
 
     List<Repository> showHotRepos();
+
+    String getCodeFrequency(String full_name,String token);
 }

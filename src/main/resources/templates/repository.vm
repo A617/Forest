@@ -5,6 +5,7 @@
     <!-- iCheck -->
     <link href="/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <title>${repo.full_name}</title>
+
 </head>
 <body class="nav-md">
 <div class="container body">
@@ -51,11 +52,15 @@
                                     </ul>
                                     <br />
 
-##                                    <div id="mainb" style="height:350px;"></div>
+                                    <div>
+                                        #parse("/templates/repository/chart.vm")
+                                    </div>
+
+                                    <br>
 
                                     <div>
 
-                                        <h4>Recent Activity</h4>
+                                        <h4>Recent Activity</h4><br>
 
                                         <!-- end of user messages -->
                                         <ul class="messages">
@@ -91,25 +96,6 @@
                                             </div>
 
                                             <br />
-##                                            <h5>Project files</h5>
-##                                            <ul class="list-unstyled project_files">
-##                                                <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
-##                                                </li>
-##                                                <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
-##                                                </li>
-##                                                <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
-##                                                </li>
-##                                                <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
-##                                                </li>
-##                                                <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
-##                                                </li>
-##                                            </ul>
-##                                            <br />
-##
-##                                            <div class="text-center mtop20">
-##                                                <a href="#" class="btn btn-sm btn-primary">Add files</a>
-##                                                <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-##                                            </div>
                                         </div>
 
                                     </section>
@@ -133,5 +119,71 @@
 <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="/build/js/custom.min.js"></script>
+<script src="/js/echarts.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var myChart1 = echarts.init(document.getElementById('codeFrequency'));
+
+        myChart1.showLoading({
+            text: 'Loading...',
+            effect: 'spin',
+            textStyle: {
+                fontSize: 25
+            }
+        });
+        var url = "/repo/" + $("title").html() +"/code_frequency";
+        $.ajax({
+            //请求方式为get
+            type: "GET",
+            url: url,
+            dataType: "json",
+            success: function (obj) {
+
+                myChart1.hideLoading();
+                var data = [];
+                var week = [];
+                for (var i = 1; i < obj.length + 1; i++) {
+                    week.push("week"+i);
+                    data.push(obj[i - 1][1] - obj[i - 1][2]);
+                }
+
+                option = {
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: week
+                    },
+                    yAxis: {
+                        type: 'value',
+                        boundaryGap: [0, '100%']
+                    },
+                    series: [
+                        {
+                            name: 'additions',
+                            type: 'line',
+                            smooth: true,
+                            symbol: 'none',
+                            sampling: 'average',
+                            areaStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: 'rgb(255, 158, 68)'
+                                    }, {
+                                        offset: 1,
+                                        color: 'rgb(255, 70, 131)'
+                                    }])
+                                }
+                            },
+                            data: data
+                        }
+                    ]
+                };
+                myChart1.setOption(option);
+            }
+        });
+    });
+</script>
 </body>
 </html>

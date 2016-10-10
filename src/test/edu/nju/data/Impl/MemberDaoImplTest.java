@@ -21,6 +21,12 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:spring-mybatis.xml"})
 public class MemberDaoImplTest {
     @Test
+    public void getLearnCountsEveryday() throws Exception {
+        System.out.println(dao.getLearnCountsEveryday("oraisdy").size());
+        System.out.println(dao.getLearnCountsEveryday("oraisdy").get(0));
+    }
+
+    @Test
     public void levelUp() throws Exception {
         Date d = new Date();
         Timestamp date = new Timestamp(d.getTime());

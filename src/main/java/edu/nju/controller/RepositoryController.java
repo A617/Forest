@@ -5,7 +5,6 @@ import edu.nju.data.model.Repository;
 import edu.nju.service.RecordService;
 import edu.nju.service.RepositoryService;
 import edu.nju.service.vo.LearnRecordVO;
-import edu.nju.service.vo.RecordVO;
 import edu.nju.service.vo.SignedInUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,6 +63,19 @@ public class RepositoryController {
     String showRepositories(Model model) {
         model.addAttribute("repos",service.showHotRepos());
         return "/repositories";
+    }
+
+    @RequestMapping("/repo/{ownerName}/{repoName:.+}/code_frequency")
+    @ResponseBody
+    String getCodeFrequency(@PathVariable String ownerName, @PathVariable String repoName, HttpSession session) {
+        String fullName = ownerName + "/" + repoName;
+        String token = LoginHelper.getSignInUser(session).getToken();
+        String result = null;
+        if(token!=null)
+           result = service.getCodeFrequency(fullName,token);
+        System.out.println(result);
+        return result;
+
     }
 
 }

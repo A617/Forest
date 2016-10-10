@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     #parse("/templates/common/header.vm")
-    <title>Achievements | Forest</title>
+    <title>${detail.login}</title>
 </head>
 
 <body class="nav-md">
@@ -46,8 +46,10 @@
                                     </ul>
                                     <!-- end of skills -->
                                 </div>
-                                <div class="col-md-9">
 
+                                #parse("/templates/achievements/chart.vm")
+
+                                <div class="col-md-9">
                                     <div class="profile_title">
                                         <div class="col-md-6">
                                             <h2>Recent Activities</h2>
@@ -85,5 +87,90 @@
 <script src="/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="/build/js/custom.min.js"></script>
+<!-- Flot -->
+<script src="/vendors/Flot/jquery.flot.js"></script>
+<script src="/vendors/Flot/jquery.flot.pie.js"></script>
+<script src="/vendors/Flot/jquery.flot.time.js"></script>
+<script src="/vendors/Flot/jquery.flot.stack.js"></script>
+<script src="/vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="/vendors/Flot/jquery.flot.orderBars.js"></script>
+<script src="/vendors/Flot/date.js"></script>
+<script src="/vendors/Flot/jquery.flot.spline.js"></script>
+<script src="/vendors/Flot/curvedLines.js"></script>
+<!-- Flot -->
+<script>
+    $(document).ready(function() {
+        var url = "/achi/" + $("title").html() +"/frequency";
+        $.ajax({
+            //请求方式为get
+            type: "GET",
+            url: url,
+            dataType: "json",
+            success: function (obj) {
+                var data = [];
+
+                for (var i = 0; i < obj.length; i++) {
+                    var date = new Date(obj[i].time).getTime();
+                    data.push([date,obj[i].count]);
+
+                }
+
+                $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+                    data
+                ], {
+                    series: {
+                        lines: {
+                            show: false,
+                            fill: true
+                        },
+                        splines: {
+                            show: true,
+                            tension: 0.4,
+                            lineWidth: 1,
+                            fill: 0.4
+                        },
+                        points: {
+                            radius: 0,
+                            show: true
+                        },
+                        shadowSize: 2
+                    },
+                    grid: {
+                        verticalLines: true,
+                        hoverable: true,
+                        clickable: true,
+                        tickColor: "#d5d5d5",
+                        borderWidth: 1,
+                        color: '#fff'
+                    },
+                    colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+                    xaxis: {
+                        tickColor: "rgba(51, 51, 51, 0.06)",
+                        mode: "time",
+                        tickSize: [1, "day"],
+                        //tickLength: 10,
+                        axisLabel: "Date",
+                        axisLabelUseCanvas: true,
+                        axisLabelFontSizePixels: 12,
+                        axisLabelFontFamily: 'Verdana, Arial',
+                        axisLabelPadding: 10
+                    },
+                    yaxis: {
+                        ticks: 8,
+                        tickColor: "rgba(51, 51, 51, 0.06)",
+                    },
+                    tooltip: false
+                });
+
+                function gd(year, month, day) {
+                    return new Date(year, month - 1, day).getTime();
+                }
+            }
+        });
+
+    });
+</script>
+<!-- /Flot -->
 </body>
 </html>

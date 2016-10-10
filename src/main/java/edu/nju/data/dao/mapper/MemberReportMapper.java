@@ -1,5 +1,6 @@
 package edu.nju.data.dao.mapper;
 
+import edu.nju.data.model.LearnCounts;
 import edu.nju.data.model.MemberReport;
 import edu.nju.data.model.ReportRecord;
 
@@ -21,4 +22,6 @@ public interface MemberReportMapper {
     List<MemberReport> getLearnRecordsOfRepo(String repoName);
 
     List<MemberReport> getLearnRecordsOfUser(String userName);
+
+    List<LearnCounts> getLearnCountsEveryday(String username);
 }

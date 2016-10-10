@@ -64,4 +64,9 @@ public class MemberDaoImpl implements IMemberDao {
     public List<MemberReport> getLearnRecordsOfUser(String userName){
         return reportMapper.getLearnRecordsOfUser(userName);
     }
+
+    @Override
+    public List<LearnCounts> getLearnCountsEveryday(String username) {
+        return reportMapper.getLearnCountsEveryday(username);
+    }
 }

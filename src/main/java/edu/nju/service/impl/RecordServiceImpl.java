@@ -9,6 +9,7 @@ import edu.nju.service.vo.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -107,6 +108,23 @@ public class RecordServiceImpl implements RecordService {
         skill.setLevel(record.getLevel());
         skill.setName(record.getSkill_name());
         return memberDao.levelUp(skill, record.getUsername());
+    }
+
+    @Override
+    public List<LearnCounts> getLearnCountsEveryday(String username) {
+        List<LearnCounts> list =  memberDao.getLearnCountsEveryday(username);
+        List<LearnCounts> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            Timestamp date1 = list.get(i).getTime();
+            result.add(list.get(i));
+            if(i+1 < list.size()){
+                Timestamp date2 = list.get(i+1).getTime();
+                int days = (int) ((date2.getTime() - date1.getTime()) / (1000*3600*24));
+                for(int j = 1; j < days;j++)
+                    result.add(new LearnCounts(new Timestamp(date1.getTime()+1000*3600*24*j),0));
+            }
+        }
+        return result;
     }
 
     private LearnRecordVO generateLearn(MemberReport report) {

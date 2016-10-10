@@ -1,5 +1,6 @@
 package edu.nju.controller;
 
+import edu.nju.data.model.LearnCounts;
 import edu.nju.data.model.Skill;
 import edu.nju.data.model.User;
 import edu.nju.service.MemberService;
@@ -79,8 +80,6 @@ public class MemberController {
         List<SkillVO> skillVOs = roleService.getUserMasterSkills(username);
         model.addAttribute("skills",skillVOs);
 
-
-
         SignedInUser signedInUser = LoginHelper.getSignInUser(session);
         try {
             User user  = memberService.getUserDetail(username, signedInUser.getToken());
@@ -97,4 +96,40 @@ public class MemberController {
         SignedInUser user = LoginHelper.getSignInUser(session);
         return "redirect:/achievements/"+user.getUsername();
     }
+
+    @RequestMapping("/achi/{username}/frequency")
+    @ResponseBody  List<LearnCounts> showFre(@PathVariable("username") String username, HttpSession session){
+        List<LearnCounts> learnCounts = recordService.getLearnCountsEveryday(username);
+        return learnCounts;
+    }
+
+    @RequestMapping("/users")
+    String showUsers(Model model, HttpSession session){
+        List<User> list = new ArrayList<>();
+
+        String name = "FWWorks";
+        User user1 = new User();
+        user1.setLogin(name);
+        user1.setAvatar_url("https://avatars.githubusercontent.com/u/14259919?v=3");
+        user1.setFollowers(recordService.getLevelUpRecordOfUser(name).size());
+        user1.setFollowing(roleService.getUserMasterSkills(name).size());
+        user1.setPublic_repos(recordService.getLearnRecordsOfUser(name).size());
+        user1.setBio(memberService.showMember(name).getRole());
+        list.add(user1);
+
+        name = "oppalu";
+        User user2 = new User();
+        user2.setLogin(name);
+        user2.setAvatar_url("https://avatars.githubusercontent.com/u/11440855?v=3");
+        user2.setFollowers(recordService.getLevelUpRecordOfUser(name).size());
+        user2.setFollowing(roleService.getUserMasterSkills(name).size());
+        user2.setPublic_repos(recordService.getLearnRecordsOfUser(name).size());
+        user2.setBio(memberService.showMember(name).getRole());
+        list.add(user2);
+
+        model.addAttribute("users",list);
+
+        return "users";
+    }
+
 }

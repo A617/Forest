@@ -35,7 +35,7 @@ public class UpdateDBTask {
     UserMapper userdao;
 
     //                秒 分 时 天 月
-    @Scheduled(cron = "0 24 * * * ?")
+    @Scheduled(cron = "0 0 0 * * ?")
     public void job() {
         System.out.println("task starts");
         Calendar date = Calendar.getInstance();

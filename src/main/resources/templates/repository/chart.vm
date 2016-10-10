@@ -1,0 +1,8 @@
+
+    <h4>Code Frequency</h4>
+    <div style="width:100%; margin:auto auto">
+        <div id="codeFrequency" style="width: 100%;height:350px;"></div>
+    </div>
+
+
+

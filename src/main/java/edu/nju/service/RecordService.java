@@ -1,9 +1,6 @@
 package edu.nju.service;
 
-import edu.nju.data.model.GraduateRecord;
-import edu.nju.data.model.LevelUpRecord;
-import edu.nju.data.model.MemberReport;
-import edu.nju.data.model.ReportRecord;
+import edu.nju.data.model.*;
 import edu.nju.service.vo.GraduateRecordVO;
 import edu.nju.service.vo.LearnRecordVO;
 import edu.nju.service.vo.LevelUpRecordVO;
@@ -68,4 +65,6 @@ public interface RecordService {
      * @return
      */
     int addLevelUpRecord(LevelUpRecord record);
+
+    public List<LearnCounts> getLearnCountsEveryday(String username);
 }

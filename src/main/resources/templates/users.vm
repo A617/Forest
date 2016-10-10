@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #parse("/templates/common/header.vm")
+    <title>Explore | Forest</title>
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+
+        #parse("/templates/common/left_nav.vm")
+        #parse("/templates/common/top_nav.vm")
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Active users in Forest</h3>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <div>
+                                    #foreach($user in $users)
+                                    <div class="col-md-3 col-xs-12 widget widget_tally_box">
+                                        <div class="x_panel fixed_height_390">
+                                            <div class="x_content">
+
+                                                <div class="flex">
+                                                    <ul class="list-inline ">
+
+                                                        <li>
+                                                            <a href="/achievements/${user.login}">
+                                                            <img src=${user.avatar_url} alt="..." class="img-circle profile_img">
+                                                                </a>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                                <a href="/achievements/${user.login}"><h3 class="name">${user.login}
+                                                    <h4>
+                                                        ${user.bio}
+                                                    </h4></h3></a>
+
+                                                <div class="flex">
+                                                    <ul class="list-inline count2">
+                                                        <li>
+                                                            <h3>${user.public_repos}</h3>
+                                                            <span>Repositories</span>
+                                                        </li>
+                                                        <li>
+                                                            <h3>${user.following}</h3>
+                                                            <span>Skills</span>
+                                                        </li>
+                                                        <li>
+                                                            <h3>${user.followers}</h3>
+                                                            <span>LevelUps</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    #end
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+
+        #parse("/templates/common/footer.vm")
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+</body>
+</html>

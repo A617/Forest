@@ -18,7 +18,7 @@ public class MemberServiceImplTest {
     @Test
     public void getUserDetail() throws Exception {
 
-        System.out.println(service.getUserDetail("oraisdy","fb6f267f906faba3d59eace5376739ed737512ed"));
+        System.out.println(service.getUserDetail("njushishuo","fb6f267f906faba3d59eace5376739ed737512ed"));
     }
 
     @Autowired
