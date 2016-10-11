@@ -8,5 +8,5 @@ Provides study route and recommends repositories in github.com for people want t
 Using SpringMVC, myBatis.
 Using an HTML5 template from [Gentellela Alela](https://colorlib.com/polygon/gentelella/index.html).
 
-![]({{site.baseurl}}//QQ%E6%88%AA%E5%9B%BE20161011163708.png)
+![](https://raw.githubusercontent.com/A617/Forest/master/QQ%E6%88%AA%E5%9B%BE20161011163708.png)
 
